@@ -1,0 +1,24 @@
+
+@import "base/normalize";
+@import "base/variables";
+@import "base/mixins";
+@import "base/globales";
+@import "base/utilidades";
+@import "base/botones";
+
+@import "layout/header";
+@import "layout/footer";
+@import "layout/contactar";
+@import "layout/destacado";
+@import "layout/imagen";
+@import "layout/noticias";
+@import "layout/admin";
+
+
+ @import 'internas/contacto';
+ @import 'internas/discografia';
+ @import 'internas/historia';
+ @import 'internas/noticia';
+ @import 'internas/productos';
+
+

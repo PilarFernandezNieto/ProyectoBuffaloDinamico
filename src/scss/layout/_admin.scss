@@ -1,0 +1,71 @@
+
+.central {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.alerta {
+    margin: 1rem 0;
+    padding: 1rem;
+    color: $letras;
+    text-transform: uppercase;
+    border-radius: 3.75px;
+    font-weight: 600;
+
+    &.error {
+        background-color: $error;
+    }
+    &.exito {
+        background-color: $exito;
+    }
+}
+.listado_noticias, .admin {
+    margin-top: 10rem;
+    h1 {
+        text-align: center;
+    }
+}
+
+.dataTables_filter, .dataTables_length {
+    margin-bottom: 3rem;
+}
+#listado_noticias {
+    margin-top: 10rem;
+      td, th {
+        vertical-align: middle;
+    }
+}
+
+.acciones {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    button, a{
+        line-height: normal;
+    }
+}
+.swal2-modal{
+    font-size: 1.6rem;
+}
+
+.formulario-admin {
+    margin-top: 10rem;
+    .formulario {
+        border: none;
+        input::placeholder, textarea::placeholder {
+            font-size: 1.6rem;
+        }
+    }
+    .form-control[type="file"]{
+        font-size: 1.6rem;
+    }
+}
+
+.dropdown-item  {
+    font-size: 1.6rem;
+}
+.dropdown > a {
+    font-size: 2.6rem;
+}
+

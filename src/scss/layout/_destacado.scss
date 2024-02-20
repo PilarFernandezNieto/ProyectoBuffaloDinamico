@@ -1,0 +1,46 @@
+.contenido-destacado {
+    padding: 5rem 0;
+    @include tablet{
+        @include grid(2, 5rem);
+    }
+}
+    
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3rem;
+
+
+    @include tablet{
+        margin-top: 0;
+        
+    }
+    h2 {
+        margin-bottom: 2rem;
+         color: $fireBrick;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1rem;
+    }
+    p {
+        line-height: 1.8;
+    }
+
+
+}
+.logos-redes {
+    margin-top: 3rem;
+    @include grid(3, 1rem);
+    justify-items: center;
+    align-items: center;
+    
+    img {
+        width: 4rem;
+        border-radius:3.75px;
+    }
+    .youtube {
+        width: 5rem;
+    }
+}

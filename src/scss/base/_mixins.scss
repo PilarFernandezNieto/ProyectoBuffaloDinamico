@@ -1,0 +1,66 @@
+/*@mixin heading($color: black, $border-radius: false) {
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    color: $color;
+    letter-spacing: 1px;
+    border: 1px solid black;
+    @if $border-radius{
+        border-radius: 1rem;
+    }
+}*/
+/** GRID ***/
+
+@mixin telefono {
+  @media (min-width: $telefono) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+@mixin desktopXL {
+  @media (min-width: $desktopXL) {
+    @content;
+  }
+}
+@mixin grid($columnas, $espaciado) {
+  display: grid;
+  grid-template-columns: repeat($columnas, 1fr);
+  gap: $espaciado;
+}
+
+@mixin resetear-lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin boton($bgColor, $display) {
+  background-color: $bgColor;
+  color: $blanco;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin-top: 2.5rem;
+  border-radius: 3.75px;
+  border: 1px solid darken($bgColor, 10);
+  display: $display;
+}
+@mixin boton-accion($bgColor, $display){
+   background-color: $bgColor;
+  color: $blanco;
+  text-decoration: none;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 3.75px;
+  border: 1px solid $bgColor;
+  display: $display;
+
+}

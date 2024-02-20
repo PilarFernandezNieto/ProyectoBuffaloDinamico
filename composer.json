@@ -1,0 +1,17 @@
+{
+    "name": "usuario/proyecto-bufalo",
+    "description": "Pagina Web The Electric Buffalo",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Pilar Fernández Nieto",
+            "email": "rla10309@educastur.es"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "./clases"
+        }
+    }
+}

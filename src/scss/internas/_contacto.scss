@@ -1,0 +1,45 @@
+.contenedor-formulario {
+  width: 50%;
+  margin: 5rem auto;
+}
+.formulario {
+  border: 1px solid $oilBlack;
+  border-radius: 3.75px;
+  padding: 2rem;
+  label {
+    font-size: 2rem;
+    text-transform: uppercase;
+    display: block;
+    font-weight: 700;
+    color: $oilBlack;
+  }
+
+  input:not([type="submit"], input[type="checkbox"]),
+  textarea {
+    padding: 1rem;
+    border-radius: 3.75px;
+    border: 1px solid gainsboro;
+    width: 100%;
+  }
+  textarea {
+    min-height: 10rem;
+    height: auto;
+  }
+  .campo {
+    margin-top: 1rem;
+  }
+}
+.ancho-login {
+  @include tablet{
+    width: 50%;
+  }
+  
+}
+.seccion-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+
+}

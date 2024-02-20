@@ -1,0 +1,16 @@
+.imagen {
+  position: relative;
+  max-height: 70rem;
+   overflow: hidden;
+  .overlay-header {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+

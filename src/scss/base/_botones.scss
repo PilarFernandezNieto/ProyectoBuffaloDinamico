@@ -1,0 +1,31 @@
+.boton-fireBrick {
+  @include boton($fireBrick, inline-block);
+  &:hover {
+    background-color: darken($fireBrick, 10);
+    color: $blanco;
+  }
+}
+.boton-fireBrick-block {
+    @include boton($fireBrick, block);
+    text-transform: uppercase;
+    font-weight: 600;
+  &:hover {
+    background-color: darken($fireBrick, 10);
+    color: $blanco;
+  }
+
+}
+.boton-verde {
+  @include boton-accion($exito, inline-block);
+    &:hover {
+    background-color: darken($exito, 10);
+    color: $blanco;
+  }
+}
+.boton-rojo {
+  @include boton-accion($error, inline-block);
+    &:hover {
+    background-color: darken($error, 10);
+    color: $blanco;
+  }
+}

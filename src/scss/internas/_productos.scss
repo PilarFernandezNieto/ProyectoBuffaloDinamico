@@ -1,0 +1,89 @@
+.no-webp .imagen-central-tienda {
+  background-image: url(../../build/img/Banda.jpg);
+}
+
+.webp .imagen-central-tienda {
+  background-image: url(../../build/img/Banda.webp);
+}
+
+.imagen-central-tienda {
+    background-image: url(../../build/img/Banda.jpg);
+  background-position: center center;
+  background-size: cover;
+  padding: 5rem 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .overlay-central {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30 43 22/ 0.5);
+    top: 0;
+    left: 0;
+    
+  }
+}
+.contenedor-productos {
+  @include tablet {
+    @include grid(2, 2rem);
+  }
+  @include desktop {
+    @include grid(3, 2rem);
+  }
+  .producto {
+    border: 1px solid $negro;
+    border-radius: 3.75px;
+    margin-bottom: 2rem;
+    img {
+      border: none;
+      border-top-left-radius: 3.75px;
+      border-top-right-radius: 3.75px;
+      display: block;
+      height: auto;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  .datos-producto {
+    padding: 2rem;
+    align-items: center;
+
+    h3 {
+      margin-bottom: 1rem;
+      min-height: 8rem;
+    }
+    p {
+      margin-bottom: 1rem;
+      @include tablet {
+        margin: 0;
+      }
+    }
+    a {
+      font-size: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
+  .detalle-cantidad {
+    align-items: center;
+    padding: 0 0.75rem;
+
+    label {
+      font-size: 2rem;
+      @include tablet {
+        text-align: right;
+      }
+    }
+    input {
+      padding: 0.5rem 1rem;
+    }
+  }
+}
+.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}

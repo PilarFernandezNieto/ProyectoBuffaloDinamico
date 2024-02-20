@@ -1,0 +1,35 @@
+.no-webp .imagen-central {
+  background-image: url(../../build/img/imagen_central.jpg);
+}
+
+.webp .imagen-central {
+  background-image: url(../../build/img/imagen_central.webp);
+}
+
+.imagen-central {
+    background-image: url(../../build/img/imagen_central.jpg);
+  background-position: center center;
+  background-size: cover;
+  padding: 5rem 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .overlay-central {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30 43 22/ 0.5);
+    top: 0;
+    left: 0;
+    
+  }
+}
+.contenido-central {
+    z-index: 10;
+    text-align: center;
+    h3, p {
+        color:$blanco;
+    }
+}
