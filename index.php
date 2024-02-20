@@ -83,8 +83,8 @@ $db = conectarDB();
 <section class="imagen-central">
     <div class="overlay-central"></div>
     <div class="contenido-central">
-        <h3>Conoce nuestra discografía</h3>
-        <a href="discografia.php" class="boton-fireBrick">Contáctanos</a>
+        <h3>Discografía del Búfalo Eléctrico</h3>
+        <a href="discografia.php" class="boton-fireBrick">Pincha aquí</a>
     </div>
 
 
@@ -94,10 +94,10 @@ $db = conectarDB();
 <!-- NOTICIAS -->
 <section class="seccion contenedor">
     <h2 class="text-center">Noticias</h2>
-    
+
     <?php
-    $limite=2;
-     include "includes/templates/noticias_portada.php";?>
+    $limite = 2;
+    include "includes/templates/noticias_portada.php"; ?>
 
 
 

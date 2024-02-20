@@ -32,8 +32,8 @@
 }
 .logos-redes {
     margin-top: 3rem;
-    @include grid(3, 1rem);
-    justify-items: center;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
     
     img {

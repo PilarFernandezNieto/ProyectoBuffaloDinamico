@@ -106,6 +106,9 @@
   a {
     color: $letras;
     font-size: 3rem;
+    &:hover {
+      color: $fireBrick;
+    }
   }
 }
 .menu-mobile {
