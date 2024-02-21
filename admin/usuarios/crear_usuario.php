@@ -1,6 +1,7 @@
 <?php
 require "../../includes/app.php";
 
+
 $db = conectarDB();
 
 $email = "correo@correo.com";
@@ -10,5 +11,7 @@ $idrol = 1; // admin
 $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
 
+
+
 $query = "INSERT INTO usuarios(email, password, idrol) VALUES('{$email}', '{$passwordHash}', {$idrol})";
-//$db->query($query);
+$db->query($query);

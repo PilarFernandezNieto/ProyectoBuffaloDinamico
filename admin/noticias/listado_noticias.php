@@ -1,10 +1,8 @@
 <?php
 require "../../includes/app.php";
 
-$auth = estaAutenticado();
-if(!$auth){
-    header("Location: /");
-}
+estaAutenticado();
+
 $resultado = $_GET["resultado"] ?? "";
 
 $db = conectarDB();
@@ -14,7 +12,7 @@ incluirTemplate("sidebar_menu");
 ?>
 
 
-<main class="app-content contenedor seccion listado_noticias">
+<main class="app-content contenedor-admin seccion listado_noticias">
     <div class="app-title">
         <div>
             <h1>Listado de Noticias</h1>
@@ -33,6 +31,7 @@ incluirTemplate("sidebar_menu");
             <li class="breadcrumb-item active"><a href="listado_noticias.php">Listado de noticias</a></li>
         </ul>
     </div>
+    <a href="formulario_crear.php" class="boton-fireBrick">Nueva noticia</a>
     <div class="row seccion">
         <div class="col-md-12">
             <div class="tile">
@@ -79,7 +78,7 @@ incluirTemplate("sidebar_menu");
             </div>
         </div>
     </div>
-    <a href="formulario_crear.php" class="boton-fireBrick">Nueva noticia</a>
+
 </main>
 
 

@@ -16,15 +16,14 @@ function debuguear($array = [], bool $salir = true) {
     }
 }
 
-function estaAutenticado() {
+function estaAutenticado()  {
     if (!isset($_SESSION)) {
         session_start();
     }
-    $auth = $_SESSION["login"];
-    if ($auth) {
-        return true;
+    if (!$_SESSION["login"]) {
+        header("Location: /");
     }
-    return false;
+  
 }
 function fechas($fecha) {
     return date("d-m-Y", strtotime($fecha));

@@ -1,6 +1,6 @@
 <?php
 function conectarDB() : mysqli {
-    $db = mysqli_connect(
+    $db = new mysqli(
         "localhost",
         "root",
         "temporal",

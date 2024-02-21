@@ -106,7 +106,6 @@ $(function () {
 
 
       $("#texto").summernote({
-        placeholder: "Texto de la noticia",
         tabsize: 2,
         height: 120,
         toolbar: [

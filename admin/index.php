@@ -2,10 +2,8 @@
  
 require "../includes/app.php";
 
-$auth = estaAutenticado();
-if (!$auth) {
-  header("Location: /");
-}
+estaAutenticado();
+
 
 incluirTemplate("sidebar_menu");
 ?>

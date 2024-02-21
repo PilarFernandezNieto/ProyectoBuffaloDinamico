@@ -18,6 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
    if(empty($errores)){
     $query = "SELECT * FROM usuarios WHERE email= '{$email}'";
+
+        
     $resultado = mysqli_query($db, $query);
 
     if($resultado->num_rows){
@@ -25,10 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             
 
         $auth = password_verify($password, $usuario["password"]);
+           
         if($auth){
-            if(!session_start()){
-                session_start();
-            }
+   
+               
             $_SESSION["usuario"] = $usuario["email"];
             $_SESSION["rol"] = $usuario["idrol"];
             $_SESSION["login"] = true;

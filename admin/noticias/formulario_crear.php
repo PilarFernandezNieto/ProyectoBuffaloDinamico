@@ -1,14 +1,14 @@
 <?php
 require "../../includes/app.php";
-$auth = estaAutenticado();
-if (!$auth) {
-    header("Location: /");
-}
+use App\Noticia;
+
+
+estaAutenticado();
 
 $db = conectarDB();
 
 // Mensajes de errores
-$errores = [];
+$errores = Noticia::getErrores();
 
 $error = "";
 $titulo = "";
@@ -19,37 +19,18 @@ $fecha_creacion = date("Y-m-d");
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $titulo = mysqli_real_escape_string($db, $_POST["titulo"]);
-    $intro = mysqli_real_escape_string($db, $_POST["intro"]);
-    $texto = mysqli_real_escape_string($db, $_POST["texto"]);
-    $fecha = mysqli_real_escape_string($db, $_POST["fecha"]);
-    $fecha_creacion = mysqli_real_escape_string($db, date("Y-m-d"));
-    $imagen = $_FILES["imagen"];
+    
+    $noticia = new Noticia($_POST);
 
-    // TODO VALIDAR UNA EXTENSIÓN MÍNIMA DE TEXTO DE LA NOTICIA
-    // if(strlen($texto) < 50){
-    //     $errrores[] = "Debes introducir un texto más largo";
-    // }
-    if (!$titulo) {
-        $errores[] = "Debes introducir un título";
-    }
-
-    if (!$texto) {
-        $errores[] = "Debes introducir un texto";
-    }
-    if (!$fecha) {
-        $errores[] = "Debes introducir una fecha";
-    }
-    if (!$imagen["name"]) {
-        $errores[] = "Debes introducir una imagen";
-    }
-    $medida = 1000 * 1000;
-    if ($imagen["size"] > $medida) {
-        $errores[] = "La imagen es demasiado grande";
-    }
+ 
+    $errores = $noticia->validar();
+    
 
     if (empty($errores)) {
-        /** subida de archivos **/
+
+        $noticia->guardar();
+
+        $imagen = $_FILES["imagen"];
 
 
         $carpetaImagenes = "../../imagenes/";

@@ -1,8 +1,11 @@
 <?php
-require "includes/app.php";
-incluirTemplate("header");
-$db = conectarDB();
+
+    require "includes/app.php";
+    incluirTemplate("header");
+    $db = conectarDB();
+
 ?>
+
 <section class="imagen-header">
     <div class="overlay-header"></div>
     <div class="contenedor contenido-imagen">
