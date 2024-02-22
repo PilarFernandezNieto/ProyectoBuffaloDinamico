@@ -1,8 +1,9 @@
 <?php
- 
 require "../includes/app.php";
 
 estaAutenticado();
+
+
 
 
 incluirTemplate("sidebar_menu");

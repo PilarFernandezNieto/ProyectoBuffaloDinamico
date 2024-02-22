@@ -1,10 +1,10 @@
-<?php
-if (!isset($_SESSION)) {
-    session_start();
-}
-$auth = $_SESSION["login"] ?? false;
-?>
+<?php 
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    $auth = $_SESSION["login"] ?? false;
 
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -35,10 +35,10 @@ $auth = $_SESSION["login"] ?? false;
     <script src="build/js/jquery-3.7.1.min.js"></script>
 
     <script src="https://kit.fontawesome.com/91eae316a2.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/e79408189430261e22a99565d6b38640.js"></script>
+    <!-- <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/e79408189430261e22a99565d6b38640.js"></script> -->
 </head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QB6GV2DF3D"></script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-QB6GV2DF3D"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -48,7 +48,7 @@ $auth = $_SESSION["login"] ?? false;
     gtag('js', new Date());
 
     gtag('config', 'G-QB6GV2DF3D');
-</script>
+</script> -->
 
 <body>
 
@@ -62,10 +62,11 @@ $auth = $_SESSION["login"] ?? false;
                 <p class="menu-mobile"><i class="fa-solid fa-bars"></i></p>
                 <div class="header-derecha">
                     <div class="redes-sociales">
-                        <?php if (!$auth) { ?>
-                            <a href="login.php" class="fs-3 me-5">Iniciar sesión</a>
+                        <?php if(!$auth) { ?>
+                            <a href="login.php" class="fs-3 me-5">Inicia sesión</a>
                         <?php } else { ?>
-                            <a href="logout.php" class="fs-3 me-5">Cerrar sesión</a>
+                            <a href="/admin" class="fs-3 me-5">Admin</a>
+                            <a href="logout.php" class="fs-3 me-5">Cierra sesión</a>
                         <?php } ?>
                         <a href="https://www.youtube.com/@theelectricbuffalo666" class="youtube" target="_blank">
                             <i class="fa-brands fa-youtube"></i>

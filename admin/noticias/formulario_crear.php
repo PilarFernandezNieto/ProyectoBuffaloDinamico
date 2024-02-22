@@ -1,9 +1,12 @@
 <?php
 require "../../includes/app.php";
-use App\Noticia;
-
-
 estaAutenticado();
+
+
+use App\Noticia;
+use Intervention\Image\ImageManagerStatic as Image;
+
+
 
 $db = conectarDB();
 
@@ -19,33 +22,27 @@ $fecha_creacion = date("Y-m-d");
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    
+
     $noticia = new Noticia($_POST);
 
- 
+    $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
+
+    if ($_FILES["imagen"]["tmp_name"]) {
+        $imagen = Image::make($_FILES["imagen"]["tmp_name"])->fit(600, 600);
+        $noticia->setImagen($nombreImagen);
+    }
+
     $errores = $noticia->validar();
-    
 
     if (empty($errores)) {
 
-        $noticia->guardar();
-
-        $imagen = $_FILES["imagen"];
-
-
-        $carpetaImagenes = "../../imagenes/";
-        if (!is_dir($carpetaImagenes)) {
-            mkdir($carpetaImagenes);
+        if (!is_dir(CARPETA_IMAGENES)) {
+            mkdir(CARPETA_IMAGENES);
         }
-
-        $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
-
-        move_uploaded_file($imagen["tmp_name"], $carpetaImagenes . $nombreImagen);
-
-        $query = "INSERT INTO noticias(titulo, intro, texto, imagen, fecha, fecha_creacion) VALUES ('{$titulo}', '{$intro}', '{$texto}', '{$nombreImagen}','{$fecha}', '{$fecha_creacion}')";
-
+        $imagen->save(CARPETA_IMAGENES . $nombreImagen);
+        
         try {
-            $resultado = $db->query($query);
+            $resultado = $noticia->guardar();
 
             if ($resultado) {
                 header("Location: listado_noticias.php?exito=true&accion=crear");
@@ -53,6 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } catch (Exception $e) {
             $errores[] =  "Error al insertar registro: " . ($e->getCode() === 1062) ? "Esa noticia ya existe" : "Ha ocurrido un error";
         }
+
+
     }
 }
 incluirTemplate("sidebar_menu");

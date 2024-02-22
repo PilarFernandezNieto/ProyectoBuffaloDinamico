@@ -2,6 +2,7 @@
 
 define("TEMPLATES_URL", __DIR__ . "/templates");
 define("FUNCIONES_URL", __DIR__ . "funciones.php");
+define("CARPETA_IMAGENES", __DIR__ . "/../imagenes/");
 
 function incluirTemplate($nombre) {
     include TEMPLATES_URL . "/{$nombre}.php";
@@ -16,14 +17,11 @@ function debuguear($array = [], bool $salir = true) {
     }
 }
 
-function estaAutenticado()  {
-    if (!isset($_SESSION)) {
-        session_start();
-    }
+function estaAutenticado() {
+    session_start();
     if (!$_SESSION["login"]) {
         header("Location: /");
     }
-  
 }
 function fechas($fecha) {
     return date("d-m-Y", strtotime($fecha));

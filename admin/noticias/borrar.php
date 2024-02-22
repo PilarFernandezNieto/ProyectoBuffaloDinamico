@@ -1,6 +1,8 @@
 <?php
 require "../../includes/app.php";
+
 estaAutenticado();
+
 
 $db = conectarDB();
 

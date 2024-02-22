@@ -6,7 +6,7 @@ $db = conectarDB();
 $errores = [];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    
+
     $email = mysqli_real_escape_string($db, filter_var($_POST["email"], FILTER_VALIDATE_EMAIL));
     $password = mysqli_real_escape_string($db, $_POST["password"]);
 
@@ -16,47 +16,49 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!$password) {
         $errores[] = "La contraseña es obligatoria";
     }
-   if(empty($errores)){
-    $query = "SELECT * FROM usuarios WHERE email= '{$email}'";
+    if (empty($errores)) {
+        $query = "SELECT * FROM usuarios WHERE email= '{$email}'";
 
-        
-    $resultado = mysqli_query($db, $query);
 
-    if($resultado->num_rows){
-        $usuario = mysqli_fetch_assoc($resultado);
-            
+        $resultado = mysqli_query($db, $query);
 
-        $auth = password_verify($password, $usuario["password"]);
-           
-        if($auth){
-   
-               
-            $_SESSION["usuario"] = $usuario["email"];
-            $_SESSION["rol"] = $usuario["idrol"];
-            $_SESSION["login"] = true;
-            if($_SESSION["rol"] == 1){
+        if ($resultado->num_rows) {
+            $usuario = mysqli_fetch_assoc($resultado);
+
+
+            $auth = password_verify($password, $usuario["password"]);
+
+            if ($auth) {
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
+
+
+                $_SESSION["usuario"] = $usuario["email"];
+                $_SESSION["rol"] = $usuario["idrol"];
+                $_SESSION["login"] = true;
+
                 header("Location: /admin");
+
+
+
+
+
             } else {
-                header("Location: /");
+                $errores[] = "El password es incorrecto";
             }
-
         } else {
-            $errores[] = "El password es incorrecto";
+            $errores[] = "El usuario no existe";
         }
-        
-        
-
-    } else {
-        $errores[] = "El usuario no existe";
     }
-   }
 }
 
 ?>
 
 <main class="contenedor seccion alto-min seccion-login">
+    <h1>Inicia sesión</h1>
 
-    <form action="/login.php" class="formulario ancho-login" method="POST">
+    <form action="" class="formulario ancho-login" method="POST">
         <?php foreach ($errores as $error) : ?>
             <div class="alerta error"><?php echo $error; ?></div>
         <?php endforeach; ?>

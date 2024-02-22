@@ -23,7 +23,7 @@ class Noticia {
         $this->titulo = $args["titulo"] ?? "";
         $this->intro = $args["intro"] ?? "";
         $this->texto = $args["texto"] ?? "";
-        $this->imagen = $args["imagen"] ?? "imagen.jpg";
+        $this->imagen = $args["imagen"] ?? "";
         $this->fecha = $args["fecha"] ?? "";
         $this->fecha_creacion = date("Y/m/d");
     }
@@ -41,21 +41,24 @@ class Noticia {
         $query .= " ) VALUES ('";
         $query .= join("', '", array_values($atributos));
         $query .= "' )";
-        try {
-            $resultado = self::$db->query($query);
+        $resultado = self::$db->query($query);
+        return $resultado;
 
-            if ($resultado) {
-                header("Location: listado_noticias.php?exito=true&accion=crear");
-            }
-        } catch (\Exception $e) {
-            $errores[] =  "Error al insertar registro: " . ($e->getCode() === 1062) ? "Esa noticia ya existe" : "Ha ocurrido un error";
-        }
+    }
+    public static function findAll(){
+        $query = "SELECT * FROM noticias";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+
     }
 
     public function atributos() {
         $atributos = [];
         foreach (self::$columnasDB as $columna) {
             if ($columna === "id") continue;
+            if($columna === "texto"){
+                $this->$columna = limpiarHTML($this->$columna);
+            }
             $atributos[$columna] = $this->$columna;
         }
         return $atributos;
@@ -69,6 +72,12 @@ class Noticia {
             $sanitizado[$key] = self::$db->escape_string($value);
         }
         return $sanitizado;
+    }
+
+    public function setImagen($imagen){
+        if($imagen){
+            $this->imagen = $imagen;
+        }
     }
 
     public static function getErrores() {
@@ -89,13 +98,31 @@ class Noticia {
         if (!$this->fecha) {
             self::$errores[] = "Debes introducir una fecha";
         }
-        // if (!$this->imagen["name"]) {
-        //     self::$errores[] = "Debes introducir una imagen";
-        // }
-        // $medida = 1000 * 1000;
-        // if ($this->imagen["size"] > $medida) {
-        //     self::$errores[] = "La imagen es demasiado grande";
-        // }
+        if (!$this->imagen) {
+            self::$errores[] = "Debes introducir una imagen";
+        }
+
         return self::$errores;
+    }
+
+    public static function consultarSQL($query){
+        $resultado = self::$db->query($query);
+
+        $aDatos = [];
+        while($registro = $resultado->fetch_assoc()){            
+            $aDatos[] = self::crearObjeto($registro);
+        }
+        $resultado->free();
+        return $aDatos;
+    }
+
+    protected static function crearObjeto($registro){
+        $objeto = new self;
+        foreach($registro as $key => $value){
+            if(property_exists($objeto, $key)){
+                $objeto->$key = $value;
+            }
+        }
+        return $objeto;
     }
 }

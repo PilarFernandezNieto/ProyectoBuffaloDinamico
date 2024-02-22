@@ -1,7 +1,7 @@
 .contenedor-noticias {
   margin: 0 auto;
   @include desktop {
-    @include grid(2, 2rem);
+    @include grid(3, 2rem);
   }
 
 }
@@ -44,7 +44,7 @@
     .texto {
       font-size: 1.6rem;
       line-height: 1.8;
-      min-height: 20rem;
+      min-height: 10rem;
     }
   }
 }

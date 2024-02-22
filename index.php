@@ -1,8 +1,6 @@
 <?php
-
-    require "includes/app.php";
-    incluirTemplate("header");
-    $db = conectarDB();
+require "includes/app.php";
+incluirTemplate("header");
 
 ?>
 
@@ -105,7 +103,7 @@
 
 
     <div class="alinear-derecha">
-        <a href="noticias.php" class="boton-fireBrick">Ver todas</a>
+        <a href="/noticias.php" class="boton-fireBrick">Ver todas</a>
     </div>
 </section>
 <!-- FIN NOTICIAS -->

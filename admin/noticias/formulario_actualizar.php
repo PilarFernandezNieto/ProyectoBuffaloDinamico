@@ -2,6 +2,8 @@
 require "../../includes/app.php";
 estaAutenticado();
 
+
+
 $db = conectarDB();
 $id = filter_var($_GET["id"], FILTER_VALIDATE_INT);
 
