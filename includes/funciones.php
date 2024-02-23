@@ -38,3 +38,8 @@ function limpiarHTML($html, $tagsPermitidas = '<b>, </b>, <a>, </a>, <br>') {
     $htmlLimpio = strip_tags($html, $tagsPermitidas);
     return $htmlLimpio;
 }
+
+function s($html){
+    $s = htmlspecialchars($html);
+    return $s;
+}

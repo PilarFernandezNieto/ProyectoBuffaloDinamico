@@ -1,29 +1,19 @@
 <?php
 require "../../includes/app.php";
+use App\Noticia;
 
 estaAutenticado();
 
-
-$db = conectarDB();
-
-
-$id = filter_var($_POST["id"], FILTER_VALIDATE_INT);
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+    $id = filter_var($_POST["id"], FILTER_VALIDATE_INT);
 
 if ($id) {
+    $noticia = Noticia::findById($id);
+    $noticia->eliminar();
 
-    // Eliminar la imagen
-    $query = "SELECT imagen FROM noticias WHERE id={$id}";
-    $resultado = $db->query($query);
 
-    $consulta = mysqli_fetch_assoc($resultado);
-    unlink("../../imagenes/" . $consulta["imagen"]);
 
-    $query = "DELETE FROM noticias WHERE id={$id}";
-    $resultado = $db->query($query);
-
-    if ($resultado) {
-        header("Location: listado_noticias.php?exito=true&accion=eliminar");
-    }
+}
 }
 
 ?>

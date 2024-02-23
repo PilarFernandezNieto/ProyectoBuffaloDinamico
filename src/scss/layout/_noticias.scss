@@ -26,6 +26,8 @@
     border-top-left-radius: 3.75px;
     border-top-right-radius: 3.75px;
   }
+
+}
   .contenido-noticias {
     padding: 2rem;
     border: 1px solid $letras;
@@ -33,7 +35,7 @@
     h3 {
       margin-bottom: 2rem;
       color: $fireBrick;
-      min-height: 8rem;
+      min-height: 10.8rem;
       display: flex;
       align-items: center;
     }
@@ -43,11 +45,11 @@
     }
     .texto {
       font-size: 1.6rem;
-      line-height: 1.8;
-      min-height: 10rem;
+      line-height: 2;
+      min-height: 12rem;
+   
     }
   }
-}
 .enlace-negro {
   color: $negro;
   font-size: 2rem;

@@ -32,7 +32,16 @@ class Noticia {
         self::$db = $database;
     }
 
-    public function guardar() {
+    public function guardar(){
+        if(isset($this->id)){
+            $this->actualizar();
+
+        } else {
+            $this->crear();
+        }
+    }
+
+    public function crear() {
 
         $atributos = $this->sanitizarAtributos();
 
@@ -43,20 +52,57 @@ class Noticia {
         $query .= "' )";
         $resultado = self::$db->query($query);
         return $resultado;
-
     }
-    public static function findAll(){
+
+    public function actualizar(){
+        $atributos = $this->sanitizarAtributos();
+        $valores = [];
+        foreach($atributos as $key => $value){
+            $valores[] = "{$key}='{$value}'";
+        }
+
+        $query = "UPDATE noticias SET ";
+        $query .= join(", ", $valores);
+        $query .= " WHERE id='" . self::$db->escape_string($this->id) . "'";
+        $query .= " LIMIT 1";
+      
+        try {
+
+            $resultado =  self::$db->query($query);
+            if ($resultado) {
+                header("Location: listado_noticias.php?exito=true&accion=actualizar");
+            }
+        } catch (\Exception $e) {
+            self::$errores[] =  "Error al insertar registro: " . ($e->getCode() === 1062) ? "Esa noticia ya existe" : "Ha ocurrido un error";
+        }
+    }
+
+    public function eliminar(){
+       $query = "DELETE FROM noticias WHERE id=". self::$db->escape_string($this->id) . " LIMIT 1";
+       $resultado = self::$db->query($query);
+          if($resultado){
+        $this->borrarImagen();
+            header("Location: listado_noticias.php?exito=true&accion=eliminar");
+       }
+    }
+
+    public static function findAll() {
         $query = "SELECT * FROM noticias";
         $resultado = self::consultarSQL($query);
         return $resultado;
+    }
 
+    public static function findById($id) {
+        $query = "SELECT * FROM noticias WHERE id={$id}";
+        $resultado = self::consultarSQL($query);
+        return array_shift($resultado);
     }
 
     public function atributos() {
         $atributos = [];
         foreach (self::$columnasDB as $columna) {
             if ($columna === "id") continue;
-            if($columna === "texto"){
+            if ($columna === "texto") {
                 $this->$columna = limpiarHTML($this->$columna);
             }
             $atributos[$columna] = $this->$columna;
@@ -74,9 +120,19 @@ class Noticia {
         return $sanitizado;
     }
 
-    public function setImagen($imagen){
-        if($imagen){
+    public function setImagen($imagen) {
+        if (isset($this->id)) {
+        $this->borrarImagen();
+        }
+        if ($imagen) {
             $this->imagen = $imagen;
+        }
+    
+    }
+    public function borrarImagen(){
+        $existeArchivo = file_exists(CARPETA_IMAGENES . $this->imagen);
+        if ($existeArchivo) {
+            unlink(CARPETA_IMAGENES . $this->imagen);
         }
     }
 
@@ -105,24 +161,33 @@ class Noticia {
         return self::$errores;
     }
 
-    public static function consultarSQL($query){
+    public static function consultarSQL($query) {
         $resultado = self::$db->query($query);
 
         $aDatos = [];
-        while($registro = $resultado->fetch_assoc()){            
+        while ($registro = $resultado->fetch_assoc()) {
             $aDatos[] = self::crearObjeto($registro);
         }
         $resultado->free();
         return $aDatos;
     }
 
-    protected static function crearObjeto($registro){
+    protected static function crearObjeto($registro) {
         $objeto = new self;
-        foreach($registro as $key => $value){
-            if(property_exists($objeto, $key)){
+        foreach ($registro as $key => $value) {
+            if (property_exists($objeto, $key)) {
                 $objeto->$key = $value;
             }
         }
         return $objeto;
     }
+    // sincroniza el objeto en memoria con los cambios realizados por el usuario
+    public function sincronizar($args = []) {
+       foreach($args as $key => $value){
+        if(property_exists($this, $key) && !is_null($value)){
+            $this->$key = $value;
+        }
+       }
+    }
 }
+

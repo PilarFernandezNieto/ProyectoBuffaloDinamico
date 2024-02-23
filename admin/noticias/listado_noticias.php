@@ -31,7 +31,7 @@ incluirTemplate("sidebar_menu");
             <li class="breadcrumb-item active"><a href="listado_noticias.php">Listado de noticias</a></li>
         </ul>
     </div>
-    <a href="formulario_crear.php" class="boton-fireBrick">Nueva noticia</a>
+    <a href="crear.php" class="boton-fireBrick">Nueva noticia</a>
     <div class="row seccion">
         <div class="col-md-12">
             <div class="tile">
@@ -61,7 +61,7 @@ incluirTemplate("sidebar_menu");
                                         <td><?php echo fechas($noticia->fecha); ?></td>
                                         <td>
                                             <div class="acciones">
-                                                <a href="/admin/noticias/formulario_actualizar.php?id=<?php echo $noticia->id; ?>" class="boton-verde"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                <a href="/admin/noticias/actualizar.php?id=<?php echo $noticia->id; ?>" class="boton-verde"><i class="fa-regular fa-pen-to-square"></i></a>
                                                 <form action="borrar.php" method="POST">
                                                     <input type="hidden" value="<?php echo $noticia->id; ?>" name="id">
                                                     <button type="submit" class="boton-rojo eliminar"><i class="fa-regular fa-trash-can"></i></button>

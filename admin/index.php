@@ -3,9 +3,6 @@ require "../includes/app.php";
 
 estaAutenticado();
 
-
-
-
 incluirTemplate("sidebar_menu");
 ?>
 <main class="app-content contenedor seccion admin">
