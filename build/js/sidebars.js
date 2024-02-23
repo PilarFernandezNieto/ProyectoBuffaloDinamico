@@ -51,6 +51,10 @@ if (exito === "true") {
         customClass: {
           content: "contenido_alertas",
         },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.replaceState({}, document.title, window.location.pathname);
+        }
       });
       break;
     case "actualizar":
@@ -60,6 +64,10 @@ if (exito === "true") {
         title: "¡Enhorabuena!",
         text: "El registro se ha actualizado",
         icon: "success",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.replaceState({}, document.title, window.location.pathname);
+        }
       });
       break;
     case "eliminar":
@@ -69,9 +77,25 @@ if (exito === "true") {
         title: "¡Borrado!",
         text: "Has eliminado el registro",
         icon: "success",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.replaceState({}, document.title, window.location.pathname);
+        }
       });
       break;
   }
+} else if (exito == "false") {
+  Swal.fire({
+    width: 400,
+    padding: "3em",
+    icon: "error",
+    title: "Ups!",
+    text: "Ese registro ya existe",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      history.replaceState({}, document.title, window.location.pathname);
+    }
+  });
 }
 
 $(function () {
@@ -104,18 +128,17 @@ $(function () {
   });
 });
 
-
-      $("#texto").summernote({
-        placeholder: "Texto de la noticia",
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-          ["style", ["style"]],
-          ["font", ["bold", "underline", "clear"]],
-          ["color", ["color"]],
-          ["para", ["ul", "ol", "paragraph"]],
-          ["table", ["table"]],
-          ["insert", ["link", "picture", "video"]],
-          ["view", ["fullscreen", "codeview", "help"]],
-        ],
-      });
+$("#texto").summernote({
+  placeholder: "Texto de la noticia",
+  tabsize: 2,
+  height: 120,
+  toolbar: [
+    ["style", ["style"]],
+    ["font", ["bold", "underline", "clear"]],
+    ["color", ["color"]],
+    ["para", ["ul", "ol", "paragraph"]],
+    ["table", ["table"]],
+    ["insert", ["link", "picture", "video"]],
+    ["view", ["fullscreen", "codeview", "help"]],
+  ],
+});

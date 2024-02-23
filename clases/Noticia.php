@@ -32,10 +32,9 @@ class Noticia {
         self::$db = $database;
     }
 
-    public function guardar(){
-        if(isset($this->id)){
+    public function guardar() {
+        if (isset($this->id)) {
             $this->actualizar();
-
         } else {
             $this->crear();
         }
@@ -50,14 +49,21 @@ class Noticia {
         $query .= " ) VALUES ('";
         $query .= join("', '", array_values($atributos));
         $query .= "' )";
+        try {
         $resultado = self::$db->query($query);
-        return $resultado;
+            if ($resultado) {
+                header("Location: listado_noticias.php?exito=true&accion=crear");
+            }
+        }catch(\Exception $e){
+            header("Location: listado_noticias.php?exito=false&accion=crear");
+        }
+       
     }
 
-    public function actualizar(){
+    public function actualizar() {
         $atributos = $this->sanitizarAtributos();
         $valores = [];
-        foreach($atributos as $key => $value){
+        foreach ($atributos as $key => $value) {
             $valores[] = "{$key}='{$value}'";
         }
 
@@ -65,7 +71,7 @@ class Noticia {
         $query .= join(", ", $valores);
         $query .= " WHERE id='" . self::$db->escape_string($this->id) . "'";
         $query .= " LIMIT 1";
-      
+
         try {
 
             $resultado =  self::$db->query($query);
@@ -73,17 +79,18 @@ class Noticia {
                 header("Location: listado_noticias.php?exito=true&accion=actualizar");
             }
         } catch (\Exception $e) {
-            self::$errores[] =  "Error al insertar registro: " . ($e->getCode() === 1062) ? "Esa noticia ya existe" : "Ha ocurrido un error";
+            header("Location: listado_noticias.php?exito=false&accion=actualizar");
         }
     }
 
-    public function eliminar(){
-       $query = "DELETE FROM noticias WHERE id=". self::$db->escape_string($this->id) . " LIMIT 1";
-       $resultado = self::$db->query($query);
-          if($resultado){
-        $this->borrarImagen();
+    public function eliminar() {
+        $query = "DELETE FROM noticias WHERE id=" . self::$db->escape_string($this->id) . " LIMIT 1";
+        $resultado = self::$db->query($query);
+        if ($resultado) {
+           
+            $this->borrarImagen();
             header("Location: listado_noticias.php?exito=true&accion=eliminar");
-       }
+        }
     }
 
     public static function findAll() {
@@ -122,16 +129,15 @@ class Noticia {
 
     public function setImagen($imagen) {
         if (isset($this->id)) {
-        $this->borrarImagen();
+            $this->borrarImagen();
         }
         if ($imagen) {
             $this->imagen = $imagen;
         }
-    
     }
-    public function borrarImagen(){
+    public function borrarImagen() {
         $existeArchivo = file_exists(CARPETA_IMAGENES . $this->imagen);
-        if ($existeArchivo) {
+                if ($existeArchivo) {
             unlink(CARPETA_IMAGENES . $this->imagen);
         }
     }
@@ -142,6 +148,9 @@ class Noticia {
     public function validar() {
         if (!$this->titulo) {
             self::$errores[] = "Debes introducir un título";
+        }
+        if (!$this->titulo) {
+            self::$errores[] = "Debes introducir una intro";
         }
         if (empty(trim($this->texto))) {
             self::$errores[] = "Debes introducir un texto";
@@ -183,11 +192,10 @@ class Noticia {
     }
     // sincroniza el objeto en memoria con los cambios realizados por el usuario
     public function sincronizar($args = []) {
-       foreach($args as $key => $value){
-        if(property_exists($this, $key) && !is_null($value)){
-            $this->$key = $value;
+        foreach ($args as $key => $value) {
+            if (property_exists($this, $key) && !is_null($value)) {
+                $this->$key = $value;
+            }
         }
-       }
     }
 }
-

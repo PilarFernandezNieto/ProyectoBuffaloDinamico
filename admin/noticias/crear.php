@@ -4,6 +4,7 @@ estaAutenticado();
 
 use App\Noticia;
 use Intervention\Image\ImageManagerStatic as Image;
+
 $noticia = new Noticia();
 
 // Mensajes de errores
@@ -27,16 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             mkdir(CARPETA_IMAGENES);
         }
         $imagen->save(CARPETA_IMAGENES . $nombreImagen);
+       // debuguear(CARPETA_IMAGENES . $nombreImagen);
 
-        try {
-            $resultado = $noticia->guardar();
-
-            if ($resultado) {
-                header("Location: listado_noticias.php?exito=true&accion=crear");
-            }
-        } catch (Exception $e) {
-            $errores[] =  "Error al insertar registro: " . ($e->getCode() === 1062) ? "Esa noticia ya existe" : "Ha ocurrido un error";
-        }
+        $noticia->guardar();
     }
 }
 incluirTemplate("sidebar_menu");
