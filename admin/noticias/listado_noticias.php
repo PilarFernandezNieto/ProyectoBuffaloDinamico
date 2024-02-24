@@ -5,26 +5,15 @@ estaAutenticado();
 
 use App\Noticia;
 
-$noticias = Noticia::findAll();
+$noticias = Noticia::findAll("fecha_creacion DESC");
 
 $resultado = $_GET["resultado"] ?? ""; // Controla las alertas
 incluirTemplate("sidebar_menu");
 ?>
 
 
-<main class="app-content contenedor-admin seccion listado_noticias">
+<main class="app-content contenedor-admin seccion listado">
     <div class="app-title">
-        <div>
-            <h1>Listado de Noticias</h1>
-            <?php if (intval($resultado) === 1) : ?>
-                <div class="alerta exito">Registro insertado correctamente</div>
-            <?php elseif (intval($resultado) === 2) : ?>
-                <div class="alerta exito">Registro actualizado correctamente</div>
-            <?php elseif (intval($resultado) === 3) : ?>
-                <div class="alerta exito">Registro eliminado correctamente</div>
-            <?php endif; ?>
-
-        </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="bi bi-house-door"></i></li>
             <li class="breadcrumb-item">Noticias</li>
@@ -36,8 +25,7 @@ incluirTemplate("sidebar_menu");
         <div class="col-md-12">
             <div class="tile">
                 <div class="tile-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-bordered" id="listado_noticias">
+                        <table class="table table-hover table-bordered listado" id="listado_noticias">
                             <thead>
                                 <tr>
                                     <th>#ID</th>
@@ -55,7 +43,7 @@ incluirTemplate("sidebar_menu");
                                         <td><?php echo $noticia->id; ?></td>
                                         <td><?php echo $noticia->titulo; ?></td>
                                         <td><?php echo $noticia->intro; ?></td>
-                                        <td><img src=" ../../imagenes/<?php echo $noticia->imagen; ?>" style="width: 150px" alt="">
+                                        <td class="d-flex justify-content-center"><img src=" ../../imagenes/<?php echo $noticia->imagen; ?>" style="width: 150px" alt="">
                                         </td>
                                         <td><?php echo fechas($noticia->fecha_creacion); ?></td>
                                         <td><?php echo fechas($noticia->fecha); ?></td>
@@ -73,7 +61,7 @@ incluirTemplate("sidebar_menu");
 
                             </tbody>
                         </table>
-                    </div>
+         
                 </div>
             </div>
         </div>

@@ -97,7 +97,7 @@ incluirTemplate("header");
     <h2 class="text-center">Noticias</h2>
 
     <?php
-    $limite = 2;
+    $limite = 3;
     include "includes/templates/noticias_portada.php"; ?>
 
 

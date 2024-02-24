@@ -30,7 +30,8 @@
 }
 
 .app-content {
-	min-height: calc(100vh - 50px);
+	//min-height: calc(100vh - 50px);
+	min-height: auto;
 	margin-top: 10rem;
 	padding: 30px;
 	background-color: #E5E5E5;

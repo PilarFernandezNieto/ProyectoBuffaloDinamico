@@ -30,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $errores = $noticia->validar();
 
     $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
-
   
     if ($_FILES["noticia"]["tmp_name"]["imagen"]) {
         $imagen = Image::make($_FILES["noticia"]["tmp_name"]["imagen"])->fit(600, 600);

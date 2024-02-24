@@ -101,6 +101,50 @@ if (exito === "true") {
 $(function () {
   $("#listado_noticias").DataTable({
     responsive: true,
+    order: [[4, "desc"]],
+    columnDefs: [
+      { width: "5%", targets: 0 },
+      { width: "25%", targets: [1, 2] },
+      { width: "15%", targets: 3 },
+      { width: "10%", targets: [4, 5] },
+      { className: "text-center", targets: [0, 4, 5] },
+    ],
+    language: {
+      decimal: "",
+      emptyTable: "No hay datos que mostrar",
+      info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+      infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+      infoFiltered: "(filtered from _MAX_ total entries)",
+      infoPostFix: "",
+      thousands: ",",
+      lengthMenu: "Mostrando _MENU_ entradas",
+      loadingRecords: "Cargando...",
+      processing: "",
+      search: "Búsqueda:",
+      zeroRecords: "No hay registros",
+      paginate: {
+        first: "Primera",
+        last: "Última",
+        next: "Siguiente",
+        previous: "Anterior",
+      },
+      aria: {
+        sortAscending: ": activate to sort column ascending",
+        sortDescending: ": activate to sort column descending",
+      },
+    },
+  });
+});
+$(function () {
+  $("#listado_usuarios").DataTable({
+    responsive: true,
+    columnDefs: [
+      { width: "5%", targets: 0 },
+      { width: "10%", targets: [1 , 6, 5] },
+      { width: "25%", targets: [2, 3] },
+      { width: "10%", targets: [4, 5] },
+      { className: "text-center", targets: [0, 4, 5] },
+    ],
     language: {
       decimal: "",
       emptyTable: "No hay datos que mostrar",

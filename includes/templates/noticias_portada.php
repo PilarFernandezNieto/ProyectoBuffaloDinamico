@@ -1,7 +1,7 @@
 <?php
 $db = conectarDB();
 
-$query = "SELECT * FROM noticias LIMIT {$limite}";
+$query = "SELECT * FROM noticias ORDER BY fecha_creacion DESC LIMIT {$limite}";
 $consulta = mysqli_query($db, $query);
 
 ?>

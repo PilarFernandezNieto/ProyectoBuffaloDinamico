@@ -27,6 +27,9 @@ $noticia = mysqli_fetch_assoc($resultado);
             <p class=texto><?php echo $noticia["texto"]; ?>
             </p>
         </div>
+        <div class="ms-3 mb-3">
+            <a href="index.php" class="boton-fireBrick">Volver</a>
+        </div>
     </div>
 
 </main>

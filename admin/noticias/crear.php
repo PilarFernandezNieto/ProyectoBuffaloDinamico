@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             mkdir(CARPETA_IMAGENES);
         }
         $imagen->save(CARPETA_IMAGENES . $nombreImagen);
-       // debuguear(CARPETA_IMAGENES . $nombreImagen);
+        // debuguear(CARPETA_IMAGENES . $nombreImagen);
 
         $noticia->guardar();
     }
@@ -47,13 +47,13 @@ incluirTemplate("sidebar_menu");
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="bi bi-house-door"></i></li>
             <li class="breadcrumb-item"><a href="listado_noticias.php">Noticias</a></li>
-            <li class="breadcrumb-item"><a href="formulario_crear.php">Nueva Noticia</a></li>
+            <li class="breadcrumb-item"><a href="crear.php">Nueva Noticia</a></li>
         </ul>
     </div>
 
     <div class="tile seccion">
         <div class="tile-body">
-            <form action="" class="formulario" method="POST" enctype="multipart/form-data">
+            <form action="" class="formulario" method="POST" enctype=multipart/form-data>
 
                 <?php include "../../includes/templates/formulario_noticias.php"; ?>
 

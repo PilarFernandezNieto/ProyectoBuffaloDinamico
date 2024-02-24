@@ -15,7 +15,7 @@
   }
 
   input:not([type="submit"], input[type="checkbox"]),
-  textarea {
+  textarea, select {
     padding: 1rem;
     border-radius: 3.75px;
     border: 1px solid gainsboro;
@@ -29,3 +29,4 @@
     margin-top: 1rem;
   }
 }
+

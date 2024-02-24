@@ -6,9 +6,9 @@ require __DIR__ . "/../vendor/autoload.php";
 
 $db = conectarDB();
 
-use App\Noticia;
+use App\ActiveRecord;
 
-Noticia::setDB($db);
+ActiveRecord::setDB($db);
 
 
 

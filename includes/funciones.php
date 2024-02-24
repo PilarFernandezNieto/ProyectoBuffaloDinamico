@@ -24,7 +24,8 @@ function estaAutenticado() {
     }
 }
 function fechas($fecha) {
-    return date("d-m-Y", strtotime($fecha));
+    $oFecha = new DateTime($fecha);
+    return $oFecha->format("d-m-Y");
 }
 function truncate(string $texto, int $cantidad): string {
     if (strlen($texto) >= $cantidad) {
@@ -40,6 +41,6 @@ function limpiarHTML($html, $tagsPermitidas = '<b>, </b>, <a>, </a>, <br>') {
 }
 
 function s($html){
-    $s = htmlspecialchars($html);
+    $s = htmlspecialchars($html ?? "");
     return $s;
 }

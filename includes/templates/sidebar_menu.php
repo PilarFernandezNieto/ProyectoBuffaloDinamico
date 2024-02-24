@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/build/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/build/css/datatables.css">
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="/build/css/app.css">
@@ -118,7 +119,7 @@
             </li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-people"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="/admin/usuarios/formulario_crear.php"><i class="icon bi bi-circle-fill"></i>Listado de Usuarios</a></li>
+                    <li><a class="treeview-item" href="/admin/usuarios/listado_usuarios.php"><i class="icon bi bi-circle-fill"></i>Listado de Usuarios</a></li>
                 </ul>
             </li>
 

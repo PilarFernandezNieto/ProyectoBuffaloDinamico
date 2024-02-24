@@ -20,7 +20,7 @@
         background-color: $exito;
     }
 }
-.listado_noticias, .admin {
+.listado, .admin {
     margin-top: 10rem;
     h1 {
         text-align: center;
@@ -30,7 +30,11 @@
 .dataTables_filter, .dataTables_length {
     margin-bottom: 3rem;
 }
-#listado_noticias {
+table.dataTable thead>tr>th{
+    text-align: center;
+}
+
+.listado {
     margin-top: 10rem;
       td, th {
         vertical-align: middle;

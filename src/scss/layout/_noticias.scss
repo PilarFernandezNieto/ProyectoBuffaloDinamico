@@ -3,8 +3,8 @@
   @include desktop {
     @include grid(3, 2rem);
   }
-
 }
+
 .escala {
   transition: transform 0.3s ease;
   &:hover {
@@ -67,7 +67,7 @@
   width: 100%;
   margin: 0 auto;
   @include tablet {
-    @include grid(2, 5rem);
+    @include grid(3, 2rem);
   }
 }
 .fecha {
