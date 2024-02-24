@@ -12,8 +12,11 @@ $roles = Rol::findAll();
 $errores = Usuario::getErrores();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    //debuguear($_POST);
 
     $usuario = new Usuario($_POST["usuario"]);
+
+    //debuguear($usuario);
     $errores = $usuario->validar();
 
     if (empty($errores)) {
@@ -51,5 +54,4 @@ incluirTemplate("sidebar_menu");
 
 
 <?php
-mysqli_close($db);
 incluirTemplate("sidebar_footer");

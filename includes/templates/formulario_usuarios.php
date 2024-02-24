@@ -15,16 +15,17 @@
       </div>
       <div class="mb-3 col-6">
           <label for="password" class="form-label">Contraseña</label>
-          <input type="password" id="password" name="ususario[password]" value="<?php echo s($usuario->password); ?>">
+          <input type="password" id="password" name="usuario[password]" value="<?php echo s($usuario->password); ?>">
       </div>
   </div>
+  
   <div class="row">
       <label for="rol" class="form-label">Rol</label>
       <select name="usuario[idrol]" id="rol" class="">
           <option value="" selected>--Seleccione rol--</option>
           <?php foreach ($roles as $rol) : ?>
 
-              <option <?php echo ($usuario->idrol === $rol->id) ? "selected" : ""; ?> value="<?php echo s($rol->id); ?>"><?php echo s($rol->nombre); ?></option>
+              <option class="mb-3" <?php echo ($usuario->idrol === $rol->id) ? "selected" : ""; ?> value="<?php echo s($rol->id); ?>"><?php echo s(strtoupper($rol->nombre)); ?></option>
           <?php endforeach; ?>
 
       </select>

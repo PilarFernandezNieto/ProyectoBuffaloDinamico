@@ -9,6 +9,23 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
+}
+.seccion-registro {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 50%;
+}
 
+.registro {
+  font-size: 2rem;
+  a {
+    color: $negro;
+    font-weight: 600;
+    font-size: 2.5rem;
+    &:hover {
+      color: $fireBrick;
+      text-decoration: underline;
+    }
+  }
 }

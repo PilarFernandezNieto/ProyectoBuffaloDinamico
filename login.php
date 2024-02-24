@@ -32,18 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 if (!isset($_SESSION)) {
                     session_start();
                 }
-
-
                 $_SESSION["usuario"] = $usuario["email"];
                 $_SESSION["rol"] = $usuario["idrol"];
                 $_SESSION["login"] = true;
 
                 header("Location: /admin");
-
-
-
-
-
             } else {
                 $errores[] = "El password es incorrecto";
             }
@@ -73,6 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
         <div class="mb-3 d-grid">
             <input type="submit" class="boton-fireBrick-block" value="Inicia sesión" required></input>
+        </div>
+        <div class="mb-3">
+            <p class="registro">¿Aún no tienes una cuenta? <a href="registro.php">Regístrate aquí</a></p>
         </div>
 
     </form>

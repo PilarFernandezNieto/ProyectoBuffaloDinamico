@@ -11,8 +11,7 @@
 /*** modales eliminar **/
 $(".eliminar").on("click", function (e) {
   e.preventDefault();
-  const formulario = $(".eliminar").closest("form"); // Obtener el formulario padre del botón
-  console.log(formulario);
+  const formulario = $(e.target).closest("form"); 
   confirmarBorrado(formulario);
 });
 
@@ -38,6 +37,7 @@ function confirmarBorrado(formulario) {
 const urlParams = new URLSearchParams(window.location.search);
 const exito = urlParams.get("exito");
 const accion = urlParams.get("accion");
+const mensaje = urlParams.get("mensaje");
 // Si 'exito' es igual a 'true', mostrar una alerta de éxito
 if (exito === "true") {
   switch (accion) {
@@ -84,19 +84,19 @@ if (exito === "true") {
       });
       break;
   }
-} else if (exito == "false") {
+} else if ( exito == "false") {
   Swal.fire({
     width: 400,
     padding: "3em",
     icon: "error",
     title: "Ups!",
-    text: "Ese registro ya existe",
+    text: "Ha ocurrido un error"
   }).then((result) => {
     if (result.isConfirmed) {
       history.replaceState({}, document.title, window.location.pathname);
     }
   });
-}
+} 
 
 $(function () {
   $("#listado_noticias").DataTable({
@@ -140,7 +140,7 @@ $(function () {
     responsive: true,
     columnDefs: [
       { width: "5%", targets: 0 },
-      { width: "10%", targets: [1 , 6, 5] },
+      { width: "15%", targets: 1 },
       { width: "25%", targets: [2, 3] },
       { width: "10%", targets: [4, 5] },
       { className: "text-center", targets: [0, 4, 5] },

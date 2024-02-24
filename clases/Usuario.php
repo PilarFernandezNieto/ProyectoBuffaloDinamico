@@ -24,6 +24,22 @@ class Usuario extends ActiveRecord{
 
     }
 
+    public function validar() {
+        if (!$this->nombre) {
+            self::$errores[] = "El nombre es obligatorio";
+        }
+        if (!$this->email) {
+            self::$errores[] = "El email es obligatorio";
+        }
+        if (!$this->password) {
+            self::$errores[] = "La contraseña es obligatoria";
+        }
+        if (!$this->idrol) {
+            self::$errores[] = "Debes seleccionar un rol";
+        }
+        return self::$errores;
+    }
+
     public function hashPassword($password){
         return password_hash($this->$password, PASSWORD_BCRYPT);
     }

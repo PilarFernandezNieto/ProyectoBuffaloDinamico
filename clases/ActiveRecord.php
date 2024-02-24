@@ -9,7 +9,8 @@ class ActiveRecord {
 
     protected static $tabla="";
     protected static $errores = [];
-    public $titulo;
+
+
 
     public static function setDB($database) {
         self::$db = $database;
@@ -32,13 +33,19 @@ class ActiveRecord {
         $query .= join("', '", array_values($atributos));
         $query .= "' )";
 
+
         try {
             $resultado = self::$db->query($query);
             if ($resultado) {
                 header("Location: listado_". static::$tabla .".php?exito=true&accion=crear");
             }
         } catch (\Exception $e) {
-            header("Location: listado_". static:: $tabla.".php?exito=false&accion=crear");
+           
+            if($e->getCode() == "1366" ){
+            header("Location: listado_". static:: $tabla.".php?exito=false&accion=crear&mensaje=".$e->getMessage());
+            } else {
+                header("Location: listado_" . static::$tabla . ".php?exito=false&accion=crear");
+            }
         }
     }
 
@@ -73,6 +80,8 @@ class ActiveRecord {
 
             $this->borrarImagen();
             header("Location: listado_". static::$tabla.".php?exito=true&accion=eliminar");
+        } else {
+            header("Location: listado_" . static::$tabla . ".php?exito=false&accion=eliminar");
         }
     }
 

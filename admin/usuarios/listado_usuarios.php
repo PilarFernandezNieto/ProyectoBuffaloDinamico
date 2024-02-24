@@ -46,7 +46,7 @@ incluirTemplate("sidebar_menu");
                                     <td><?php echo $usuario->apellidos; ?></td>
                                     <td><?php echo $usuario->email; ?></td>
                                     <td><?php echo fechas($usuario->fecha_creacion); ?></td>
-                                    <td><?php echo ($usuario->idrol == 1) ? "ADMIN" : "USER"; ?></td>
+                                    <td><?php echo ($usuario->idrol == "1") ? "ADMIN" : "USER"; ?></td>
                                     <td>
                                         <div class=" acciones">
                                             <a href="/admin/usuarios/actualizar.php?id=<?php echo $usuario->id; ?>" class="boton-verde"><i class="fa-regular fa-pen-to-square"></i></a>
