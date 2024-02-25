@@ -75,19 +75,24 @@ class ActiveRecord {
 
     public function eliminar() {
         $query = "DELETE FROM ". static::$tabla." WHERE id=" . self::$db->escape_string($this->id) . " LIMIT 1";
-        $resultado = self::$db->query($query);
-        if ($resultado) {
 
-            $this->borrarImagen();
-            header("Location: listado_". static::$tabla.".php?exito=true&accion=eliminar");
-        } else {
-            header("Location: listado_" . static::$tabla . ".php?exito=false&accion=eliminar");
+        try{
+            $resultado = self::$db->query($query);
+            if ($resultado) {
+                $this->borrarImagen();
+                header("Location: listado_". static::$tabla.".php?exito=true&   accion=eliminar");
+            } else {
+                 header("Location: listado_" . static::$tabla . ".php?exito=false&   accion=eliminar?mensaje=Ese regisro ya existe");
+             }
+        }catch (\Exception $e){
+            header("Location: listado_" . static::$tabla . ".php?exito=false&   accion=eliminar&mensaje=".$e->getMessage());
         }
     }
 
-    public static function findAll( string $order = "") {
+    public static function findAll( string $order = "", int $limit = 0) {
         $orderBy = (!empty($order) ? " ORDER BY " . $order  : "");
-        $query = "SELECT * FROM " . static::$tabla . $orderBy;
+        $limit = $limit > 0 ? " LIMIT " . $limit : "";
+        $query = "SELECT * FROM " . static::$tabla . $orderBy . $limit;
         $resultado = self::consultarSQL($query);
         return $resultado;
     }

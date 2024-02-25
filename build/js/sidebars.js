@@ -38,6 +38,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const exito = urlParams.get("exito");
 const accion = urlParams.get("accion");
 const mensaje = urlParams.get("mensaje");
+
 // Si 'exito' es igual a 'true', mostrar una alerta de éxito
 if (exito === "true") {
   switch (accion) {
@@ -90,7 +91,7 @@ if (exito === "true") {
     padding: "3em",
     icon: "error",
     title: "Ups!",
-    text: "Ha ocurrido un error"
+    text: mensaje,
   }).then((result) => {
     if (result.isConfirmed) {
       history.replaceState({}, document.title, window.location.pathname);
