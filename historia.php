@@ -9,9 +9,9 @@ incluirTemplate("header");
         <div class="imagen caja1">
             <span class="caption text-end">Foto de Manfred</span>
             <picture>
-                <source srcset="build/img/risas_baja.webp" type="image/webp">
-                <source srcset="build/img/risas_baja.jpg" type="image/jpeg">
-                <img loading="lazy" src="build/img/risas_baja.jpg" alt="risas_baja" ttle="Bufalos Inicio">
+                <source srcset="./public/build/img/risas_baja.webp" type="image/webp">
+                <source srcset="./public/build/img/risas_baja.jpg" type="image/jpeg">
+                <img loading="lazy" src="./public/build/img/risas_baja.jpg" alt="risas_baja" ttle="Bufalos Inicio">
             </picture>
             <span class="caption text-end">Foto de Manfred</span>
         </div>
@@ -51,9 +51,9 @@ incluirTemplate("header");
             <div class="imagen">
                 <span class="caption text-end">Foto de Iris Benítez</span>
                 <picture>
-                    <source srcset="build/img/PROMO_3.webp" type="image/webp">
-                    <source srcset="build/img/PROMO_3.jpg" type="image/jpeg">
-                    <img loading="lazy" src="build/img/PROMO_3.jpg" alt="PROMO_3" title="Foto promo">
+                    <source srcset="./public/build/img/PROMO_3.webp" type="image/webp">
+                    <source srcset="./public/build/img/PROMO_3.jpg" type="image/jpeg">
+                    <img loading="lazy" src="./public/build/img/PROMO_3.jpg" alt="PROMO_3" title="Foto promo">
                 </picture>
                 <span class="caption text-end">Foto de Iris Benítez</span>
 
@@ -62,9 +62,9 @@ incluirTemplate("header");
         <div class="imagen caja4">
             <span class="caption text-end">Foto de Manfred</span>
             <picture>
-                <source srcset="build/img/_IGP1987.webp" type="image/webp">
-                <source srcset="build/img/_IGP1987.jpg" type="image/jpeg">
-                <img loading="lazy" src="build/img/_IGP1987.jpg" alt="trio_joven" title="Trío joven">
+                <source srcset="./public/build/img/_IGP1987.webp" type="image/webp">
+                <source srcset="./public/build/img/_IGP1987.jpg" type="image/jpeg">
+                <img loading="lazy" src="./public/build/img/_IGP1987.jpg" alt="trio_joven" title="Trío joven">
             </picture>
             <span class="caption text-end">Foto de Manfred</span>
         </div>
@@ -97,9 +97,9 @@ incluirTemplate("header");
             <div class="imagen">
                 <span class="caption text-end">Foto de Manfred</span>
                 <picture>
-                    <source srcset="build/img/wilonI.webp" type="image/webp">
-                    <source srcset="build/img/wilonI.jpg" type="image/jpeg">
-                    <img loading="lazy" src="build/img/wilonI.jpg" alt="wilonI" title="Wilón deCalle">
+                    <source srcset="./public/build/img/wilonI.webp" type="image/webp">
+                    <source srcset="./public/build/img/wilonI.jpg" type="image/jpeg">
+                    <img loading="lazy" src="./public/build/img/wilonI.jpg" alt="wilonI" title="Wilón deCalle">
                 </picture>
                 <span class="caption text-end">Foto de Manfred</span>
             </div>
@@ -107,9 +107,9 @@ incluirTemplate("header");
         </div>
         <div class="caja6">
             <picture>
-                <source srcset="build/img/front_fondo_movil.webp" type="image/webp">
-                <source srcset="build/img/front_fondo_movil.jpg" type="image/jpeg">
-                <img loading="lazy" src="build/img/front_fondo_movil.jpg" alt="front_fondo_movil" class=" img-fluid" title="Cartel promo">
+                <source srcset="./public/build/img/front_fondo_movil.webp" type="image/webp">
+                <source srcset="./public/build/img/front_fondo_movil.jpg" type="image/jpeg">
+                <img loading="lazy" src="./public/build/img/front_fondo_movil.jpg" alt="front_fondo_movil" class=" img-fluid" title="Cartel promo">
             </picture>
         </div>
     </div>
@@ -123,7 +123,7 @@ incluirTemplate("header");
         <div class="col-12 col-md-6 p-0 musico">
             <a class="btn" data-bs-toggle="collapse" href="#ABarcena" role="button" aria-expanded="false" aria-controls="ABarcena">
                 <figure class="figure">
-                    <img src="build/img/alvaroI_bajares.jpg" class="figure-img img-fluid rounded" alt="Alvaro_Barcena" title="Alvaro Bárcena">
+                    <img src="./public/build/img/alvaroI_bajares.jpg" class="figure-img img-fluid rounded" alt="Alvaro_Barcena" title="Alvaro Bárcena">
                     <figcaption class="figure-caption text-end">Foto de Paco Vigil</figcaption>
                 </figure>
             </a>
@@ -140,7 +140,7 @@ incluirTemplate("header");
         <div class="col-12 col-md-6 p-0 musico">
             <a class="btn" data-bs-toggle="collapse" href="#STutu" role="button" aria-expanded="false" aria-controls="STutu">
                 <figure class="figure">
-                    <img src="build/img/tutu_bajares.jpg" class="figure-img img-fluid rounded" alt="Sergio_Tutu" title="Sergio Tutu">
+                    <img src="./public/build/img/tutu_bajares.jpg" class="figure-img img-fluid rounded" alt="Sergio_Tutu" title="Sergio Tutu">
                     <figcaption class="figure-caption text-end">Foto de Paco Vigil</figcaption>
                 </figure>
             </a>
@@ -157,7 +157,7 @@ incluirTemplate("header");
         <div class="col-12 col-md-6 p-0 musico">
             <a class="btn" data-bs-toggle="collapse" href="#WdeCalle" role="button" aria-expanded="false" aria-controls="WdeCalle">
                 <figure class="figure">
-                    <img src="build/img/willyJam_bajares.jpg" class="figure-img img-fluid rounded" alt="WilonDeCalle" title="Wilón deCalle">
+                    <img src="./public/build/img/willyJam_bajares.jpg" class="figure-img img-fluid rounded" alt="WilonDeCalle" title="Wilón deCalle">
                     <figcaption class="figure-caption text-end">Foto de Wesley</figcaption>
                 </figure>
             </a>
@@ -172,7 +172,11 @@ incluirTemplate("header");
         <div class="col-12 col-md-6 p-0 musico">
             <a class="btn" data-bs-toggle="collapse" href="#SRodriguez" role="button" aria-expanded="false" aria-controls="SRodriguez">
                 <figure class="figure">
-                    <img src="build/img/samII.JPG" class="figure-img img-fluid rounded" alt="Sam_Rodriguez" title="Sam Rodríguez">
+
+
+
+
+                    <img src="./public/build/img/samII.JPG" class="figure-img img-fluid rounded" alt="Sam_Rodriguez" title="Sam Rodríguez">
                     <figcaption class="figure-caption text-end">Foto de Paco Vigil</figcaption>
                 </figure>
             </a>

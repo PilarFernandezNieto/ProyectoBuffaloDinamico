@@ -1,7 +1,7 @@
 <?php
 require "../../includes/app.php";
 
-use App\Noticia;
+use Model\Noticia;
 
 estaAutenticado();
 

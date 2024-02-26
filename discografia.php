@@ -8,9 +8,9 @@ incluirTemplate("header");
     <div class="contenedor-discos">
         <div class="disco">
             <picture>
-                <source srcset="build/img/hiddn.webp" type="image/webp" />
-                <source srcset="build/img/hiddn.jpg" type="image/jpeg" />
-                <img loading="lazy" class="img-fluid" src="hiddn.jpg" alt="build/img/cover patrolman" />
+                <source srcset="./public/build/img/hiddn.webp" type="image/webp" />
+                <source srcset="./public/build/img/hiddn.jpg" type="image/jpeg" />
+                <img loading="lazy" class="img-fluid" src="hiddn.jpg" alt="./public/build/img/cover patrolman" />
             </picture>
             <div class="contenido-disco">
                 <h2>Hidin' from the butcher</h2>
@@ -33,9 +33,9 @@ incluirTemplate("header");
         </div>
         <div class="disco">
             <picture>
-                <source srcset="build/img/keepin.webp" type="image/webp" />
-                <source srcset="build/img/keepin.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="keepin.jpg" alt="build/img/cover patrolman" />
+                <source srcset="./public/build/img/keepin.webp" type="image/webp" />
+                <source srcset="./public/build/img/keepin.jpg" type="image/jpeg" />
+                <img loading="lazy" width="200" height="300" src="keepin.jpg" alt="./public/build/img/cover patrolman" />
             </picture>
             <div class="contenido-disco">
                 <h2>Keepin'it Warm</h2>
@@ -67,8 +67,8 @@ incluirTemplate("header");
         </div>
         <div class="disco">
             <picture>
-                <source srcset="build/img/cover_patrolman.webp" type="image/webp" />
-                <img loading="lazy" width="200" height="300" src="cover_patrolman.jpg" alt="build/img/cover patrolman" />
+                <source srcset="./public/build/img/cover_patrolman.webp" type="image/webp" />
+                <img loading="lazy" width="200" height="300" src="cover_patrolman.jpg" alt="./public/build/img/cover patrolman" />
             </picture>
             <div class="contenido-disco">
                 <h2>Patrolman</h2>

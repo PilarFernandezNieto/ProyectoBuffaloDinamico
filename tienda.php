@@ -9,9 +9,9 @@ incluirTemplate("header");
     <div class="contenedor-productos seccion">
         <div class="producto">
             <picture>
-                <source srcset="build/img/cover_patrolman.webp" type="image/webp" />
-                <source srcset="build/img/cover_patrolman.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="build/img/cover_patrolman.webp.jpg" alt="" />
+                <source srcset="./public/build/img/cover_patrolman.webp" type="image/webp" />
+                <source srcset="./public/build/img/cover_patrolman.jpg" type="image/jpeg" />
+                <img loading="lazy" width="200" height="300" src="./public/build/img/cover_patrolman.webp.jpg" alt="" />
             </picture>
             <div class="datos-producto">
                 <h3>Patrolman</h3>
@@ -24,9 +24,9 @@ incluirTemplate("header");
         </div>
         <div class="producto">
             <picture>
-                <source srcset="build/img/hiddn.webp" type="image/webp" />
-                <source srcset="build/img/hiddn.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="build/img/hiddn.jpg" alt="hiddn" />
+                <source srcset="./public/build/img/hiddn.webp" type="image/webp" />
+                <source srcset="./public/build/img/hiddn.jpg" type="image/jpeg" />
+                <img loading="lazy" width="200" height="300" src="./public/build/img/hiddn.jpg" alt="hiddn" />
             </picture>
             <div class="datos-producto">
                 <h3>Hidin' from the butcher</h3>
@@ -39,9 +39,9 @@ incluirTemplate("header");
         </div>
         <div class="producto">
             <picture>
-                <source srcset="build/img/keepin.webp" type="image/webp" />
-                <source srcset="build/img/keepin.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="build/img/keepin.jpg" alt="" />
+                <source srcset="./public/build/img/keepin.webp" type="image/webp" />
+                <source srcset="./public/build/img/keepin.jpg" type="image/jpeg" />
+                <img loading="lazy" width="200" height="300" src="./public/build/img/keepin.jpg" alt="" />
             </picture>
             <div class="datos-producto">
                 <h3>Keepin'it Warm</h3>
@@ -72,9 +72,9 @@ incluirTemplate("header");
     <div class="contenedor-productos">
         <div class="producto">
             <picture>
-                <source srcset="build/img/beisbolera_logo buffalo_negra.webp" type="image/webp" />
-                <source srcset="build/img/beisbolera_logo buffalo_negra.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="build/img/beisbolera_logo buffalo_negra.jpg" alt="" />
+                <source srcset="./public/build/img/beisbolera_logo buffalo_negra.webp" type="image/webp" />
+                <source srcset="./public/build/img/beisbolera_logo buffalo_negra.jpg" type="image/jpeg" />
+                <img loading="lazy" width="200" height="300" src="./public/build/img/beisbolera_logo buffalo_negra.jpg" alt="" />
             </picture>
             <div class="datos-producto">
                 <h3>Modelo beisbolera</h3>
@@ -91,9 +91,9 @@ incluirTemplate("header");
         </div>
         <div class="producto">
             <picture>
-                <source srcset="build/img/logo buffalo_negra.webp" type="image/webp" />
-                <source srcset="build/img/logo buffalo_negra.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="build/img/logo buffalo_negra.jpg" alt="" />
+                <source srcset="./public/build/img/logo buffalo_negra.webp" type="image/webp" />
+                <source srcset="./public/build/img/logo buffalo_negra.jpg" type="image/jpeg" />
+                <img loading="lazy" width="200" height="300" src="./public/build/img/logo buffalo_negra.jpg" alt="" />
             </picture>
             <div class="datos-producto">
                 <h3>Fondo negro</h3>
@@ -110,9 +110,9 @@ incluirTemplate("header");
         </div>
         <div class="producto">
             <picture>
-                <source srcset="build/img/logo buffalo_roja.webp" type="image/webp" />
-                <source srcset="build/img/logo buffalo_roja.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="build/img/logo buffalo_roja.jpg" alt="" />
+                <source srcset="./public/build/img/logo buffalo_roja.webp" type="image/webp" />
+                <source srcset="./public/build/img/logo buffalo_roja.jpg" type="image/jpeg" />
+                <img loading="lazy" width="200" height="300" src="./public/build/img/logo buffalo_roja.jpg" alt="" />
             </picture>
             <div class="datos-producto">
                 <h3>Fondo rojo</h3>

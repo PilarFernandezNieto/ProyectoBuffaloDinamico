@@ -2,8 +2,8 @@
 require "../../includes/app.php";
 estaAutenticado();
 
-use App\Usuario;
-use App\Rol;
+use Model\Usuario;
+use Model\Rol;
 
 $usuario = new Usuario();
 $roles = Rol::findAll();

@@ -3,8 +3,8 @@ require "../../includes/app.php";
 
 estaAutenticado();
 
-use App\Usuario;
-use App\Rol;
+use Model\Usuario;
+use Model\Rol;
 
 $usuarios = Usuario::findAll("fecha_creacion DESC");
 $roles = Rol::findAll();

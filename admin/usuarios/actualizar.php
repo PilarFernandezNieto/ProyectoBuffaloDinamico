@@ -2,8 +2,8 @@
 require "../../includes/app.php";
 estaAutenticado();
 
-use App\Usuario;
-use App\Rol;
+use Model\Usuario;
+use Model\Rol;
 
 $id = filter_var($_GET["id"], FILTER_VALIDATE_INT);
 if (!$id) {

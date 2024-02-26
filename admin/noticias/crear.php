@@ -2,7 +2,7 @@
 require "../../includes/app.php";
 estaAutenticado();
 
-use App\Noticia;
+use Model\Noticia;
 use Intervention\Image\ImageManagerStatic as Image;
 
 $noticia = new Noticia();

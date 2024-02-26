@@ -1,6 +1,6 @@
 <!-- TEMPLATE DEL LISTADO DE NOTICIAS -->
 <?php
-use App\Noticia;
+use ModelNoticia;
 $noticias = Noticia::findAll("fecha_creacion DESC");
 ?>
 

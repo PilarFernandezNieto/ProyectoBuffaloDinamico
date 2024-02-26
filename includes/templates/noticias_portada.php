@@ -1,6 +1,6 @@
 <!-- TEMPLATE NOTICIAS PORTADA -->
 <?php
-use App\Noticia;
+use ModelNoticia;
 $noticias = Noticia::findAll("fecha_creacion DESC", 3);
 
 ?>

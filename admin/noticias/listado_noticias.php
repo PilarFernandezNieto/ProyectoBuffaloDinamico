@@ -3,7 +3,7 @@ require "../../includes/app.php";
 
 estaAutenticado();
 
-use App\Noticia;
+use Model\Noticia;
 
 $noticias = Noticia::findAll("fecha_creacion DESC");
 

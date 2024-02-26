@@ -1,7 +1,7 @@
 <?php
 require "includes/app.php";
 
-use App\Usuario;
+use Model\Usuario;
 
 $usuario = new Usuario();
 

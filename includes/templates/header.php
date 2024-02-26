@@ -1,8 +1,8 @@
-<?php 
-    if(!isset($_SESSION)){
-        session_start();
-    }
-    $auth = $_SESSION["login"] ?? false;
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+$auth = $_SESSION["login"] ?? false;
 
 ?>
 
@@ -21,7 +21,7 @@
     <meta property="og:description" content="Descubre el potente sonido de la banda de rock asturiana The Electric Buffalo. Rock clásico con influencias americanas y energía contemporánea." />
     <meta property="og:url" content="https://www.theelectricbuffalo.com" />
 
-    <link rel="icon" type="image/x-icon" href="build/img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./public/build/img/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -30,9 +30,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="build/css/app.css">
-    <link rel="stylesheet" href="build/css/app.css.map">
-    <script src="build/js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="./public/build/css/app.css">
+    <link rel="stylesheet" href="./public/build/css/app.css.map">
+    <script src="./public/build/js/jquery-3.7.1.min.js"></script>
 
     <script src="https://kit.fontawesome.com/91eae316a2.js" crossorigin="anonymous"></script>
     <!-- <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/e79408189430261e22a99565d6b38640.js"></script> -->
@@ -58,11 +58,11 @@
 
             <div class="contenedor contenido-header">
 
-                <a href="index.php"><img src="/build/img/logoBuf.png" alt="Logo Bufalo" class="img-fluid"></a>
+                <a href="index.php"><img src="./public//build/img/logoBuf.png" alt="Logo Bufalo" class="img-fluid"></a>
                 <p class="menu-mobile"><i class="fa-solid fa-bars"></i></p>
                 <div class="header-derecha">
                     <div class="redes-sociales">
-                        <?php if(!$auth) { ?>
+                        <?php if (!$auth) { ?>
                             <a href="login.php" class="fs-3 me-5">Inicia sesión</a>
                         <?php } else { ?>
                             <a href="/admin" class="fs-3 me-5">Admin</a>

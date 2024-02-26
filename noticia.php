@@ -1,6 +1,6 @@
 <?php
 
-use App\Noticia;
+use Model\Noticia;
 require "includes/app.php";
 
 $id = filter_var($_GET["id"], FILTER_VALIDATE_INT);

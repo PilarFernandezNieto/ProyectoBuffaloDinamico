@@ -1,13 +1,13 @@
 .no-webp .imagen-central {
-  background-image: url(../../build/img/imagen_central.jpg);
+  background-image: url(./public/build/img/imagen_central.jpg);
 }
 
 .webp .imagen-central {
-  background-image: url(../../build/img/imagen_central.webp);
+  background-image: url(./public/build/img/imagen_central.webp);
 }
 
 .imagen-central {
-    background-image: url(../../build/img/imagen_central.jpg);
+    background-image: url(./public/build/img/imagen_central.jpg);
   background-position: center center;
   background-size: cover;
   padding: 5rem 0;
