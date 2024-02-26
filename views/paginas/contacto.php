@@ -1,7 +1,3 @@
-<?php
-require "includes/app.php";
-incluirTemplate("header");
-?>
 <main class="contenedor-formulario">
     <h1>Contacta con nosotros</h1>
     <p>Utiliza este formulario o escríbenos a <span>info@theelectricbuffalo.com</span></p>
@@ -56,8 +52,3 @@ incluirTemplate("header");
 
 
 </main>
-
-
-<?php
-include "./includes/templates/footer.php";
-?>

@@ -5,7 +5,7 @@ use Model\Noticia;
 
 class PaginasController{
     public static function index(Router $router){
-        $noticias = Noticia::findAll("", 3);
+        $noticias = Noticia::findAll("fecha DESC", 3);
         $title = "Inicio";
         $router->render("layout", "paginas/index", [
             "noticias" => $noticias,
@@ -21,16 +21,44 @@ class PaginasController{
         ]);
     }
     public static function noticias(Router $router) {
-       
+        $noticias = Noticia::findAll("fecha_creacion DESC");
+        $title = "Noticias";
+        $router->render("layout", "paginas/noticias", [
+            "noticias" => $noticias,
+            "title" => $title
+
+        ]);
   
     }
-    public static function noticia() {
-        echo "Desde noticia";
+    public static function noticia(Router $router) {
+       $id = validarORedireccionar("/");
+       $noticia = Noticia::findById($id);
+        $title = "Noticia";
+        $router->render("layout", "paginas/noticia", [
+            "noticia" => $noticia,
+            "title" => $title
+
+        ]);
     }
-    public static function discografia() {
-        echo "Desde discografia";
+    public static function discografia(Router $router) {
+        $title = "Discografía";
+        $router->render("layout", "paginas/discografia", [
+            "title" => $title
+
+        ]);
     }
-    public static function disco() {
-        echo "Desde disco";
+    public static function tienda(Router $router) {
+        $title = "Tienda";
+        $router->render("layout", "paginas/tienda", [
+            "title" => $title
+
+        ]);
+    }
+    public static function contacto(Router $router) {
+        $title = "Contacto";
+        $router->render("layout", "paginas/contacto", [
+            "title" => $title
+
+        ]);
     }
 }

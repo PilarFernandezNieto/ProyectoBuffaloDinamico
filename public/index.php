@@ -36,6 +36,8 @@ $router->get("/noticia", [PaginasController::class, "noticia"]);
 $router->get("/discografia", [PaginasController::class, "discografia"]);
 $router->get("/disco", [PaginasController::class, "disco"]);
 $router->get("/tienda", [PaginasController::class, "tienda"]);
+$router->get("/contacto", [PaginasController::class, "contacto"]);
+$router->post("/contacto", [PaginasController::class, "contacto"]);
 
 
 $router->comprobarRutas();
