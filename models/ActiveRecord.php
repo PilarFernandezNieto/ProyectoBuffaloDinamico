@@ -37,14 +37,14 @@ class ActiveRecord {
         try {
             $resultado = self::$db->query($query);
             if ($resultado) {
-                header("Location: listado_". static::$tabla .".php?exito=true&accion=crear");
+                header("Location: listado?exito=true&accion=crear");
             }
         } catch (\Exception $e) {
            
             if($e->getCode() == "1366" ){
-            header("Location: listado_". static:: $tabla.".php?exito=false&accion=crear&mensaje=".$e->getMessage());
+            header("Location: listado?exito=false&accion=crear&mensaje=".$e->getMessage());
             } else {
-                header("Location: listado_" . static::$tabla . ".php?exito=false&accion=crear");
+                header("Location: listado?exito=false&accion=crear");
             }
         }
     }
@@ -66,10 +66,10 @@ class ActiveRecord {
 
             $resultado =  self::$db->query($query);
             if ($resultado) {
-                header("Location: listado_". static::$tabla.".php?exito=true&accion=actualizar");
+                header("Location: listado?exito=true&accion=actualizar");
             }
         } catch (\Exception $e) {
-            header("Location: listado_".static::$tabla.".php?exito=false&accion=actualizar");
+            header("Location: listado?exito=false&accion=actualizar");
         }
     }
 
@@ -80,12 +80,12 @@ class ActiveRecord {
             $resultado = self::$db->query($query);
             if ($resultado) {
                 $this->borrarImagen();
-                header("Location: listado_". static::$tabla.".php?exito=true&   accion=eliminar");
+                header("Location: listado?exito=true&accion=eliminar");
             } else {
-                 header("Location: listado_" . static::$tabla . ".php?exito=false&   accion=eliminar?mensaje=Ese regisro ya existe");
+                 header("Location: listado?exito=false&accion=eliminar?mensaje=Ese regisro ya existe");
              }
         }catch (\Exception $e){
-            header("Location: listado_" . static::$tabla . ".php?exito=false&   accion=eliminar&mensaje=".$e->getMessage());
+            header("Location: listado?exito=false&accion=eliminar&mensaje=".$e->getMessage());
         }
     }
 

@@ -9,12 +9,6 @@ class AdminController{
 
         $router->render("admin/index", []);
     }
-    public static function listado(Router $router) {
-        $noticias = Noticia::findAll();
 
-        $router->render("admin/noticias/listado", [
-            "noticias" => $noticias
-        ]);
-    }
 
 }

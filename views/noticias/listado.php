@@ -6,7 +6,7 @@
             <li class="breadcrumb-item active"><a href="listado_noticias.php">Listado de noticias</a></li>
         </ul>
     </div>
-    <a href="crear.php" class="boton-fireBrick">Nueva noticia</a>
+    <a href="/noticias/crear" class="boton-fireBrick">Nueva noticia</a>
     <div class="row seccion">
         <div class="col-md-12">
             <div class="tile">
