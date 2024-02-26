@@ -9,7 +9,10 @@ use Controllers\AdminController;
 $router = new Router();
 
 $router->get("/admin",[AdminController::class, "index"]);
+$router->get("/admin/noticias/listado", [AdminController::class, "listado"]);
 $router->get("/noticias/crear",[NoticiaController::class, "crear"]);
 $router->get("/noticias/actualizar", [NoticiaController::class, "actualizar"]);
+
+
 $router->comprobarRutas();
 

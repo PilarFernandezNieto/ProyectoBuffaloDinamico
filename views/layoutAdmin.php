@@ -7,16 +7,16 @@
     <!-- Main CSS-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../build/css/main.css">
-    <link rel="stylesheet" type="text/css" href="../build/css/datatables.css">
+    <link rel="stylesheet" type="text/css" href="/../build/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/../build/css/datatables.css">
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../build/css/app.css">
-    <link rel="stylesheet" href="../build/css/app.css.map">
+    <link rel="stylesheet" href="/../build/css/app.css">
+    <link rel="stylesheet" href="/../build/css/app.css.map">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/91eae316a2.js" crossorigin="anonymous"></script>
-    <script src="../public/build/js/jquery-3.7.1.min.js"></script>
+    <script src="/../build/js/jquery-3.7.1.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
 
@@ -90,10 +90,10 @@
     <aside class="app-sidebar">
 
         <ul class="app-menu">
-            <li><a class="app-menu__item" href="/admin/index.php"><i class="app-menu__icon bi bi-speedometer"></i><span class="app-menu__label">Administrador</span></a></li>
+            <li><a class="app-menu__item" href="/admin"><i class="app-menu__icon bi bi-speedometer"></i><span class="app-menu__label">Administrador</span></a></li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-newspaper"></i><span class="app-menu__label">Noticias</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="/admin/noticias/listado_noticias.php"><i class="icon bi bi-circle-fill"></i>Listado de Noticias</a></li>
+                    <li><a class="treeview-item" href="/admin/noticias/listado"><i class="icon bi bi-circle-fill"></i>Listado de Noticias</a></li>
                 </ul>
             </li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-regular fa-folder-open"></i><span class="app-menu__label">Contenidos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
@@ -130,13 +130,13 @@
     <?php echo $contenido; ?>
 
     <!-- FOOTER -->
-    <script src="../build/js/jquery-3.7.1.min.js"></script>
+    <script src="/../build/js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
-    <script src="../build/js/bootstrap.min.js"></script>
-    <script src="../build/js/sidebars.js"></script>
-    <script src="../build/js/main.js"></script>
+    <script src="/../build/js/bootstrap.min.js"></script>
+    <script src="/../build/js/sidebars.js"></script>
+    <script src="/../build/js/main.js"></script>
 
 
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.js"></script>
