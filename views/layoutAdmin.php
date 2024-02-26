@@ -76,7 +76,7 @@
             </li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-people"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="/admin/usuarios/listado_usuarios.php"><i class="icon bi bi-circle-fill"></i>Listado de Usuarios</a></li>
+                    <li><a class="treeview-item" href="/usuarios/listado"><i class="icon bi bi-circle-fill"></i>Listado de Usuarios</a></li>
                 </ul>
             </li>
 

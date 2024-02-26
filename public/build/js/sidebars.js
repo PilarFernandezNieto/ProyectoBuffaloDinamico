@@ -145,7 +145,7 @@ $(function () {
       { width: "5%", targets: 0 },
       { width: "15%", targets: 1 },
       { width: "25%", targets: [2, 3] },
-      { width: "10%", targets: [4, 5] },
+      { width: "15%", targets: [4, 5] },
       { className: "text-center", targets: [0, 4, 5] },
     ],
     language: {
