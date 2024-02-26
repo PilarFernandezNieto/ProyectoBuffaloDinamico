@@ -27,6 +27,8 @@ $router->get("/usuarios/actualizar", [UsuarioController::class, "actualizar"]);
 $router->post("/usuarios/actualizar", [UsuarioController::class, "actualizar"]);
 $router->post("/usuarios/eliminar", [UsuarioController::class, "eliminar"]);
 
+/** */
+
 
 $router->comprobarRutas();
 

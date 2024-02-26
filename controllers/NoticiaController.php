@@ -9,7 +9,7 @@ class NoticiaController{
     public static function listado(Router $router) {
         $noticias = Noticia::findAll("fecha DESC");
 
-        $router->render("noticias/listado", [
+        $router->render("layoutAdmin", "noticias/listado", [
             "noticias" => $noticias
         ]);
     }
@@ -39,7 +39,7 @@ class NoticiaController{
             }
         }
 
-        $router->render("noticias/crear", [
+        $router->render("layoutAdmin", "noticias/crear", [
             "noticia" => $noticia,
             "errores" => $errores
             
@@ -75,7 +75,7 @@ class NoticiaController{
             }
         }
 
-        $router->render("noticias/actualizar", [
+        $router->render("layoutAdmin", "noticias/actualizar", [
             "noticia" => $noticia,
             "errores" => $errores
         ]);

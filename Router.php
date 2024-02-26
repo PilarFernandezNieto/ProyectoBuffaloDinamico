@@ -31,7 +31,7 @@ class Router {
         }
     }
 
-    public function render($view, $datos=[]){
+    public function render($layout, $view, $datos=[]){
 
       foreach($datos as $key=>$value){
         $$key = $value;
@@ -42,6 +42,8 @@ class Router {
 
         $contenido = ob_get_clean();
 
-        include __DIR__ . "/views/layoutAdmin.php";
+        include __DIR__ . "/views/$layout.php";
     }
+
+
 }

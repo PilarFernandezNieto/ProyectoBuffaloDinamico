@@ -9,7 +9,7 @@ class UsuarioController{
     public static function listado(Router $router){
         $usuarios = Usuario::findAll();
 
-        $router->render("usuarios/listado", [
+        $router->render("layoutAdmin", "usuarios/listado", [
             "usuarios" => $usuarios
         ]);
     }
@@ -31,7 +31,7 @@ class UsuarioController{
             }
         }
     
-        $router->render("usuarios/crear", [
+        $router->render("layoutAdmin", "usuarios/crear", [
             "usuario" => $usuario,
             "errores" => $errores,
             "roles" => $roles
@@ -56,7 +56,7 @@ class UsuarioController{
             }
         }
 
-        $router->render("usuarios/actualizar", [
+        $router->render("layoutAdmin", "usuarios/actualizar", [
             "usuario" => $usuario,
             "errores" => $errores,
             "roles" => $roles
