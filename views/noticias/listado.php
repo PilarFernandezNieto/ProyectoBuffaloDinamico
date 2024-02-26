@@ -35,8 +35,8 @@
                                         <td><?php echo fechas($noticia->fecha); ?></td>
                                         <td>
                                             <div class="acciones">
-                                                <a href="/admin/noticias/actualizar.php?id=<?php echo $noticia->id; ?>" class="boton-verde"><i class="fa-regular fa-pen-to-square"></i></a>
-                                                <form action="/admin/noticias/borrar.php" method="POST">
+                                                <a href="/noticias/actualizar?id=<?php echo $noticia->id; ?>" class="boton-verde"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                <form action="/noticias/eliminar" method="POST">
                                                     <input type="hidden" value="<?php echo $noticia->id; ?>" name="id">
                                                     <button type="submit" class="boton-rojo eliminar"><i class="fa-regular fa-trash-can"></i></button>
                                                 </form>

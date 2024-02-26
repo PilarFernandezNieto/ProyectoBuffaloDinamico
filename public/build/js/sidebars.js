@@ -12,6 +12,7 @@
 $(".eliminar").on("click", function (e) {
   e.preventDefault();
   const formulario = $(e.target).closest("form"); 
+  console.log(formulario);
   confirmarBorrado(formulario);
 });
 
@@ -102,12 +103,13 @@ if (exito === "true") {
 $(function () {
   $("#listado_noticias").DataTable({
     responsive: true,
-    order: [[4, "desc"]],
+    order: [[5, "desc"]],
     columnDefs: [
       { width: "5%", targets: 0 },
-      { width: "25%", targets: [1, 2] },
+      { width: "22%", targets: [1, 2] },
       { width: "15%", targets: 3 },
       { width: "10%", targets: [4, 5] },
+      { width: "10%", targets: 6 },
       { className: "text-center", targets: [0, 4, 5] },
     ],
     language: {
