@@ -1,9 +1,3 @@
-<?php
-require "includes/app.php";
-incluirTemplate("header");
-
-?>
-
 <section class="imagen-header">
     <div class="overlay-header"></div>
     <div class="contenedor contenido-imagen">
@@ -17,9 +11,9 @@ incluirTemplate("header");
 <section class="contenedor contenido-destacado">
     <div class="imagen cover">
         <picture>
-            <source srcset="./public/build/img/cover_patrolman.webp" type="image/webp" />
-            <source srcset="./public/build/img/cover_patrolman.jpg" type="image/jpeg" />
-            <img loading="lazy" width="200" height="300" src="./public/build/img/cover_patrolman.jpg" alt="cover_patrolman" />
+            <source srcset="/build/img/cover_patrolman.webp" type="image/webp" />
+            <source srcset="/build/img/cover_patrolman.jpg" type="image/jpeg" />
+            <img loading="lazy" width="200" height="300" src="/build/img/cover_patrolman.jpg" alt="cover_patrolman" />
         </picture>
     </div>
     <div class="contenido">
@@ -47,7 +41,7 @@ incluirTemplate("header");
                     <div class="collapse" id="collapseExample">
                         <!-- la propiedad controlslist me produce un error en el validador de html pero es la única manera que encontré de desactivar las descargas -->
                         <audio controls class="audiostyle" controlslist="nodownload">
-                            <source src="./public/build/multimedia/A2-Patrolman.mp3" type="audio/mp3" />
+                            <source src="/build/multimedia/A2-Patrolman.mp3" type="audio/mp3" />
                         </audio>
                     </div>
                 </div>
@@ -56,23 +50,23 @@ incluirTemplate("header");
         <article class="logos-redes contenedor">
             <a href="https://www.youtube.com/@theelectricbuffalo666" target="_blank">
                 <picture>
-                    <source srcset="./public/build/img/youtuberecorte.webp" type="image/webp" />
-                    <source srcset="./public/build/img/youtuberecorte.png" type="image/png" />
-                    <img loading="lazy" width="200" height="300" src="./public/build/img/youtuberecorte.png" alt="logo-youtube" class="youtube" />
+                    <source srcset="/build/img/youtuberecorte.webp" type="image/webp" />
+                    <source srcset="/build/img/youtuberecorte.png" type="image/png" />
+                    <img loading="lazy" width="200" height="300" src="/build/img/youtuberecorte.png" alt="logo-youtube" class="youtube" />
                 </picture>
             </a>
             <a href="https://www.instagram.com/theelectricbuffalo/" target="_blank">
                 <picture>
-                    <source srcset="./public/build/img/Instagram_logo_2022.webp" type="image/webp" />
-                    <source srcset="./public/build/img/Instagram_logo_2022.png" type="image/png" />
-                    <img loading="lazy" width="200" height="300" src="./public/build/img/Instagram_logo_2022.png" alt="logo-instagram" class="instagram" />
+                    <source srcset="/build/img/instagram_logo_2022..webp" type="image/webp" />
+                    <source srcset="/build/img/instagram_logo_2022..png" type="image/png" />
+                    <img loading="lazy" width="200" height="300" src="/build/img/Instagram_logo_2022.png" alt="logo-instagram" class="instagram" />
                 </picture>
             </a>
             <a href="https://open.spotify.com/intl-es/artist/4ciUFLaycqUBlM162ifmSH?si=eugYIzlWQnqkxGXJMXzYcw" target="_blank">
                 <picture>
-                    <source srcset="./public/build/img/spotifty.webp" type="image/webp" />
-                    <source srcset="./public/build/img/spotifty.png" type="image/png" />
-                    <img loading="lazy" width="200" height="300" src="./public/build/img/spotifty.png" alt="logo-spotify" class="spotify" />
+                    <source srcset="/build/img/spotifty.webp" type="image/webp" />
+                    <source srcset="/build/img/spotifty.png" type="image/png" />
+                    <img loading="lazy" width="200" height="300" src="/build/img/spotifty.png" alt="logo-spotify" class="spotify" />
                 </picture>
             </a>
 
@@ -98,16 +92,12 @@ incluirTemplate("header");
 
     <?php
     $limite = 3;
-    include "includes/templates/noticias_portada.php"; ?>
+    include "noticias-portada.php"; ?>
 
 
 
     <div class="alinear-derecha">
-        <a href="/noticias.php" class="boton-fireBrick">Ver todas</a>
+        <a href="/noticias" class="boton-fireBrick">Ver todas</a>
     </div>
 </section>
 <!-- FIN NOTICIAS -->
-
-<?php
-incluirTemplate("footer");
-?>

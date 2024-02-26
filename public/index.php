@@ -6,6 +6,7 @@ use MVC\Router;
 use Controllers\NoticiaController;
 use Controllers\AdminController;
 use Controllers\UsuarioController;
+use Controllers\PaginasController;
 
 $router = new Router();
 
@@ -27,7 +28,14 @@ $router->get("/usuarios/actualizar", [UsuarioController::class, "actualizar"]);
 $router->post("/usuarios/actualizar", [UsuarioController::class, "actualizar"]);
 $router->post("/usuarios/eliminar", [UsuarioController::class, "eliminar"]);
 
-/** */
+/** ZONA PÚBLICA */
+$router->get("/", [PaginasController::class, "index"]);
+$router->get("/historia", [PaginasController::class, "historia"]);
+$router->get("/noticias", [PaginasController::class, "noticias"]);
+$router->get("/noticia", [PaginasController::class, "noticia"]);
+$router->get("/discografia", [PaginasController::class, "discografia"]);
+$router->get("/disco", [PaginasController::class, "disco"]);
+$router->get("/tienda", [PaginasController::class, "tienda"]);
 
 
 $router->comprobarRutas();
