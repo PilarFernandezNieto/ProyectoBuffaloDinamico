@@ -8,6 +8,8 @@
     new bootstrap.Tooltip(tooltipTriggerEl);
   });
 })();
+
+
 /*** modales eliminar **/
 $(".eliminar").on("click", function (e) {
   e.preventDefault();
@@ -137,8 +139,7 @@ $(function () {
       },
     },
   });
-});
-$(function () {
+
   $("#listado_usuarios").DataTable({
     responsive: true,
     columnDefs: [
@@ -173,19 +174,67 @@ $(function () {
       },
     },
   });
-});
+  $("#listado_discos").DataTable({
+    responsive: true,
+    columnDefs: [
+      { width: "5%", targets: 0 },
+      { width: "15%", targets: 1 },
+      { width: "25%", targets: [2, 3] },
+      { width: "15%", targets: [4, 5] },
+      { className: "text-center", targets: [0, 4, 5] },
+    ],
+    language: {
+      decimal: "",
+      emptyTable: "No hay datos que mostrar",
+      info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+      infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+      infoFiltered: "(filtered from _MAX_ total entries)",
+      infoPostFix: "",
+      thousands: ",",
+      lengthMenu: "Mostrando _MENU_ entradas",
+      loadingRecords: "Cargando...",
+      processing: "",
+      search: "Búsqueda:",
+      zeroRecords: "No hay registros",
+      paginate: {
+        first: "Primera",
+        last: "Última",
+        next: "Siguiente",
+        previous: "Anterior",
+      },
+      aria: {
+        sortAscending: ": activate to sort column ascending",
+        sortDescending: ": activate to sort column descending",
+      },
+    },
+  });
 
-$("#texto").summernote({
-  placeholder: "Texto de la noticia",
-  tabsize: 2,
-  height: 120,
-  toolbar: [
-    ["style", ["style"]],
-    ["font", ["bold", "underline", "clear"]],
-    ["color", ["color"]],
-    ["para", ["ul", "ol", "paragraph"]],
-    ["table", ["table"]],
-    ["insert", ["link", "picture", "video"]],
-    ["view", ["fullscreen", "codeview", "help"]],
-  ],
+  $("#texto").summernote({
+    placeholder: "Texto de la noticia",
+    tabsize: 2,
+    height: 120,
+    toolbar: [
+      ["style", ["style"]],
+      ["font", ["bold", "underline", "clear"]],
+      ["color", ["color"]],
+      ["para", ["ul", "ol", "paragraph"]],
+      ["table", ["table"]],
+      ["insert", ["link", "picture", "video"]],
+      ["view", ["fullscreen", "codeview", "help"]],
+    ],
+  });
+    $("#informacion").summernote({
+      placeholder: "Información del disco",
+      tabsize: 2,
+      height: 120,
+      toolbar: [
+        ["style", ["style"]],
+        ["font", ["bold", "underline", "clear"]],
+        ["color", ["color"]],
+        ["para", ["ul", "ol", "paragraph"]],
+        ["table", ["table"]],
+        ["insert", ["link", "picture", "video"]],
+        ["view", ["fullscreen", "codeview", "help"]],
+      ],
+    });
 });

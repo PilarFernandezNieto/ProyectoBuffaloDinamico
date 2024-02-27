@@ -53,9 +53,9 @@
                     <li><a class="treeview-item" href="/noticias/listado"><i class="icon bi bi-circle-fill"></i>Listado de Noticias</a></li>
                 </ul>
             </li>
-            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-regular fa-folder-open"></i><span class="app-menu__label">Contenidos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-regular fa-folder-open"></i><span class="app-menu__label">Discos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="/admin/noticias/listado_noticias.php"><i class="icon bi bi-circle-fill"></i>Listado de Contenidos</a></li>
+                    <li><a class="treeview-item" href="/discos/listado"><i class="icon bi bi-circle-fill"></i>Listado de Discos</a></li>
                 </ul>
             </li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-music-note-beamed"></i><span class="app-menu__label">Músicos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>

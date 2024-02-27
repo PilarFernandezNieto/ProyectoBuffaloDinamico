@@ -5,6 +5,7 @@ require_once __DIR__ . "/../includes/app.php";
 use MVC\Router;
 use Controllers\NoticiaController;
 use Controllers\AdminController;
+use Controllers\DiscoController;
 use Controllers\UsuarioController;
 use Controllers\PaginasController;
 
@@ -27,6 +28,14 @@ $router->post("/usuarios/crear", [UsuarioController::class, "crear"]);
 $router->get("/usuarios/actualizar", [UsuarioController::class, "actualizar"]);
 $router->post("/usuarios/actualizar", [UsuarioController::class, "actualizar"]);
 $router->post("/usuarios/eliminar", [UsuarioController::class, "eliminar"]);
+
+/** DISCOS **/
+$router->get("/discos/listado", [DiscoController::class, "listado"]);
+$router->get("/discos/crear", [DiscoController::class, "crear"]);
+$router->post("/discos/crear", [DiscoController::class, "crear"]);
+$router->get("/discos/actualizar", [DiscoController::class, "actualizar"]);
+$router->post("/discos/actualizar", [DiscoController::class, "actualizar"]);
+$router->post("/discos/eliminar", [DiscoController::class, "eliminar"]);
 
 /** ZONA PÚBLICA */
 $router->get("/", [PaginasController::class, "index"]);
