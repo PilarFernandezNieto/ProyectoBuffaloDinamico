@@ -21,18 +21,22 @@ class DiscoController{
         $errores = Disco::getErrores();
         $formatos = $disco->getFormatos();
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+           
             $disco = new Disco($_POST["disco"]);
+            $disco->formato = $_POST["formato"];
 
             $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
             if ($_FILES["disco"]["tmp_name"]["imagen"]) {
                 $imagen = Image::make($_FILES["disco"]["tmp_name"]["imagen"])->fit(600, 600);
                 $disco->setImagen($nombreImagen);
+                
             }
             $errores = $disco->validar();
 
             if (empty($errores)) {
-
+             
                 if (!is_dir(CARPETA_IMAGENES)) {
                     mkdir(CARPETA_IMAGENES);
                 }
@@ -48,5 +52,9 @@ class DiscoController{
             "errores" => $errores
 
         ]);
+    }
+    public static function getTextoCompleto(){
+        debuguear($_POST);
+
     }
 }

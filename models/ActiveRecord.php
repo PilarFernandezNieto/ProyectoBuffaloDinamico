@@ -41,12 +41,9 @@ class ActiveRecord {
                 header("Location: listado?exito=true&accion=crear");
             }
         } catch (\Exception $e) {
-
-            if ($e->getCode() == "1062") {
+      
                 header("Location: listado?exito=false&accion=crear&mensaje=" . $e->getMessage());
-            } else {
-                header("Location: listado?exito=false&accion=crear");
-            }
+
         }
     }
 

@@ -8,10 +8,13 @@
     </div>
     <a href="/discos/crear" class="boton-fireBrick">Nuevo disco</a>
     <div class="row seccion">
+
         <div class="col-md-12">
             <div class="tile">
-                <div class="tile-body">
-                    <table class="table table-hover table-bordered listado" id="listado_discos">
+
+                <table class="table table-hover table-bordered listado" id="listado_discos">
+                    <div class="tile-body">
+
                         <thead>
                             <tr>
                                 <th>#ID</th>
@@ -34,7 +37,9 @@
                                     <td><?php echo $disco->anio_edicion; ?></td>
                                     <td><?php echo $disco->formato; ?></td>
                                     <td><?php echo $disco->sello; ?></td>
-                                    <td><?php echo $disoc->informacion; ?></td>
+                                    <td id="info"  class="texto-recortado"><?php echo $disco->informacion; ?>
+
+                                    </td>
                                     <td>
                                         <div class="acciones">
                                             <a href="/discos/actualizar?id=<?php echo $disco->id; ?>" class="boton-verde"><i class="fa-regular fa-pen-to-square"></i></a>
@@ -48,11 +53,11 @@
                             <?php endforeach; ?>
 
                         </tbody>
-                    </table>
+                </table>
 
-                </div>
             </div>
         </div>
+    </div>
     </div>
 
 </main>

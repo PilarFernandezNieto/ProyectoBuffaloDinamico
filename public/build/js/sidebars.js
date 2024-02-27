@@ -178,10 +178,23 @@ $(function () {
     responsive: true,
     columnDefs: [
       { width: "5%", targets: 0 },
-      { width: "15%", targets: 1 },
-      { width: "25%", targets: [2, 3] },
-      { width: "15%", targets: [4, 5] },
-      { className: "text-center", targets: [0, 4, 5] },
+      { width: "20%", targets: [1, 2] },
+      { width: "5%", targets: [3, 4] },
+      { width: "15%", targets: 5 },
+      { width: "30%", targets: 6 },
+      {"targets": 6,
+        "render": function(data, type, row, meta) {
+                    if (type === 'display') {
+                        return data.length > 50 ?
+                            data.substr(0, 50) + '...' :
+                            data;
+                    } else {
+                        return data;
+                    }
+                }
+      },
+      
+      { className: "text-center", targets: [0, 3, 4] },
     ],
     language: {
       decimal: "",
@@ -238,3 +251,6 @@ $(function () {
       ],
     });
 });
+
+
+

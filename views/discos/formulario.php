@@ -12,7 +12,7 @@
 </div>
 <div class="mb-3">
     <label for="anio" class="form-label">Año de edición</label>
-    <input type="text" id="anio" name="disco[anio]" placeholder="Año de edición" value="<?php echo s($disco->anio_edicion); ?>">
+    <input type="text" id="anio" name="disco[anio_edicion]" placeholder="Año de edición" value="<?php echo s($disco->anio_edicion); ?>">
 </div>
 <div class="mb-3">
     <label for="sello" class="form-label">Sello</label>
@@ -21,7 +21,7 @@
 <div class="row mb-3">
     <label for="formato" class="form-label">Formato</label>
     <select name="formato" id="formato" class="">
-        <option value="" selected>--Seleccione formato--</option>
+        <option value="" selected class="mb-1"></option>--Seleccione formato--</option>
         <?php foreach ($formatos as $formato) : ?>
 
             <option class="mb-3" <?php echo (strtoupper($disco->formato) === $formato) ? "selected" : ""; ?> value="<?php echo s($formato); ?>"><?php echo s($formato); ?></option>

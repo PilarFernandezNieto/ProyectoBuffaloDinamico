@@ -36,6 +36,7 @@ $router->post("/discos/crear", [DiscoController::class, "crear"]);
 $router->get("/discos/actualizar", [DiscoController::class, "actualizar"]);
 $router->post("/discos/actualizar", [DiscoController::class, "actualizar"]);
 $router->post("/discos/eliminar", [DiscoController::class, "eliminar"]);
+$router->post("/discos/textocompleto", [DiscoController::class, "getTextoCompleto"]);
 
 /** ZONA PÚBLICA */
 $router->get("/", [PaginasController::class, "index"]);

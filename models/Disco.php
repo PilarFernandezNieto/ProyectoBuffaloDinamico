@@ -9,7 +9,7 @@ class Disco extends ActiveRecord {
         "id",
         "titulo",
         "anio_edicion",
-        "fomato",
+        "formato",
         "sello",
         "informacion",
         "imagen",
@@ -39,6 +39,7 @@ class Disco extends ActiveRecord {
             self::$errores[] = "Debes introducir un título";
         }
         if (!$this->anio_edicion) {
+         
             self::$errores[] = "Debes introducir el año de edición";
         }
         if (empty(trim($this->informacion))) {
@@ -66,15 +67,10 @@ class Disco extends ActiveRecord {
         $formatos = FormatoEnum::getFormatos();
         return $formatos;
     }
+
+    public function getInfo(){
+        return $this->informacion;
+    }
 }
-// enum Formato {
-//     case VINILO;
-//     case CD;
-//     public static function getFormatos() {
-//         return [
-//             'VINILO',
-//             'CD'
-//         ];
-//     }
-// }
+
 
