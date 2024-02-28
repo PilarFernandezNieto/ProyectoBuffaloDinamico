@@ -44,5 +44,17 @@ class Usuario extends ActiveRecord{
         return password_hash($this->$password, PASSWORD_BCRYPT);
     }
 
+    public static function findByEmail(string $email){
+        $query = "SELECT * FROM ". self::$tabla . " WHERE email='{$email}'";
+        $resultado = self::consultarSQL($query);
+        return array_shift($resultado);
+    }
+
+    public function validarPassword($password){
+      
+        return (password_verify($password, $this->password));
+    }
+      
+
 
 }

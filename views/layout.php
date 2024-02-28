@@ -51,12 +51,7 @@
             <p class="menu-mobile"><i class="fa-solid fa-bars"></i></p>
             <div class="header-derecha">
                 <div class="redes-sociales">
-                    <!-- <?php if (!$auth) { ?>
-                            <a href="login.php" class="fs-3 me-5">Inicia sesión</a>
-                        <?php } else { ?>
-                            <a href="/admin" class="fs-3 me-5">Admin</a>
-                            <a href="logout.php" class="fs-3 me-5">Cierra sesión</a>
-                        <?php } ?> -->
+
                     <a href="https://www.youtube.com/@theelectricbuffalo666" class="youtube" target="_blank">
                         <i class="fa-brands fa-youtube"></i>
                     </a>
@@ -68,6 +63,9 @@
                     </a>
                 </div>
                 <nav class="navegacion-principal">
+            
+                    <a href="/admin"><i class="fa-solid fa-lock"></i></a>
+
                     <a href="/historia">Historia</a>
                     <a href="/discografia">Discografía</a>
                     <a href="/tienda">Tienda</a>

@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $usuario = mysqli_fetch_assoc($resultado);
 
 
-            $auth = password_verify($password, $usuario["password"]);
+            
 
             if ($auth) {
                 if (!isset($_SESSION)) {

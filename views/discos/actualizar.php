@@ -4,22 +4,21 @@
     <?php endforeach; ?>
     <div class="app-title">
         <div>
-            <h1><i class="bi bi-ui-checks"></i>Nuevo Disco</h1>
+            <h1><i class="bi bi-ui-checks"></i>Actualizar Disco</h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="bi bi-house-door"></i></li>
             <li class="breadcrumb-item"><a href="/discos/listado">Discos</a></li>
-            <li class="breadcrumb-item"><a href="/discos/crear">Nueva+o Disco</a></li>
+            <li class="breadcrumb-item"><a href="/discos/actualizar">Actualizar Disco</a></li>
         </ul>
     </div>
 
     <div class="tile seccion">
         <div class="tile-body">
-            <form action="" class="formulario" method="POST" enctype=multipart/form-data>
+            <form action="" class="formulario" method="POST" enctype="multipart/form-data">
 
                 <?php include __DIR__ . "/formulario.php"; ?>
-
-                <input type="submit" class="boton-fireBrick" value="Crear">
+                <input type="submit" class="boton-fireBrick" value="Actualizar">
 
             </form>
         </div>

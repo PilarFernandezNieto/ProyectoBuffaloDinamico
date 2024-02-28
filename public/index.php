@@ -12,6 +12,8 @@ use Controllers\PaginasController;
 $router = new Router();
 
 $router->get("/admin",[AdminController::class, "index"]);
+$router->get("/login",[AdminController::class, "login"]);
+$router->post("/login",[AdminController::class, "login"]);
 
 /** NOTICIAS **/
 $router->get("/noticias/listado", [NoticiaController::class, "listado"]);
