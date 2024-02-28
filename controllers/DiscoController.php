@@ -93,4 +93,13 @@ class DiscoController{
             "formatos" => $formatos
         ]);
     }
+
+    public static function eliminar() {
+        $id = filter_var($_POST["id"], FILTER_VALIDATE_INT);
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $disco = Disco::findById($id);
+            $disco->eliminar();
+        }
+    }
 }
