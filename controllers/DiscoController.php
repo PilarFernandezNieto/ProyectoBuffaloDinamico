@@ -48,7 +48,7 @@ class DiscoController{
 
         $router->render("layoutAdmin", "discos/crear", [
             "disco" => $disco,
-           
+            "formatos" => $formatos,
             "errores" => $errores
 
         ]);

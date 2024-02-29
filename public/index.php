@@ -50,6 +50,15 @@ $router->post("/musicos/actualizar", [MusicoController::class, "actualizar"]);
 $router->post("/musicos/eliminar", [MusicoController::class, "eliminar"]);
 $router->post("/musicos/textocompleto", [MusicoController::class, "getTextoCompleto"]);
 
+/** MUSICOS **/
+$router->get("/musicos/listado", [MusicoController::class, "listado"]);
+$router->get("/musicos/crear", [MusicoController::class, "crear"]);
+$router->post("/musicos/crear", [MusicoController::class, "crear"]);
+$router->get("/musicos/actualizar", [MusicoController::class, "actualizar"]);
+$router->post("/musicos/actualizar", [MusicoController::class, "actualizar"]);
+$router->post("/musicos/eliminar", [MusicoController::class, "eliminar"]);
+$router->post("/musicos/textocompleto", [MusicoController::class, "getTextoCompleto"]);
+
 /** ZONA PÚBLICA */
 $router->get("/", [PaginasController::class, "index"]);
 $router->get("/historia", [PaginasController::class, "historia"]);

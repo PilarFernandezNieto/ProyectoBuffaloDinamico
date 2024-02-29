@@ -33,7 +33,7 @@
 
 <div class="mb-3">
     <label class="form-label" for="texto">Información</label>
-    <textarea id="informacion" name="disco[informacion]"><?php echo s($disco->informacion); ?>
+    <textarea id="informacion" name="disco[informacion]"><?php echo limpiarHTML($disco->informacion); ?>
                     </textarea>
 </div>
 

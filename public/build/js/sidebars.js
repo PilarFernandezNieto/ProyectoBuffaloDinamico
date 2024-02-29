@@ -8,15 +8,29 @@
     new bootstrap.Tooltip(tooltipTriggerEl);
   });
 })();
+$(document).ready(function () {
+  lanza();
+});
 
+function lanza() {
+  notificacionEliminar();
+  notificacionesAcciones();
+  listadoNoticias();
+  listadoUsuarios();
+  textoDiscos();
+  textoNoticias();
+  lanzaModalDisco();
+}
 
 /*** modales eliminar **/
-$(".eliminar").on("click", function (e) {
-  e.preventDefault();
-  const formulario = $(e.target).closest("form"); 
-  console.log(formulario);
-  confirmarBorrado(formulario);
-});
+function notificacionEliminar() {
+  $(".eliminar").on("click", function (e) {
+    e.preventDefault();
+    const formulario = $(e.target).closest("form");
+    console.log(formulario);
+    confirmarBorrado(formulario);
+  });
+}
 
 function confirmarBorrado(formulario) {
   Swal.fire({
@@ -36,73 +50,76 @@ function confirmarBorrado(formulario) {
     }
   });
 }
-// Obtener el parámetro 'exito' de la URL
-const urlParams = new URLSearchParams(window.location.search);
-const exito = urlParams.get("exito");
-const accion = urlParams.get("accion");
-const mensaje = urlParams.get("mensaje");
 
-// Si 'exito' es igual a 'true', mostrar una alerta de éxito
-if (exito === "true") {
-  switch (accion) {
-    case "crear":
-      Swal.fire({
-        width: 400,
-        padding: "3em",
-        title: "¡Enhorabuena!",
-        text: "El registro se ha creado",
-        icon: "success",
-        customClass: {
-          content: "contenido_alertas",
-        },
-      }).then((result) => {
-        if (result.isConfirmed) {
-          history.replaceState({}, document.title, window.location.pathname);
-        }
-      });
-      break;
-    case "actualizar":
-      Swal.fire({
-        width: 400,
-        padding: "2rem",
-        title: "¡Enhorabuena!",
-        text: "El registro se ha actualizado",
-        icon: "success",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          history.replaceState({}, document.title, window.location.pathname);
-        }
-      });
-      break;
-    case "eliminar":
-      Swal.fire({
-        width: 400,
-        padding: "3em",
-        title: "¡Borrado!",
-        text: "Has eliminado el registro",
-        icon: "success",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          history.replaceState({}, document.title, window.location.pathname);
-        }
-      });
-      break;
-  }
-} else if ( exito == "false") {
-  Swal.fire({
-    width: 400,
-    padding: "3em",
-    icon: "error",
-    title: "Ups!",
-    text: mensaje,
-  }).then((result) => {
-    if (result.isConfirmed) {
-      history.replaceState({}, document.title, window.location.pathname);
+function notificacionesAcciones() {
+  // Obtener el parámetro 'exito' de la URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const exito = urlParams.get("exito");
+  const accion = urlParams.get("accion");
+  const mensaje = urlParams.get("mensaje");
+
+  // Si 'exito' es igual a 'true', mostrar una alerta de éxito
+  if (exito === "true") {
+    switch (accion) {
+      case "crear":
+        Swal.fire({
+          width: 400,
+          padding: "3em",
+          title: "¡Enhorabuena!",
+          text: "El registro se ha creado",
+          icon: "success",
+          customClass: {
+            content: "contenido_alertas",
+          },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.replaceState({}, document.title, window.location.pathname);
+          }
+        });
+        break;
+      case "actualizar":
+        Swal.fire({
+          width: 400,
+          padding: "2rem",
+          title: "¡Enhorabuena!",
+          text: "El registro se ha actualizado",
+          icon: "success",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.replaceState({}, document.title, window.location.pathname);
+          }
+        });
+        break;
+      case "eliminar":
+        Swal.fire({
+          width: 400,
+          padding: "3em",
+          title: "¡Borrado!",
+          text: "Has eliminado el registro",
+          icon: "success",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.replaceState({}, document.title, window.location.pathname);
+          }
+        });
+        break;
     }
-  });
-} 
+  } else if (exito == "false") {
+    Swal.fire({
+      width: 400,
+      padding: "3em",
+      icon: "error",
+      title: "Ups!",
+      text: mensaje,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        history.replaceState({}, document.title, window.location.pathname);
+      }
+    });
+  }
+}
 
-$(function () {
+function listadoNoticias(){
   $("#listado_noticias").DataTable({
     responsive: true,
     order: [[5, "desc"]],
@@ -137,9 +154,11 @@ $(function () {
         sortAscending: ": activate to sort column ascending",
         sortDescending: ": activate to sort column descending",
       },
-    },
+    }
   });
+  }
 
+function listadoUsuarios(){
   $("#listado_usuarios").DataTable({
     responsive: true,
     columnDefs: [
@@ -182,18 +201,17 @@ $(function () {
       { width: "5%", targets: [3, 4] },
       { width: "15%", targets: 5 },
       { width: "30%", targets: 6 },
-      {"targets": 6,
-        "render": function(data, type, row, meta) {
-                    if (type === 'display') {
-                        return data.length > 50 ?
-                            data.substr(0, 50) + '...' :
-                            data;
-                    } else {
-                        return data;
-                    }
-                }
+      {
+        targets: 6,
+        render: function (data, type, row, meta) {
+          if (type === "display") {
+            return data.length > 50 ? data.substr(0, 50) + "..." : data;
+          } else {
+            return data;
+          }
+        },
       },
-      
+
       { className: "text-center", targets: [0, 3, 4] },
     ],
     language: {
@@ -221,7 +239,9 @@ $(function () {
       },
     },
   });
+}
 
+function textoNoticias(){
   $("#texto").summernote({
     placeholder: "Texto de la noticia",
     tabsize: 2,
@@ -236,21 +256,57 @@ $(function () {
       ["view", ["fullscreen", "codeview", "help"]],
     ],
   });
-    $("#informacion").summernote({
-      placeholder: "Información del disco",
-      tabsize: 2,
-      height: 120,
-      toolbar: [
-        ["style", ["style"]],
-        ["font", ["bold", "underline", "clear"]],
-        ["color", ["color"]],
-        ["para", ["ul", "ol", "paragraph"]],
-        ["table", ["table"]],
-        ["insert", ["link", "picture", "video"]],
-        ["view", ["fullscreen", "codeview", "help"]],
-      ],
-    });
-});
+}
+function textoDiscos(){
+  $("#informacion").summernote({
+    placeholder: "Información del disco",
+    tabsize: 2,
+    height: 120,
+    toolbar: [
+      ["style", ["style"]],
+      ["font", ["bold", "underline", "clear"]],
+      ["color", ["color"]],
+      ["para", ["ul", "ol", "paragraph"]],
+      ["table", ["table"]],
+      ["insert", ["link", "picture", "video"]],
+      ["view", ["fullscreen", "codeview", "help"]],
+    ],
+  });
+}
 
+function lanzaModalDisco(){
+   $(".texto-recortado").on("click", function (e) {
+     let discoID = $(this).closest("tr").find("td:eq(0)").text();
+     $.ajax({
+       type: "POST",
+       url: "http://localhost:3000/api/getTextoCompleto.php?id=" + discoID,
+       contentType: "application/json",
+       dataType: "json",
+       cache: false,
+       success: function (response) {
+         lanzaInformacionDisco(response.titulo, response.informacion);
+       },
+     });
+   });
 
-
+}
+function lanzaInformacionDisco(titulo, informacion){
+  Swal.fire({
+    title: titulo,
+    html: informacion,
+    showClass: {
+      popup: `
+      animate__animated
+      animate__fadeInUp
+      animate__faster
+    `,
+    },
+    hideClass: {
+      popup: `
+      animate__animated
+      animate__fadeOutDown
+      animate__faster
+    `,
+    },
+  });
+}
