@@ -17,6 +17,8 @@ function lanza() {
   notificacionesAcciones();
   listadoNoticias();
   listadoUsuarios();
+  listadoDiscos();
+  listadoInstrumentos();
   textoDiscos();
   textoNoticias();
   lanzaModalDisco();
@@ -193,52 +195,91 @@ function listadoUsuarios(){
       },
     },
   });
-  $("#listado_discos").DataTable({
-    responsive: true,
-    columnDefs: [
-      { width: "5%", targets: 0 },
-      { width: "20%", targets: [1, 2] },
-      { width: "5%", targets: [3, 4] },
-      { width: "15%", targets: 5 },
-      { width: "30%", targets: 6 },
-      {
-        targets: 6,
-        render: function (data, type, row, meta) {
-          if (type === "display") {
-            return data.length > 50 ? data.substr(0, 50) + "..." : data;
-          } else {
-            return data;
-          }
+
+}
+function listadoDiscos(){
+    $("#listado_discos").DataTable({
+      responsive: true,
+      columnDefs: [
+        { width: "5%", targets: 0 },
+        { width: "20%", targets: [1, 2] },
+        { width: "5%", targets: [3, 4] },
+        { width: "15%", targets: 5 },
+        { width: "30%", targets: 6 },
+        {
+          targets: 6,
+          render: function (data, type, row, meta) {
+            if (type === "display") {
+              return data.length > 50 ? data.substr(0, 50) + "..." : data;
+            } else {
+              return data;
+            }
+          },
+        },
+
+        { className: "text-center", targets: [0, 3, 4] },
+      ],
+      language: {
+        decimal: "",
+        emptyTable: "No hay datos que mostrar",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+        infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+        infoFiltered: "(filtered from _MAX_ total entries)",
+        infoPostFix: "",
+        thousands: ",",
+        lengthMenu: "Mostrando _MENU_ entradas",
+        loadingRecords: "Cargando...",
+        processing: "",
+        search: "Búsqueda:",
+        zeroRecords: "No hay registros",
+        paginate: {
+          first: "Primera",
+          last: "Última",
+          next: "Siguiente",
+          previous: "Anterior",
+        },
+        aria: {
+          sortAscending: ": activate to sort column ascending",
+          sortDescending: ": activate to sort column descending",
         },
       },
+    });
+}
 
-      { className: "text-center", targets: [0, 3, 4] },
-    ],
-    language: {
-      decimal: "",
-      emptyTable: "No hay datos que mostrar",
-      info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
-      infoEmpty: "Mostrando 0 a 0 de 0 entradas",
-      infoFiltered: "(filtered from _MAX_ total entries)",
-      infoPostFix: "",
-      thousands: ",",
-      lengthMenu: "Mostrando _MENU_ entradas",
-      loadingRecords: "Cargando...",
-      processing: "",
-      search: "Búsqueda:",
-      zeroRecords: "No hay registros",
-      paginate: {
-        first: "Primera",
-        last: "Última",
-        next: "Siguiente",
-        previous: "Anterior",
+function listadoInstrumentos(){
+    $("#listado_instrumentos").DataTable({
+      responsive: true,
+      columnDefs: [
+        { width: "5%", targets: 0 },
+        { width: "10%", targets: 2 },
+        { className: "text-center", targets: [0] },
+      ],
+      language: {
+        decimal: "",
+        emptyTable: "No hay datos que mostrar",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+        infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+        infoFiltered: "(filtered from _MAX_ total entries)",
+        infoPostFix: "",
+        thousands: ",",
+        lengthMenu: "Mostrando _MENU_ entradas",
+        loadingRecords: "Cargando...",
+        processing: "",
+        search: "Búsqueda:",
+        zeroRecords: "No hay registros",
+        paginate: {
+          first: "Primera",
+          last: "Última",
+          next: "Siguiente",
+          previous: "Anterior",
+        },
+        aria: {
+          sortAscending: ": activate to sort column ascending",
+          sortDescending: ": activate to sort column descending",
+        },
       },
-      aria: {
-        sortAscending: ": activate to sort column ascending",
-        sortDescending: ": activate to sort column descending",
-      },
-    },
-  });
+    });
+
 }
 
 function textoNoticias(){

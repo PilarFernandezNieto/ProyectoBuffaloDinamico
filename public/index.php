@@ -9,6 +9,7 @@ use Controllers\DiscoController;
 use Controllers\UsuarioController;
 use Controllers\PaginasController;
 use Controllers\MusicoController;
+use Controllers\InstrumentoController;
 
 $router = new Router();
 
@@ -48,16 +49,14 @@ $router->post("/musicos/crear", [MusicoController::class, "crear"]);
 $router->get("/musicos/actualizar", [MusicoController::class, "actualizar"]);
 $router->post("/musicos/actualizar", [MusicoController::class, "actualizar"]);
 $router->post("/musicos/eliminar", [MusicoController::class, "eliminar"]);
-$router->post("/musicos/textocompleto", [MusicoController::class, "getTextoCompleto"]);
 
-/** MUSICOS **/
-$router->get("/musicos/listado", [MusicoController::class, "listado"]);
-$router->get("/musicos/crear", [MusicoController::class, "crear"]);
-$router->post("/musicos/crear", [MusicoController::class, "crear"]);
-$router->get("/musicos/actualizar", [MusicoController::class, "actualizar"]);
-$router->post("/musicos/actualizar", [MusicoController::class, "actualizar"]);
-$router->post("/musicos/eliminar", [MusicoController::class, "eliminar"]);
-$router->post("/musicos/textocompleto", [MusicoController::class, "getTextoCompleto"]);
+/** INSTRUMENTOS **/
+$router->get("/instrumentos/listado", [InstrumentoController::class, "listado"]);
+$router->get("/instrumentos/crear", [InstrumentoController::class, "crear"]);
+$router->post("/instrumentos/crear", [InstrumentoController::class, "crear"]);
+$router->get("/instrumentos/actualizar", [InstrumentoController::class, "actualizar"]);
+$router->post("/instrumentos/actualizar", [InstrumentoController::class, "actualizar"]);
+$router->post("/instrumentos/eliminar", [InstrumentoController::class, "eliminar"]);
 
 /** ZONA PÚBLICA */
 $router->get("/", [PaginasController::class, "index"]);
