@@ -64,6 +64,7 @@ $router->get("/historia", [PaginasController::class, "historia"]);
 $router->get("/noticias", [PaginasController::class, "noticias"]);
 $router->get("/noticia", [PaginasController::class, "noticia"]);
 $router->get("/discografia", [PaginasController::class, "discografia"]);
+$router->get("/ficha_disco", [PaginasController::class, "ficha_disco"]);
 $router->get("/disco", [PaginasController::class, "disco"]);
 $router->get("/tienda", [PaginasController::class, "tienda"]);
 $router->get("/contacto", [PaginasController::class, "contacto"]);

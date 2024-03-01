@@ -26,7 +26,7 @@
                                   
                                     <td><?php echo $instrumento->id; ?></td>
                                     <td><?php echo $instrumento->nombre; ?></td>
-                                    <td><?php echo $instrumento->alias; ?></td>
+                                    <td><?php echo $instrumento->nombre_musico . " " . $instrumento->apellidos; ?></td>
                                     <td>
                                         <div class=" acciones">
                                             <a href="/instrumentos/actualizar?id=<?php echo $instrumento->id; ?>" class="boton-verde"><i class="fa-regular fa-pen-to-square"></i></a>

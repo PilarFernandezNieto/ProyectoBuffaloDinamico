@@ -9,7 +9,7 @@
               <option value="" selected>--Seleccione músico--</option>
               <?php foreach ($musicos as $musico) : ?>
 
-                  <option class="mb-3" <?php echo ($instrumento->idmusico === $musico->id) ? "selected" : ""; ?> value="<?php echo s($musico->id); ?>"><?php echo s(strtoupper($musico->alias)); ?></option>
+                  <option class="mb-3" <?php echo ($instrumento->idmusico === $musico->id) ? "selected" : ""; ?> value="<?php echo s($musico->id); ?>"><?php echo s($musico->nombre). " " . s($musico->apellidos); ?></option>
               <?php endforeach; ?>
 
           </select>

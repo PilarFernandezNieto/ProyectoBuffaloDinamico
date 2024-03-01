@@ -9,20 +9,18 @@
       </div>
   </div>
   <div class="row">
-      <div class="mb-3 col-6">
-          <label class="form-label" for="alias">Alias</label>
-          <input type="text" id="alias" name="musico[alias]" placeholder="Alias" value="<?php echo s($musico->alias); ?>">
-      </div>
+
       <div class="mb-3 col-6">
           <label for="origen" class="form-label">Origen</label>
           <input type="text" id="origen" name="musico[origen]" value="<?php echo s($musico->origen); ?>">
       </div>
+      <div class="mb-3 col-6">
+          <label class="form-label" for="fecha_nac">Fecha de nacimiento</label>
+          <input type="date" id="fecha_nac" name="musico[fecha_nac]" placeholder="fecha_nac" value="<?php echo s($musico->fecha_nac); ?>">
+      </div>
   </div>
 
-  <div class="mb-3">
-      <label class="form-label" for="fecha_nac">Fecha de nacimiento</label>
-      <input type="date" id="fecha_nac" name="musico[fecha_nac]" placeholder="fecha_nac" value="<?php echo s($musico->fecha_nac); ?>">
-  </div>
+
 
   <div class="mb-3">
       <label for="imagen" class="form-label">Imagen</label>

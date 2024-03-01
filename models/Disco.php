@@ -12,6 +12,7 @@ class Disco extends ActiveRecord {
         "formato",
         "sello",
         "informacion",
+        "textos",
         "imagen",
         "fecha_creacion"
     ];
@@ -21,6 +22,7 @@ class Disco extends ActiveRecord {
     public $formato;
     public $sello;
     public $informacion;
+    public $textos;
     public $imagen;
     public $fecha_creacion;
 
@@ -31,6 +33,7 @@ class Disco extends ActiveRecord {
         $this->formato = $args["formato"] ?? "";
         $this->sello = $args["sello"] ?? "";
         $this->informacion = $args["informacion"] ?? "";
+        $this->textos = $args["textos"] ?? "";
         $this->imagen = $args["imagen"] ?? "";
         $this->fecha_creacion = date("Y/m/d");
     }
@@ -46,6 +49,14 @@ class Disco extends ActiveRecord {
             self::$errores[] = "Debes introducir un texto";
         } else {
             $texto_limpio = strip_tags($this->informacion); // Elimina todas las etiquetas HTML del texto
+            if (empty(trim($texto_limpio))) {
+                self::$errores[] = "Debes introducir un texto válido";
+            }
+        }
+        if (empty(trim($this->textos))) {
+            self::$errores[] = "Debes introducir un texto";
+        } else {
+            $texto_limpio = strip_tags($this->textos); // Elimina todas las etiquetas HTML del texto
             if (empty(trim($texto_limpio))) {
                 self::$errores[] = "Debes introducir un texto válido";
             }

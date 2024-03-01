@@ -9,9 +9,7 @@
       column-gap: 2rem;
       align-items: start;
     }
-    @include desktopXL{
-        align-items: center;
-    }
+
     .contenido-disco {
         margin-top: 1rem;
         h2 {

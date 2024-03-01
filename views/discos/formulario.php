@@ -32,8 +32,13 @@
 
 
 <div class="mb-3">
-    <label class="form-label" for="texto">Información</label>
+    <label class="form-label" for="informacion">Información</label>
     <textarea id="informacion" name="disco[informacion]"><?php echo limpiarHTML($disco->informacion); ?>
+                    </textarea>
+</div>
+<div class="mb-3">
+    <label class="form-label" for="textos">Textos</label>
+    <textarea id="textos" name="disco[textos]"><?php echo limpiarHTML($disco->textos); ?>
                     </textarea>
 </div>
 

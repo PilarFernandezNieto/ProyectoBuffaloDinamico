@@ -24,7 +24,7 @@ class Instrumento extends ActiveRecord {
     }
 
     public static function findAllAndMusicos(){
-        $query = "SELECT instrumentos.*, musicos.alias 
+        $query = "SELECT instrumentos.*, musicos.nombre as nombre_musico, musicos.apellidos 
                 FROM instrumentos
                 INNER JOIN musicos ON instrumentos.idmusico = musicos.id";
         $resultado = self::consultarSQL($query);

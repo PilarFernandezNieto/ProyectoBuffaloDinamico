@@ -4,14 +4,14 @@ namespace Model;
 class Musico extends ActiveRecord{
     protected static $tabla = "musicos";
     protected static $columnasDB = [
-        "id", "nombre", "apellidos", "alias", "biografia", "origen", "imagen", "fecha_nac"
+        "id", "nombre", "apellidos", "biografia", "origen", "imagen", "fecha_nac"
     ];
 
     public $id;
     public $nombre;
     public $apellidos;
-    public $alias;
     public $biografia;
+    public $textos;
     public $origen;
     public $imagen;
     public $fecha_nac;
@@ -20,7 +20,6 @@ class Musico extends ActiveRecord{
         $this->id = $args["id"] ?? null;
         $this->nombre = $args["nombre"] ?? "";
         $this->apellidos = $args["apellidos"] ?? "";
-        $this->alias = $args["alias"] ?? "";
         $this->biografia = $args["biografia"] ?? "";
         $this->origen = $args["origen"] ?? "";
         $this->imagen = $args["imagen"] ?? "";
@@ -43,6 +42,7 @@ class Musico extends ActiveRecord{
         if (!$this->biografia) {
             self::$errores[] = "Debes escribir algo en la biografia";
         }
+
         return self::$errores;
     }
 }

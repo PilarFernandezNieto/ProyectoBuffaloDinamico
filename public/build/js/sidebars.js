@@ -21,6 +21,7 @@ function lanza() {
   listadoInstrumentos();
   listadoMusicos();
   textoDiscos();
+  textosDiscos();
   textoNoticias();
   textoMusicos();
   lanzaModalDisco();
@@ -203,6 +204,7 @@ function listadoUsuarios(){
 function listadoDiscos(){
     $("#listado_discos").DataTable({
       responsive: true,
+      order: [[3, "asc"]],
       columnDefs: [
         { width: "5%", targets: 0 },
         { width: "20%", targets: [1, 2] },
@@ -290,12 +292,12 @@ function listadoMusicos() {
     responsive: true,
     columnDefs: [
       { width: "5%", targets: 0 },
-      { width: "15%", targets: [2, 6] },
+      { width: "15%", targets: [2] },
       { width: "5%", targets: [3, 4] },
-      { width: "10%", targets: [1, 5] },
-      { width: "25%", targets: 7 },
+      { width: "20%", targets: 6 },
+      { width: "10%", targets: [1,7, 5] },
       {
-        targets: 7,
+        targets: 6,
         render: function (data, type, row, meta) {
           if (type === "display") {
             return data.length > 50 ? data.substr(0, 50) + "..." : data;
@@ -367,6 +369,22 @@ function textoDiscos(){
     ],
   });
 }
+function textosDiscos() {
+  $("#textos").summernote({
+    placeholder: "Información del disco",
+    tabsize: 2,
+    height: 120,
+    toolbar: [
+      ["style", ["style"]],
+      ["font", ["bold", "underline", "clear"]],
+      ["color", ["color"]],
+      ["para", ["ul", "ol", "paragraph"]],
+      ["table", ["table"]],
+      ["insert", ["link", "picture", "video"]],
+      ["view", ["fullscreen", "codeview", "help"]],
+    ],
+  });
+}
 
 function textoMusicos(){
     $("#biografia").summernote({
@@ -413,7 +431,7 @@ function lanzaModalMusico() {
       cache: false,
       success: function (response) {
         console.log(response);
-        lanzaInformacion(response.alias, response.biografia);
+        lanzaInformacion(response.nombre + " " + response.apellidos, response.biografia);
       },
     });
   });

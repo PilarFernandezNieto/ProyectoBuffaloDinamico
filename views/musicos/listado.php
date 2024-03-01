@@ -19,7 +19,6 @@
                                 <th>#ID</th>
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
-                                <th>Alias</th>
                                 <th>Imagen</th>
                                 <th>Origen</th>
                                 <th>Fecha Nac</th>
@@ -33,7 +32,6 @@
                                     <td id="musicoId"><?php echo $musico->id; ?></td>
                                     <td><?php echo $musico->nombre; ?></td>
                                     <td><?php echo $musico->apellidos; ?></td>
-                                    <td><?php echo $musico->alias; ?></td>
                                     <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $musico->imagen; ?>" style="width: 150px" alt="">
                                     </td>
                                     <td><?php echo $musico->origen; ?></td>

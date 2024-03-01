@@ -2,6 +2,7 @@
 namespace Controllers;
 use MVC\Router;
 use Model\Noticia;
+use Model\Disco;
 
 class PaginasController{
     public static function index(Router $router){
@@ -42,7 +43,22 @@ class PaginasController{
     }
     public static function discografia(Router $router) {
         $title = "Discografía";
+        $discos = Disco::findAll("anio_edicion");
+
         $router->render("layout", "paginas/discografia", [
+            "discos" => $discos,
+            "title" => $title
+
+        ]);
+    }
+    public static function ficha_disco(Router $router) {
+        $id = validarORedireccionar("/");
+        $disco = Disco::findById($id);
+        $title = $disco->titulo;
+       
+
+        $router->render("layout", "paginas/ficha_disco", [
+            "disco" => $disco,
             "title" => $title
 
         ]);
