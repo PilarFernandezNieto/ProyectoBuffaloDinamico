@@ -16,14 +16,17 @@
                             <tr>
                                 <th>#ID</th>
                                 <th>Nombre</th>
+                                <th>Músico</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($instrumentos as $instrumento) : ?>
                                 <tr>
+                                  
                                     <td><?php echo $instrumento->id; ?></td>
                                     <td><?php echo $instrumento->nombre; ?></td>
+                                    <td><?php echo $instrumento->alias; ?></td>
                                     <td>
                                         <div class=" acciones">
                                             <a href="/instrumentos/actualizar?id=<?php echo $instrumento->id; ?>" class="boton-verde"><i class="fa-regular fa-pen-to-square"></i></a>

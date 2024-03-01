@@ -18,6 +18,9 @@ main {
 .swal2-modal {
   font-size: 1.6rem;
 }
+.swal2-html-container{
+  line-height: 2;
+}
 @media (min-width: 778px){
  
 }

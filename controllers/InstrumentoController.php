@@ -2,10 +2,13 @@
 namespace Controllers;
 use MVC\Router;
 use Model\Instrumento;
+use Model\Musico;
 
 class InstrumentoController{
     public static function listado(Router $router) {
-        $instrumentos = Instrumento::findAll();
+        $instrumentos = Instrumento::findAllAndMusicos();
+        
+        
 
         $router->render("layoutAdmin", "instrumentos/listado", [
             "instrumentos" => $instrumentos
@@ -13,10 +16,13 @@ class InstrumentoController{
     }
     public static function crear(Router $router) {
         $instrumento = new Instrumento();
+        $musicos = Musico::findAll();
         $errores = Instrumento::getErrores();
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            //debuguear($_POST);
 
+            //debuguear($musicos);
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        
             $instrumento = new Instrumento($_POST["instrumento"]);
 
            
@@ -29,6 +35,7 @@ class InstrumentoController{
 
         $router->render("layoutAdmin", "instrumentos/crear", [
             "instrumento" => $instrumento,
+            "musicos" => $musicos,
             "errores" => $errores
         ]);
     }
@@ -36,6 +43,7 @@ class InstrumentoController{
 
         $id = validarORedireccionar("/admin");
         $instrumento = Instrumento::findById($id);
+        $musicos = Musico::findAll();
         $errores = Instrumento::getErrores();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -51,6 +59,7 @@ class InstrumentoController{
 
         $router->render("layoutAdmin", "instrumentos/actualizar", [
             "instrumento" => $instrumento,
+            "musicos" => $musicos,
             "errores" => $errores
         ]);
     }

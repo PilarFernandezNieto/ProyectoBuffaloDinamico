@@ -60,7 +60,7 @@
             </li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-music-note-beamed"></i><span class="app-menu__label">Músicos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="/musicos/listado.php"><i class="icon bi bi-circle-fill"></i>Listado de Músicos</a></li>
+                    <li><a class="treeview-item" href="/musicos/listado"><i class="icon bi bi-circle-fill"></i>Listado de Músicos</a></li>
                 </ul>
             </li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-solid fa-guitar"></i></i><span class="app-menu__label">Instrumentos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
@@ -94,6 +94,7 @@
     <!-- FOOTER -->
     <script src="/../build/js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     <script src="/../build/js/bootstrap.min.js"></script>

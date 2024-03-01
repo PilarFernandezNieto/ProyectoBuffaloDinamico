@@ -19,9 +19,12 @@ function lanza() {
   listadoUsuarios();
   listadoDiscos();
   listadoInstrumentos();
+  listadoMusicos();
   textoDiscos();
   textoNoticias();
+  textoMusicos();
   lanzaModalDisco();
+  lanzaModalMusico();
 }
 
 /*** modales eliminar **/
@@ -251,7 +254,8 @@ function listadoInstrumentos(){
       responsive: true,
       columnDefs: [
         { width: "5%", targets: 0 },
-        { width: "10%", targets: 2 },
+        { width: "25%", targets: [1, 2] },
+        { width: "10%", targets:  3},
         { className: "text-center", targets: [0] },
       ],
       language: {
@@ -281,6 +285,55 @@ function listadoInstrumentos(){
     });
 
 }
+function listadoMusicos() {
+  $("#listado_musicos").DataTable({
+    responsive: true,
+    columnDefs: [
+      { width: "5%", targets: 0 },
+      { width: "15%", targets: [2, 6] },
+      { width: "5%", targets: [3, 4] },
+      { width: "10%", targets: [1, 5] },
+      { width: "25%", targets: 7 },
+      {
+        targets: 7,
+        render: function (data, type, row, meta) {
+          if (type === "display") {
+            return data.length > 50 ? data.substr(0, 50) + "..." : data;
+          } else {
+            return data;
+          }
+        },
+      },
+
+      { className: "text-center", targets: [0, 3, 4, 5] },
+    ],
+    language: {
+      decimal: "",
+      emptyTable: "No hay datos que mostrar",
+      info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+      infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+      infoFiltered: "(filtered from _MAX_ total entries)",
+      infoPostFix: "",
+      thousands: ",",
+      lengthMenu: "Mostrando _MENU_ entradas",
+      loadingRecords: "Cargando...",
+      processing: "",
+      search: "Búsqueda:",
+      zeroRecords: "No hay registros",
+      paginate: {
+        first: "Primera",
+        last: "Última",
+        next: "Siguiente",
+        previous: "Anterior",
+      },
+      aria: {
+        sortAscending: ": activate to sort column ascending",
+        sortDescending: ": activate to sort column descending",
+      },
+    },
+  });
+}
+
 
 function textoNoticias(){
   $("#texto").summernote({
@@ -315,23 +368,57 @@ function textoDiscos(){
   });
 }
 
+function textoMusicos(){
+    $("#biografia").summernote({
+      placeholder: "Biografía",
+      tabsize: 2,
+      height: 120,
+      toolbar: [
+        ["style", ["style"]],
+        ["font", ["bold", "underline", "clear"]],
+        ["color", ["color"]],
+        ["para", ["ul", "ol", "paragraph"]],
+        ["table", ["table"]],
+        ["insert", ["link", "picture", "video"]],
+        ["view", ["fullscreen", "codeview", "help"]],
+      ],
+    });
+}
+
 function lanzaModalDisco(){
    $(".texto-recortado").on("click", function (e) {
      let discoID = $(this).closest("tr").find("td:eq(0)").text();
      $.ajax({
        type: "POST",
-       url: "http://localhost:3000/api/getTextoCompleto.php?id=" + discoID,
+       url: "http://localhost:3000/api/getTextoCompletoDisco.php?id=" + discoID,
        contentType: "application/json",
        dataType: "json",
        cache: false,
        success: function (response) {
-         lanzaInformacionDisco(response.titulo, response.informacion);
+         lanzaInformacion(response.titulo, response.informacion);
        },
      });
    });
 
 }
-function lanzaInformacionDisco(titulo, informacion){
+function lanzaModalMusico() {
+  $(".texto-recortado-musico").on("click", function (e) {
+    let musicoID = $(this).closest("tr").find("td:eq(0)").text();
+    $.ajax({
+      type: "POST",
+      url:
+        "http://localhost:3000/api/getTextoCompletoMusico.php?id=" + musicoID,
+      contentType: "application/json",
+      dataType: "json",
+      cache: false,
+      success: function (response) {
+        console.log(response);
+        lanzaInformacion(response.alias, response.biografia);
+      },
+    });
+  });
+}
+function lanzaInformacion(titulo, informacion){
   Swal.fire({
     title: titulo,
     html: informacion,

@@ -59,6 +59,7 @@ class ActiveRecord {
         $query .= join(", ", $valores);
         $query .= " WHERE id='" . self::$db->escape_string($this->id) . "'";
         $query .= " LIMIT 1";
+     
 
         try {
 
@@ -151,6 +152,7 @@ class ActiveRecord {
     public static function consultarSQL($query) {
         $resultado = self::$db->query($query);
 
+       
         $aDatos = [];
         while ($registro = $resultado->fetch_assoc()) {
             $aDatos[] = static::crearObjeto($registro);
@@ -160,6 +162,7 @@ class ActiveRecord {
     }
 
     protected static function crearObjeto($registro) {
+     
         $objeto = new static;
         foreach ($registro as $key => $value) {
             if (property_exists($objeto, $key)) {
