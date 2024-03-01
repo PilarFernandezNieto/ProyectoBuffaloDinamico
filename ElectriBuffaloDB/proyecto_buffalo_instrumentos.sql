@@ -25,8 +25,11 @@ DROP TABLE IF EXISTS `instrumentos`;
 CREATE TABLE `instrumentos` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `idmusico` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_instrumento_musico_idx` (`idmusico`),
+  CONSTRAINT `fk_instrumento_musico` FOREIGN KEY (`idmusico`) REFERENCES `musicos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +38,7 @@ CREATE TABLE `instrumentos` (
 
 LOCK TABLES `instrumentos` WRITE;
 /*!40000 ALTER TABLE `instrumentos` DISABLE KEYS */;
+INSERT INTO `instrumentos` VALUES (4,'Mandolina',NULL),(5,'Guitarra eléctrica',NULL),(6,'Guitarra acústica',NULL),(7,'Bajo',NULL),(8,'Batería ',2),(9,'Teclado',NULL),(10,'Guitarra acústica',3),(11,'Guitarra eléctrica',3),(12,'Mandolina',3),(13,'Voz',3),(14,'Bajo',4),(15,'Wurlitzer',5),(16,'Teclados',4),(17,'Hammond',5);
 /*!40000 ALTER TABLE `instrumentos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-26 23:21:10
+-- Dump completed on 2024-03-01 21:14:53
