@@ -20,6 +20,8 @@ function lanza() {
   listadoDiscos();
   listadoInstrumentos();
   listadoMusicos();
+  listadoCategorias();
+  listadoProductos();
   textoDiscos();
   textosDiscos();
   textoNoticias();
@@ -124,6 +126,79 @@ function notificacionesAcciones() {
     });
   }
 }
+function listadoCategorias() {
+  $("#listado_categorias").DataTable({
+      responsive: true,
+      columnDefs: [
+        { width: "5%", targets: [0, 2] },
+        { width: "50%", targets: [1] },
+        { className: "text-center", targets: [0] },
+      ],
+      language: {
+        decimal: "",
+        emptyTable: "No hay datos que mostrar",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+        infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+        infoFiltered: "(filtered from _MAX_ total entries)",
+        infoPostFix: "",
+        thousands: ",",
+        lengthMenu: "Mostrando _MENU_ entradas",
+        loadingRecords: "Cargando...",
+        processing: "",
+        search: "Búsqueda:",
+        zeroRecords: "No hay registros",
+        paginate: {
+          first: "Primera",
+          last: "Última",
+          next: "Siguiente",
+          previous: "Anterior",
+        },
+        aria: {
+          sortAscending: ": activate to sort column ascending",
+          sortDescending: ": activate to sort column descending",
+        },
+      },
+    });
+  }
+
+  function listadoProductos() {
+    $("#listado_productos").DataTable({
+      responsive: true,
+      order: [[5, "desc"]],
+      columnDefs: [
+        { width: "5%", targets: 0 },
+        { width: "30%", targets: [1] },
+        { width: "10%", targets: [2, 3, 4, 5, 6] },
+        { className: "text-center", targets: [0, 4, 5] },
+      ],
+      language: {
+        decimal: "",
+        emptyTable: "No hay datos que mostrar",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+        infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+        infoFiltered: "(filtered from _MAX_ total entries)",
+        infoPostFix: "",
+        thousands: ",",
+        lengthMenu: "Mostrando _MENU_ entradas",
+        loadingRecords: "Cargando...",
+        processing: "",
+        search: "Búsqueda:",
+        zeroRecords: "No hay registros",
+        paginate: {
+          first: "Primera",
+          last: "Última",
+          next: "Siguiente",
+          previous: "Anterior",
+        },
+        aria: {
+          sortAscending: ": activate to sort column ascending",
+          sortDescending: ": activate to sort column descending",
+        },
+      },
+    });
+  }
+
+
 
 function listadoNoticias(){
   $("#listado_noticias").DataTable({
@@ -291,11 +366,9 @@ function listadoMusicos() {
   $("#listado_musicos").DataTable({
     responsive: true,
     columnDefs: [
-      { width: "5%", targets: 0 },
-      { width: "15%", targets: [2] },
-      { width: "5%", targets: [3, 4] },
+      { width: "5%", targets: [0, 3, 4, 7] },
       { width: "20%", targets: 6 },
-      { width: "10%", targets: [1,7, 5] },
+      { width: "10%", targets: [1,2, 5] },
       {
         targets: 6,
         render: function (data, type, row, meta) {

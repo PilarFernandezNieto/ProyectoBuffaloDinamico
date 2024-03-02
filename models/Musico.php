@@ -1,6 +1,7 @@
 <?php
 namespace Model;
 
+// todo cambiar a clase Productos
 class Musico extends ActiveRecord{
     protected static $tabla = "musicos";
     protected static $columnasDB = [

@@ -1,5 +1,7 @@
 <?php
+
 namespace Model;
+
 use Traits\FormatoEnum;
 
 
@@ -26,7 +28,7 @@ class Disco extends ActiveRecord {
     public $imagen;
     public $fecha_creacion;
 
-    public function __construct($args = []){
+    public function __construct($args = []) {
         $this->id = $args["id"] ?? null;
         $this->titulo = $args["titulo"] ?? "";
         $this->anio_edicion = $args["anio_edicion"] ?? "";
@@ -42,7 +44,7 @@ class Disco extends ActiveRecord {
             self::$errores[] = "Debes introducir un título";
         }
         if (!$this->anio_edicion) {
-         
+
             self::$errores[] = "Debes introducir el año de edición";
         }
         if (empty(trim($this->informacion))) {
@@ -74,14 +76,21 @@ class Disco extends ActiveRecord {
         return self::$errores;
     }
 
-    public function getFormatos(){
-        $formatos = FormatoEnum::getFormatos();
-        return $formatos;
+    public function getFormatos() {
+        return [
+            'VINILO',
+            'CD'
+        ];
     }
 
-    public function getInfo(){
+    public function getInfo() {
         return $this->informacion;
     }
 }
+
+
+
+
+
 
 

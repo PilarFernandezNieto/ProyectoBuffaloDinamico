@@ -68,7 +68,11 @@
                     <li><a class="treeview-item" href="/instrumentos/listado"><i class="icon bi bi-circle-fill"></i>Listado de Instrumentos</a></li>
                 </ul>
             </li>
+
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-vinyl"></i><span class="app-menu__label">Productos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="/productos/listado"><i class="icon bi bi-circle-fill"></i>Listado de Productos</a></li>
+                </ul>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="/musicos/listado.php"><i class="icon bi bi-circle-fill"></i>Listado de Discos</a></li>
                     <li><a class="treeview-item" href="form-components.html"><i class="icon bi bi-circle-fill"></i>Listado de Camisetas</a></li>
@@ -76,7 +80,7 @@
             </li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-table"></i><span class="app-menu__label">Categorías</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="table-basic.html"><i class="icon bi bi-circle-fill"></i>Listado de Categorías</a></li>
+                    <li><a class="treeview-item" href="/categorias/listado"><i class="icon bi bi-circle-fill"></i>Listado de Categorías</a></li>
                 </ul>
             </li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-people"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator bi bi-chevron-right"></i></a>

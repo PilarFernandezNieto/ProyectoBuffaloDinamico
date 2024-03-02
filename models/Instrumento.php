@@ -2,6 +2,7 @@
 
 namespace Model;
 
+#[\AllowDynamicProperties]
 class Instrumento extends ActiveRecord {
     protected static $tabla = "instrumentos";
     protected static $columnasDB = [

@@ -4,6 +4,7 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Disco;
+use Model\Categoria;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class DiscoController{
@@ -18,11 +19,14 @@ class DiscoController{
     public static function crear(Router $router) {
         
         $disco = new Disco();
+
+     
         $errores = Disco::getErrores();
         $formatos = $disco->getFormatos();
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $categorias = Categoria::findAll();
 
-           
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+          
             $disco = new Disco($_POST["disco"]);
             $disco->formato = $_POST["formato"];
 
@@ -36,11 +40,7 @@ class DiscoController{
             $errores = $disco->validar();
 
             if (empty($errores)) {
-             
-                if (!is_dir(CARPETA_IMAGENES)) {
-                    mkdir(CARPETA_IMAGENES);
-                }
-                $imagen->save(CARPETA_IMAGENES . $nombreImagen);
+      
 
                 $disco->guardar();
             }
@@ -49,8 +49,8 @@ class DiscoController{
         $router->render("layoutAdmin", "discos/crear", [
             "disco" => $disco,
             "formatos" => $formatos,
-            "errores" => $errores
-
+            "errores" => $errores,
+            "categorias" => $categorias
         ]);
     }
 

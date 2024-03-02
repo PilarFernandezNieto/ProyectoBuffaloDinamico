@@ -13,23 +13,6 @@
             <div class="tile">
 
                 <table class="table table-hover table-bordered listado" id="listado_discos">
-                    <!-- modal -->
-                    <!-- <div class="modal-dialog modal-dialog-centered modal" id="textoDescripcion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 id="modalTitle" class="mb-0"></h4>
-
-                            </div>
-                            <div class="modal-body" id="modalBody" >
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="" id="cierraModal" data-bs-dismiss="modal">Cerrar</button>
-                            </div>
-                        </div>
-
-                    </div> -->
-
                     <div class="tile-body">
 
                         <thead>
