@@ -414,7 +414,7 @@ function textoNoticias(){
   $("#texto").summernote({
     placeholder: "Texto de la noticia",
     tabsize: 2,
-    height: 120,
+    height: 200,
     toolbar: [
       ["style", ["style"]],
       ["font", ["bold", "underline", "clear"]],
@@ -430,7 +430,7 @@ function textoDiscos(){
   $("#informacion").summernote({
     placeholder: "Información del disco",
     tabsize: 2,
-    height: 120,
+    height: 200,
     toolbar: [
       ["style", ["style"]],
       ["font", ["bold", "underline", "clear"]],
@@ -446,7 +446,7 @@ function textosDiscos() {
   $("#textos").summernote({
     placeholder: "Información del disco",
     tabsize: 2,
-    height: 120,
+    height: 200,
     toolbar: [
       ["style", ["style"]],
       ["font", ["bold", "underline", "clear"]],
@@ -463,7 +463,7 @@ function textoMusicos(){
     $("#biografia").summernote({
       placeholder: "Biografía",
       tabsize: 2,
-      height: 120,
+      height: 200,
       toolbar: [
         ["style", ["style"]],
         ["font", ["bold", "underline", "clear"]],

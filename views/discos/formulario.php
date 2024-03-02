@@ -33,11 +33,11 @@
     </div>
     <div class="mb-3 col">
         <label for="categoria" class="form-label">Categoría</label>
-        <select name="producto[idcategoria]" id="categoria" class="">
+        <select name="disco[idcategoria]" id="categoria" class="">
             <option value="" selected>--Seleccione categoría--</option>
             <?php foreach ($categorias as $categoria) : ?>
     
-                <option class="mb-3" <?php echo ($producto->idcategoria === $categoria->id) ? "selected" : ""; ?> value="<?php echo s($categoria->id); ?>"><?php echo s(strtoupper($categoria->nombre)); ?></option>
+                <option class="mb-3" <?php echo ($disco->idcategoria === $categoria->id) ? "selected" : ""; ?> value="<?php echo s($categoria->id); ?>"><?php echo s(strtoupper($categoria->nombre)); ?></option>
             <?php endforeach; ?>
     
         </select>

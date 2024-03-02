@@ -16,6 +16,7 @@ class Disco extends ActiveRecord {
         "informacion",
         "textos",
         "imagen",
+        "idcategoria",
         "fecha_creacion"
     ];
     public $id;
@@ -26,6 +27,7 @@ class Disco extends ActiveRecord {
     public $informacion;
     public $textos;
     public $imagen;
+    public $idcategoria;
     public $fecha_creacion;
 
     public function __construct($args = []) {
@@ -37,6 +39,7 @@ class Disco extends ActiveRecord {
         $this->informacion = $args["informacion"] ?? "";
         $this->textos = $args["textos"] ?? "";
         $this->imagen = $args["imagen"] ?? "";
+        $this->idcategoria = $args["idcategoria"] ?? 0;
         $this->fecha_creacion = date("Y/m/d");
     }
     public function validar() {
@@ -49,20 +52,7 @@ class Disco extends ActiveRecord {
         }
         if (empty(trim($this->informacion))) {
             self::$errores[] = "Debes introducir un texto";
-        } else {
-            $texto_limpio = strip_tags($this->informacion); // Elimina todas las etiquetas HTML del texto
-            if (empty(trim($texto_limpio))) {
-                self::$errores[] = "Debes introducir un texto válido";
-            }
-        }
-        if (empty(trim($this->textos))) {
-            self::$errores[] = "Debes introducir un texto";
-        } else {
-            $texto_limpio = strip_tags($this->textos); // Elimina todas las etiquetas HTML del texto
-            if (empty(trim($texto_limpio))) {
-                self::$errores[] = "Debes introducir un texto válido";
-            }
-        }
+        } 
         if (!$this->formato) {
             self::$errores[] = "Debes introducir un formato";
         }
@@ -71,6 +61,9 @@ class Disco extends ActiveRecord {
         }
         if (!$this->imagen) {
             self::$errores[] = "Debes introducir una imagen";
+        }
+        if (!$this->idcategoria) {
+            self::$errores[] = "Debes introducir una categoría";
         }
 
         return self::$errores;

@@ -48,41 +48,48 @@
 
         <ul class="app-menu">
             <li><a class="app-menu__item" href="/admin"><i class="app-menu__icon bi bi-speedometer"></i><span class="app-menu__label">Administrador</span></a></li>
+            <!-- NOTICIAS -->
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-newspaper"></i><span class="app-menu__label">Noticias</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="/noticias/listado"><i class="icon bi bi-circle-fill"></i>Listado de Noticias</a></li>
                 </ul>
             </li>
+
+            <!-- CATEGORIAS -->
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-table"></i><span class="app-menu__label">Categorías</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="/categorias/listado"><i class="icon bi bi-circle-fill"></i>Listado de Categorías</a></li>
+                </ul>
+            </li>
+
+            <!-- DISCOS -->
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-vinyl"></i><span class="app-menu__label">Discos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="/discos/listado"><i class="icon bi bi-circle-fill"></i>Listado de Discos</a></li>
                 </ul>
             </li>
+            <!-- CAMISETAS -->
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-solid fa-shirt"></i><span class="app-menu__label">Camisetas</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="form-components.html"><i class="icon bi bi-circle-fill"></i>Listado de Camisetas</a></li>
+                </ul>
+            </li>
+
+            <!-- MUSICOS -->
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-music-note-beamed"></i><span class="app-menu__label">Músicos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="/musicos/listado"><i class="icon bi bi-circle-fill"></i>Listado de Músicos</a></li>
                 </ul>
             </li>
+
+            <!-- INSTRUMENTOS -->
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-solid fa-guitar"></i></i><span class="app-menu__label">Instrumentos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="/instrumentos/listado"><i class="icon bi bi-circle-fill"></i>Listado de Instrumentos</a></li>
                 </ul>
             </li>
 
-            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-vinyl"></i><span class="app-menu__label">Productos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="/productos/listado"><i class="icon bi bi-circle-fill"></i>Listado de Productos</a></li>
-                </ul>
-                <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="/musicos/listado.php"><i class="icon bi bi-circle-fill"></i>Listado de Discos</a></li>
-                    <li><a class="treeview-item" href="form-components.html"><i class="icon bi bi-circle-fill"></i>Listado de Camisetas</a></li>
-                </ul>
-            </li>
-            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-table"></i><span class="app-menu__label">Categorías</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="/categorias/listado"><i class="icon bi bi-circle-fill"></i>Listado de Categorías</a></li>
-                </ul>
-            </li>
+            <!-- USUARIOS -->
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-people"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="/usuarios/listado"><i class="icon bi bi-circle-fill"></i>Listado de Usuarios</a></li>

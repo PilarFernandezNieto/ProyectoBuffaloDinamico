@@ -19,8 +19,6 @@ class DiscoController{
     public static function crear(Router $router) {
         
         $disco = new Disco();
-
-     
         $errores = Disco::getErrores();
         $formatos = $disco->getFormatos();
         $categorias = Categoria::findAll();
@@ -58,10 +56,9 @@ class DiscoController{
         $id = validarORedireccionar("/admin");
 
         $errores = Disco::getErrores();
-
-       
         $disco = Disco::findById($id);
         $formatos = $disco->getFormatos();
+        $categorias = Categoria::findAll();
       
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -90,7 +87,8 @@ class DiscoController{
         $router->render("layoutAdmin", "discos/actualizar", [
             "disco" => $disco,
             "errores" => $errores,
-            "formatos" => $formatos
+            "formatos" => $formatos,
+            "categorias" => $categorias
         ]);
     }
 
