@@ -78,13 +78,6 @@
                 </ul>
             </li>
 
-            <!-- INSTRUMENTOS -->
-            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-solid fa-guitar"></i></i><span class="app-menu__label">Instrumentos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="/instrumentos/listado"><i class="icon bi bi-circle-fill"></i>Listado de Instrumentos</a></li>
-                </ul>
-            </li>
-
             <!-- USUARIOS -->
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-people"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">

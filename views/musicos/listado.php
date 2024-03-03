@@ -35,7 +35,7 @@
                                     <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $musico->imagen; ?>" style="width: 100px" alt="">
                                     </td>
                                     <td><?php echo $musico->origen; ?></td>
-                                    <td><?php echo $musico->fecha_nac; ?></td>
+                                    <td><?php echo fechas($musico->fecha_nac); ?></td>
                                     <td class="texto-recortado-musico"><?php echo $musico->biografia; ?>
 
                                     </td>

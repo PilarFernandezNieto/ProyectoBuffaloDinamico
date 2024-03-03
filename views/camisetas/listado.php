@@ -3,7 +3,7 @@
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="bi bi-house-door"></i></li>
             <li class="breadcrumb-item">Camisetas</li>
-            <li class="breadcrumb-item active"><a href="/listado">Listado de camisetas</a></li>
+            <li class="breadcrumb-item active"><a href="/camisetas/listado">Listado de camisetas</a></li>
         </ul>
     </div>
     <a href="/productos/crear" class="boton-fireBrick">Nueva camiseta</a>
