@@ -2,7 +2,7 @@
 namespace Controllers;
 use MVC\Router;
 use Model\Noticia;
-use Model\Disco;
+use Model\Producto;
 
 class PaginasController{
     public static function index(Router $router){
@@ -43,7 +43,7 @@ class PaginasController{
     }
     public static function discografia(Router $router) {
         $title = "Discografía";
-        $discos = Disco::findAll("anio_edicion");
+        $discos = Producto::getProducto("discos", "anio_edicion DESC");
 
         $router->render("layout", "paginas/discografia", [
             "discos" => $discos,
@@ -53,8 +53,8 @@ class PaginasController{
     }
     public static function ficha_disco(Router $router) {
         $id = validarORedireccionar("/");
-        $disco = Disco::findById($id);
-        $title = $disco->titulo;
+        $disco = Producto::findById($id);
+        $title = $disco->nombre;
        
 
         $router->render("layout", "paginas/ficha_disco", [

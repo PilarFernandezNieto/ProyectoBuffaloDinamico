@@ -62,14 +62,6 @@ $router->get("/musicos/actualizar", [MusicoController::class, "actualizar"]);
 $router->post("/musicos/actualizar", [MusicoController::class, "actualizar"]);
 $router->post("/musicos/eliminar", [MusicoController::class, "eliminar"]);
 
-/** INSTRUMENTOS **/
-$router->get("/instrumentos/listado", [InstrumentoController::class, "listado"]);
-$router->get("/instrumentos/crear", [InstrumentoController::class, "crear"]);
-$router->post("/instrumentos/crear", [InstrumentoController::class, "crear"]);
-$router->get("/instrumentos/actualizar", [InstrumentoController::class, "actualizar"]);
-$router->post("/instrumentos/actualizar", [InstrumentoController::class, "actualizar"]);
-$router->post("/instrumentos/eliminar", [InstrumentoController::class, "eliminar"]);
-
 /** ZONA PÚBLICA */
 $router->get("/", [PaginasController::class, "index"]);
 $router->get("/historia", [PaginasController::class, "historia"]);

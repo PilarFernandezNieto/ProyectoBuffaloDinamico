@@ -1,20 +1,16 @@
 <main class="contenedor seccion">
-    <h1><?php echo $disco->titulo; ?></h1>
+    <h1><?php echo $disco->nombre; ?></h1>
     <div class="contenido-ficha-disco seccion5">
         <div class="texto-disco">
-            <p>Año de edición: <span>2009</span></p>
-            <p>Sello: <span>Ouroboros Records</span></p>
-            <p>Formato: <span>CD</span></p>
-           <p><?php echo $disco->textos; ?></p>
+            <p>Año de edición: <span><?php echo $disco->anio_edicion; ?></span></p>
+            <p>Sello: <span><?php echo $disco->sello; ?></span></p>
+            <p>Formato: <span><?php echo $disco->formato; ?></span></p>
+            <p><?php echo $disco->texto; ?></p>
 
         </div>
         <div class="imagen-disco">
-            <picture>
-                <source srcset="build/img/hiddn.webp" type="image/webp" />
-                <source srcset="build/img/hiddn.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="build/img/hiddn.jpg" alt="cover_hidin" title="Portada Hiddin" />
-            </picture>
-
+            <img loading="lazy" class="img-fluid" src="/imagenes/<?php echo $disco->imagen; ?>" alt="imagen_<?php echo $disco->nombre; ?>" />
         </div>
     </div>
+    <a href="/discografia" class="boton-fireBrick">Volver</a>
 </main>

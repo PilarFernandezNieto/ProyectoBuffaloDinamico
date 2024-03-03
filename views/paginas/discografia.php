@@ -5,7 +5,7 @@
         <div class="disco">
                 <img loading="lazy" class="img-fluid" src="/imagenes/<?php echo $disco->imagen; ?>" alt="imagen_<?php echo $disco->nombre; ?>" />
             <div class="contenido-disco">
-                <h2><?php echo $disco->titulo; ?></h2>
+                <h2><?php echo $disco->nombre; ?></h2>
                 <p><span>Año de edición: </span><?php echo $disco->anio_edicion; ?></p>
                 <p><?php echo $disco->informacion; ?></p>
                 <a href="/ficha_disco?id=<?php echo $disco->id; ?>" class="boton-fireBrick">Ver ficha</a>
