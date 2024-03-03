@@ -32,7 +32,7 @@
                                     <td id="musicoId"><?php echo $musico->id; ?></td>
                                     <td><?php echo $musico->nombre; ?></td>
                                     <td><?php echo $musico->apellidos; ?></td>
-                                    <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $musico->imagen; ?>" style="width: 150px" alt="">
+                                    <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $musico->imagen; ?>" style="width: 100px" alt="">
                                     </td>
                                     <td><?php echo $musico->origen; ?></td>
                                     <td><?php echo $musico->fecha_nac; ?></td>

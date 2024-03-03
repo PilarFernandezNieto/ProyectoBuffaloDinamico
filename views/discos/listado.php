@@ -32,7 +32,7 @@
                                 <tr>
                                     <td id="discoId"><?php echo $disco->id; ?></td>
                                     <td><?php echo $disco->titulo; ?></td>
-                                    <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $disco->imagen; ?>" style="width: 150px" alt="">
+                                    <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $disco->imagen; ?>" style="width: 100px" alt="">
                                     </td>
                                     <td><?php echo $disco->anio_edicion; ?></td>
                                     <td><?php echo $disco->formato; ?></td>

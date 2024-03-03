@@ -62,6 +62,15 @@
                 </ul>
             </li>
 
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-vinyl"></i><span class="app-menu__label">Productos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="/productos/listado"><i class="icon fa-solid fa-record-vinyl"></i>Listado de Productos</a></li>
+                    <li><a class="treeview-item" href="/discos/listado"><i class="icon fa-solid fa-record-vinyl"></i>Listado de Discos</a></li>
+                    <li><a class="treeview-item" href="form-components.html"><i class="icon fa-solid fa-shirt"></i>Listado de Camisetas</a></li>
+                </ul>
+
+            </li>
+
             <!-- DISCOS -->
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-vinyl"></i><span class="app-menu__label">Discos</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">

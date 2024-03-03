@@ -29,7 +29,7 @@
                                         <td><?php echo $noticia->id; ?></td>
                                         <td><?php echo $noticia->titulo; ?></td>
                                         <td><?php echo $noticia->intro; ?></td>
-                                        <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $noticia->imagen; ?>" style="width: 150px" alt="">
+                                        <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $noticia->imagen; ?>" style="width: 100px" alt="">
                                         </td>
                                         <td><?php echo fechas($noticia->fecha_creacion); ?></td>
                                         <td><?php echo fechas($noticia->fecha); ?></td>
