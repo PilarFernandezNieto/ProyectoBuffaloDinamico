@@ -72,3 +72,11 @@ table.dataTable thead>tr>th{
 .texto-recortado:hover, .texto-recortado-musico:hover {
     cursor:pointer;
 }
+fieldset {
+    border: 1px solid $caption;
+    margin: 1rem 0;
+    border-radius: 3.75px;
+    legend {
+        font-size: 2rem;
+    }
+}
