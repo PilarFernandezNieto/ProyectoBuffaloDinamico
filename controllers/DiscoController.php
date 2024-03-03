@@ -25,6 +25,7 @@ class DiscoController{
         $categorias = Categoria::findAll();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            debuguear($_POST);
           
             $disco = new Producto($_POST["disco"]);
             $disco->formato = $_POST["formato"];
