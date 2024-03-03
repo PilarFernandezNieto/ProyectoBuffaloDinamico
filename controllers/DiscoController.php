@@ -38,6 +38,10 @@ class DiscoController{
             $errores = $disco->validar();
 
             if (empty($errores)) {
+                if (!is_dir(CARPETA_IMAGENES)) {
+                    mkdir(CARPETA_IMAGENES);
+                }
+                $imagen->save(CARPETA_IMAGENES . $nombreImagen);
       
 
                 $disco->guardar();

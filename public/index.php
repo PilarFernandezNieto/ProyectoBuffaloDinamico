@@ -11,6 +11,7 @@ use Controllers\PaginasController;
 use Controllers\MusicoController;
 use Controllers\InstrumentoController;
 use Controllers\CategoriaController;
+use Controllers\ProductoController;
 
 $router = new Router();
 
@@ -41,7 +42,14 @@ $router->post("/discos/crear", [DiscoController::class, "crear"]);
 $router->get("/discos/actualizar", [DiscoController::class, "actualizar"]);
 $router->post("/discos/actualizar", [DiscoController::class, "actualizar"]);
 $router->post("/discos/eliminar", [DiscoController::class, "eliminar"]);
-$router->post("/discos/textocompleto", [DiscoController::class, "getTextoCompleto"]);
+
+/** PRODUCTOS **/
+$router->get("/productos/listado", [ProductoController::class, "listado"]);
+$router->get("/productos/crear", [ProductoController::class, "crear"]);
+$router->post("/productos/crear", [ProductoController::class, "crear"]);
+$router->get("/productos/actualizar", [ProductoController::class, "actualizar"]);
+$router->post("/productos/actualizar", [ProductoController::class, "actualizar"]);
+$router->post("/productos/eliminar", [ProductoController::class, "eliminar"]);
 
 /** CATEGORIAS **/
 $router->get("/categorias/listado", [CategoriaController::class, "listado"]);

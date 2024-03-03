@@ -34,7 +34,8 @@ function truncate(string $texto, int $cantidad): string {
         return $texto;
     }
 }
-function limpiarHTML($html, $tagsPermitidas = '<b>, </b>, <a>, </a>, <br>, <p>, </p>, <ul>, </ul>, <li>, </li>, <u>, </u>') {
+function limpiarHTML($html, $tagsPermitidas = '<b>, </b>, <a>, </a>, <br>') {
+    // Eliminar todas las etiquetas HTML excepto las permitidas
     $htmlLimpio = strip_tags($html ?? "", $tagsPermitidas);
     return $htmlLimpio;
 }
