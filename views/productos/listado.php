@@ -6,7 +6,11 @@
             <li class="breadcrumb-item active"><a href="/listado">Listado de productos</a></li>
         </ul>
     </div>
-    <a href="/productos/crear" class="boton-fireBrick">Nuevo producto</a>
+    <div>
+        <a href="/productos/crear" class="boton-fireBrick">Nuevo producto</a>
+        <a href="/discos/listado" class="boton-fireBrick">Listado de discos</a>
+        <a href="/camisetas/listado" class="boton-fireBrick">Listado de camisetas</a>
+    </div>
     <div class="row seccion">
 
         <div class="col-md-12">

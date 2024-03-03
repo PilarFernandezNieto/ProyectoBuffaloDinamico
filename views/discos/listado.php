@@ -6,7 +6,7 @@
             <li class="breadcrumb-item active"><a href="/listado">Listado de discos</a></li>
         </ul>
     </div>
-    <a href="/discos/crear" class="boton-fireBrick">Nuevo disco</a>
+    <a href="/productos/crear" class="boton-fireBrick">Nuevo disco</a>
     <div class="row seccion">
 
         <div class="col-md-12">
@@ -31,7 +31,7 @@
                             <?php foreach ($discos as $disco) : ?>
                                 <tr>
                                     <td id="discoId"><?php echo $disco->id; ?></td>
-                                    <td><?php echo $disco->titulo; ?></td>
+                                    <td><?php echo $disco->nombre; ?></td>
                                     <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $disco->imagen; ?>" style="width: 100px" alt="">
                                     </td>
                                     <td><?php echo $disco->anio_edicion; ?></td>
@@ -42,8 +42,8 @@
                                     </td>
                                     <td>
                                         <div class="acciones">
-                                            <a href="/discos/actualizar?id=<?php echo $disco->id; ?>" class="boton-verde"><i class="fa-regular fa-pen-to-square"></i></a>
-                                            <form action="/discos/eliminar" method="POST">
+                                            <a href="/productos/actualizar?id=<?php echo $disco->id; ?>" class="boton-verde"><i class="fa-regular fa-pen-to-square"></i></a>
+                                            <form action="/productos/eliminar" method="POST">
                                                 <input type="hidden" value="<?php echo $disco->id; ?>" name="id">
                                                 <button type="submit" class="boton-rojo eliminar"><i class="fa-regular fa-trash-can"></i></button>
                                             </form>

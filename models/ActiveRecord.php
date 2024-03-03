@@ -27,7 +27,6 @@ class ActiveRecord {
 
     public function crear() {
         $atributos = $this->sanitizarAtributos();
-        debuguear($atributos);
 
         $query = "INSERT INTO " . static::$tabla . "(";
         $query .= join(", ", array_keys($atributos));

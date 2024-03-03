@@ -19,11 +19,13 @@ class ProductoController {
         $errores = Producto::getErrores();
         $formatos = $producto->getFormatos();
         $categorias = Categoria::findAll();
+        $tallas = $producto->getTallas();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $producto = new Producto($_POST["producto"]);
             $producto->formato = $_POST["formato"];
+            $producto->talla = $_POST["talla"];
 
             $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
@@ -47,7 +49,8 @@ class ProductoController {
             "producto" => $producto,
             "formatos" => $formatos,
             "errores" => $errores,
-            "categorias" => $categorias
+            "categorias" => $categorias,
+            "tallas" => $tallas
         ]);
     }
 
@@ -58,12 +61,14 @@ class ProductoController {
         $producto = Producto::findById($id);
         $formatos = $producto->getFormatos();
         $categorias = Categoria::findAll();
+        $tallas = $producto->getTallas();
 
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $args = $_POST["producto"];
             $args["formato"] = $_POST["formato"];
+            $args["talla"] = $_POST["talla"];
             $producto->sincronizar($args);
             $errores = $producto->validar();
 
@@ -87,7 +92,8 @@ class ProductoController {
             "producto" => $producto,
             "errores" => $errores,
             "formatos" => $formatos,
-            "categorias" => $categorias
+            "categorias" => $categorias,
+            "tallas" => $tallas
         ]);
     }
 

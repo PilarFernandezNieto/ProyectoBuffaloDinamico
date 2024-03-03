@@ -100,4 +100,13 @@ class Producto extends ActiveRecord {
     public function getTallas(){
         return ["XS", "S", "M", "L", "XL", "XXL"];
     }
+
+    public static function getProducto( string $categoria){
+        $query = "SELECT productos.* 
+                    FROM productos
+                    JOIN categorias ON productos.idcategoria = categorias.id
+                    WHERE categorias.nombre='".$categoria."'";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
 }

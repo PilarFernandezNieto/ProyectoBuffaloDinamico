@@ -165,7 +165,6 @@ function listadoCategorias() {
   function listadoProductos() {
     $("#listado_productos").DataTable({
       responsive: true,
-      order: [[5, "desc"]],
       columnDefs: [
         { width: "5%", targets: [0, 2] },
         { width: "25%", targets: [1] },

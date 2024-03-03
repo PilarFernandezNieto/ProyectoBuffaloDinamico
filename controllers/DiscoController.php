@@ -5,11 +5,12 @@ namespace Controllers;
 use MVC\Router;
 use Model\Disco;
 use Model\Categoria;
+use Model\Producto;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class DiscoController{
     public static function listado(Router $router) {
-        $discos = Disco::findAll("anio_edicion DESC");
+        $discos = Producto::getProducto("discos");
 
         $router->render("layoutAdmin", "discos/listado", [
             "discos" => $discos
@@ -18,14 +19,14 @@ class DiscoController{
 
     public static function crear(Router $router) {
         
-        $disco = new Disco();
-        $errores = Disco::getErrores();
+        $disco = new Producto();
+        $errores = Producto::getErrores();
         $formatos = $disco->getFormatos();
         $categorias = Categoria::findAll();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
           
-            $disco = new Disco($_POST["disco"]);
+            $disco = new Producto($_POST["disco"]);
             $disco->formato = $_POST["formato"];
 
             $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
@@ -42,8 +43,6 @@ class DiscoController{
                     mkdir(CARPETA_IMAGENES);
                 }
                 $imagen->save(CARPETA_IMAGENES . $nombreImagen);
-      
-
                 $disco->guardar();
             }
         }
@@ -59,8 +58,8 @@ class DiscoController{
     public static function actualizar(Router $router) {
         $id = validarORedireccionar("/admin");
 
-        $errores = Disco::getErrores();
-        $disco = Disco::findById($id);
+        $errores = Producto::getErrores();
+        $disco = Producto::findById($id);
         $formatos = $disco->getFormatos();
         $categorias = Categoria::findAll();
       
@@ -100,7 +99,7 @@ class DiscoController{
         $id = filter_var($_POST["id"], FILTER_VALIDATE_INT);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $disco = Disco::findById($id);
+            $disco = Producto::findById($id);
             $disco->eliminar();
         }
     }
