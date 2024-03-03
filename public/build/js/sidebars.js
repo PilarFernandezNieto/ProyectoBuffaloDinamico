@@ -167,10 +167,10 @@ function listadoCategorias() {
       responsive: true,
       columnDefs: [
         { width: "5%", targets: [0, 2] },
-        { width: "25%", targets: [1] },
+        { width: "20%", targets: [1] },
         { width: "10%", targets: [3, 4, 5] },
-        { width: "15%", targets: [6] },
-        { className: "text-center", targets: [0, 4, 5] },
+        { width: "5%", targets: [6] },
+        { className: "text-center", targets: [0, 3, 4, 5] },
       ],
       language: {
         decimal: "",
@@ -291,7 +291,7 @@ function listadoDiscos(){
           targets: 6,
           render: function (data, type, row, meta) {
             if (type === "display") {
-              return data.length > 50 ? data.substr(0, 50) + "..." : data;
+              return data.length > 50 ? data.substr(0, 60) + "..." : data;
             } else {
               return data;
             }

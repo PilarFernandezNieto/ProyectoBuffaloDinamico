@@ -37,11 +37,6 @@ $router->post("/usuarios/eliminar", [UsuarioController::class, "eliminar"]);
 
 /** DISCOS **/
 $router->get("/discos/listado", [DiscoController::class, "listado"]);
-$router->get("/discos/crear", [DiscoController::class, "crear"]);
-$router->post("/discos/crear", [DiscoController::class, "crear"]);
-$router->get("/discos/actualizar", [DiscoController::class, "actualizar"]);
-$router->post("/discos/actualizar", [DiscoController::class, "actualizar"]);
-$router->post("/discos/eliminar", [DiscoController::class, "eliminar"]);
 
 /** PRODUCTOS **/
 $router->get("/productos/listado", [ProductoController::class, "listado"]);
