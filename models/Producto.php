@@ -102,12 +102,12 @@ class Producto extends ActiveRecord {
     }
 
     public static function getProducto(string $categoria, string $campoOrden= "", int $limit = 0){
-        $orderBy = ($campoOrden != "") ? "$campoOrden" : "";
+        $orderBy = ($campoOrden != "") ? " ORDER BY " . $campoOrden : "";
         $limit = ($limit != 0) ? " LIMIT ".$limit : null;
         $query = "SELECT productos.* 
                     FROM productos
                     JOIN categorias ON productos.idcategoria = categorias.id
-                    WHERE categorias.nombre='".$categoria."' ORDER BY " . $orderBy . $limit;
+                    WHERE categorias.nombre='".$categoria."' ". $orderBy . $limit;
         $resultado = self::consultarSQL($query);
         return $resultado;
     }

@@ -3,15 +3,16 @@ require_once __DIR__ . "/../includes/app.php";
 
 
 use MVC\Router;
-use Controllers\NoticiaController;
 use Controllers\AdminController;
 use Controllers\DiscoController;
-use Controllers\UsuarioController;
-use Controllers\PaginasController;
 use Controllers\MusicoController;
-use Controllers\InstrumentoController;
-use Controllers\CategoriaController;
+use Controllers\NoticiaController;
+use Controllers\PaginasController;
+use Controllers\UsuarioController;
+use Controllers\CamisetaController;
 use Controllers\ProductoController;
+use Controllers\CategoriaController;
+use Controllers\InstrumentoController;
 
 $router = new Router();
 
@@ -35,8 +36,9 @@ $router->get("/usuarios/actualizar", [UsuarioController::class, "actualizar"]);
 $router->post("/usuarios/actualizar", [UsuarioController::class, "actualizar"]);
 $router->post("/usuarios/eliminar", [UsuarioController::class, "eliminar"]);
 
-/** DISCOS **/
+/** DISCOS Y CAMISETAS **/
 $router->get("/discos/listado", [DiscoController::class, "listado"]);
+$router->get("/camisetas/listado", [CamisetaController::class, "listado"]);
 
 /** PRODUCTOS **/
 $router->get("/productos/listado", [ProductoController::class, "listado"]);

@@ -66,7 +66,7 @@
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="/productos/listado"><i class="icon fa-solid fa-record-vinyl"></i>Listado de Productos</a></li>
                     <li><a class="treeview-item" href="/discos/listado"><i class="icon fa-solid fa-record-vinyl"></i>Discos</a></li>
-                    <li><a class="treeview-item" href="form-components.html"><i class="icon fa-solid fa-shirt"></i>Camisetas</a></li>
+                    <li><a class="treeview-item" href="/camisetas/listado"><i class="icon fa-solid fa-shirt"></i>Camisetas</a></li>
                 </ul>
 
             </li>

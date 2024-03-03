@@ -18,7 +18,7 @@ function lanza() {
   listadoNoticias();
   listadoUsuarios();
   listadoDiscos();
-  listadoInstrumentos();
+  listadoCamisetas();
   listadoMusicos();
   listadoCategorias();
   listadoProductos();
@@ -326,43 +326,54 @@ function listadoDiscos(){
       },
     });
 }
-
-function listadoInstrumentos(){
-    $("#listado_instrumentos").DataTable({
-      responsive: true,
-      columnDefs: [
-        { width: "5%", targets: 0 },
-        { width: "25%", targets: [1, 2] },
-        { width: "10%", targets:  3},
-        { className: "text-center", targets: [0] },
-      ],
-      language: {
-        decimal: "",
-        emptyTable: "No hay datos que mostrar",
-        info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
-        infoEmpty: "Mostrando 0 a 0 de 0 entradas",
-        infoFiltered: "(filtered from _MAX_ total entries)",
-        infoPostFix: "",
-        thousands: ",",
-        lengthMenu: "Mostrando _MENU_ entradas",
-        loadingRecords: "Cargando...",
-        processing: "",
-        search: "Búsqueda:",
-        zeroRecords: "No hay registros",
-        paginate: {
-          first: "Primera",
-          last: "Última",
-          next: "Siguiente",
-          previous: "Anterior",
-        },
-        aria: {
-          sortAscending: ": activate to sort column ascending",
-          sortDescending: ": activate to sort column descending",
+function listadoCamisetas() {
+  $("#listado_camisetas").DataTable({
+    responsive: true,
+    columnDefs: [
+      { width: "5%", targets: [0, 4, 6] },
+      { width: "10%", targets: 3},
+      { width: "20%", targets: [1, 5] },
+      { width: "15%", targets: [2] },
+      {
+        targets: 5,
+        render: function (data, type, row, meta) {
+          if (type === "display") {
+            return data.length > 50 ? data.substr(0, 60) + "..." : data;
+          } else {
+            return data;
+          }
         },
       },
-    });
 
+      { className: "text-center", targets: [0, 3, 4] },
+    ],
+    language: {
+      decimal: "",
+      emptyTable: "No hay datos que mostrar",
+      info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+      infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+      infoFiltered: "(filtered from _MAX_ total entries)",
+      infoPostFix: "",
+      thousands: ",",
+      lengthMenu: "Mostrando _MENU_ entradas",
+      loadingRecords: "Cargando...",
+      processing: "",
+      search: "Búsqueda:",
+      zeroRecords: "No hay registros",
+      paginate: {
+        first: "Primera",
+        last: "Última",
+        next: "Siguiente",
+        previous: "Anterior",
+      },
+      aria: {
+        sortAscending: ": activate to sort column ascending",
+        sortDescending: ": activate to sort column descending",
+      },
+    },
+  });
 }
+
 function listadoMusicos() {
   $("#listado_musicos").DataTable({
     responsive: true,
@@ -418,7 +429,7 @@ function textoNoticias(){
     height: 200,
     toolbar: [
       ["style", ["style"]],
-      ["font", ["bold", "underline", "clear"]],
+      ["font", ["bold", "underline", "clear", "italic"]],
       ["color", ["color"]],
       ["para", ["ul", "ol", "paragraph"]],
       ["table", ["table"]],
@@ -434,7 +445,7 @@ function informacionProductos(){
     height: 200,
     toolbar: [
       ["style", ["style"]],
-      ["font", ["bold", "underline", "clear"]],
+      ["font", ["bold", "underline", "clear", "italic"]],
       ["color", ["color"]],
       ["para", ["ul", "ol", "paragraph"]],
       ["table", ["table"]],
@@ -450,7 +461,7 @@ function textosProductos() {
     height: 200,
     toolbar: [
       ["style", ["style"]],
-      ["font", ["bold", "underline", "clear"]],
+      ["font", ["bold", "underline", "clear", "italic"]],
       ["color", ["color"]],
       ["para", ["ul", "ol", "paragraph"]],
       ["table", ["table"]],
@@ -467,7 +478,7 @@ function textoMusicos(){
       height: 200,
       toolbar: [
         ["style", ["style"]],
-        ["font", ["bold", "underline", "clear"]],
+        ["font", ["bold", "underline", "clear", "italic"]],
         ["color", ["color"]],
         ["para", ["ul", "ol", "paragraph"]],
         ["table", ["table"]],

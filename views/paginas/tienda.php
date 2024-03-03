@@ -1,52 +1,22 @@
 <main class="contenedor seccion">
     <h1>Discos</h1>
     <div class="contenedor-productos seccion">
-        <div class="producto">
-            <picture>
-                <source srcset="/build/img/cover_patrolman.webp" type="image/webp" />
-                <source srcset="/build/img/cover_patrolman.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="/build/img/cover_patrolman.webp.jpg" alt="" />
-            </picture>
-            <div class="datos-producto">
-                <h3>Patrolman</h3>
-                <p class="detalle-producto">
-                    Vinilo
-                </p>
-                <a href="" class="boton-fireBrick-block disabled">Disponible</a>
+        <?php foreach ($discos as $disco) : ?>
+            <div class="producto">
+                <img loading="lazy" class="img-fluid" src="/imagenes/<?php echo $disco->imagen; ?>" alt="imagen_<?php echo $disco->nombre; ?>" />
 
+                <div class="datos-producto">
+                    <h3><?php echo $disco->nombre; ?></h3>
+                    <div class="detalle-producto">
+                        <p class="formato"><?php echo $disco->formato; ?></p>
+                        <p class="precio"><?php echo $disco->precio; ?>€</p>
+                    </div>
+                    <a href="" class="boton-fireBrick-block disabled">Disponible</a>
+
+                </div>
             </div>
-        </div>
-        <div class="producto">
-            <picture>
-                <source srcset="/build/img/hiddn.webp" type="image/webp" />
-                <source srcset="/build/img/hiddn.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="/build/img/hiddn.jpg" alt="hiddn" />
-            </picture>
-            <div class="datos-producto">
-                <h3>Hidin' from the butcher</h3>
-                <p class="detalle-producto">
-                    CD
-                </p>
-                <a href="" class="boton-fireBrick-block disabled">Agotado</a>
+        <?php endforeach; ?>
 
-            </div>
-        </div>
-        <div class="producto">
-            <picture>
-                <source srcset="/build/img/keepin.webp" type="image/webp" />
-                <source srcset="/build/img/keepin.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="/build/img/keepin.jpg" alt="" />
-            </picture>
-            <div class="datos-producto">
-                <h3>Keepin'it Warm</h3>
-                <p class="detalle-producto">
-                    CD
-                </p>
-
-                <a href="" class="boton-fireBrick-block disabled">Agotado</a>
-
-            </div>
-        </div>
     </div>
 </main>
 <!-- IMAGEN CENTRAL -->
@@ -64,61 +34,24 @@
 <section class="contenedor seccion">
     <h1>Camisetas</h1>
     <div class="contenedor-productos">
-        <div class="producto">
-            <picture>
-                <source srcset="/build/img/beisbolera_logo buffalo_negra.webp" type="image/webp" />
-                <source srcset="/build/img/beisbolera_logo buffalo_negra.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="/build/img/beisbolera_logo buffalo_negra.jpg" alt="" />
-            </picture>
-            <div class="datos-producto">
-                <h3>Modelo beisbolera</h3>
-                <p class="detalle-producto">
-                    Tallas disponbiles
-                </p>
-                <div class="row">
-                    <p class="col"><span>12.00€ (+gastos de envío)</span></p>
+        <?php foreach ($camisetas as $camiseta) : ?>
+            <div class="producto">
+                <img loading="lazy" class="img-fluid img_camiseta" src="/imagenes/<?php echo $camiseta->imagen; ?>" alt="imagen_<?php echo $camiseta->nombre; ?>" />
+                <div class="datos-producto">
+                    <h3><?php echo $camiseta->nombre; ?></h3>
+                    <div class="detalle-producto">
+                        <p>Tallas disponbiles</p>
+                        <p>Color: <span><?php echo $camiseta->color; ?></span></p>
+                    </div>
+                    <div class="row">
+                        <p class="col"><span><?php echo $camiseta->precio; ?> (+gastos de envío)</span></p>
+
+                    </div>
+                    <a href="" class="boton-fireBrick-block disabled">Disponible</a>
 
                 </div>
-                <a href="" class="boton-fireBrick-block disabled">Disponible</a>
-
             </div>
-        </div>
-        <div class="producto">
-            <picture>
-                <source srcset="/build/img/logo buffalo_negra.webp" type="image/webp" />
-                <source srcset="/build/img/logo buffalo_negra.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="/build/img/logo buffalo_negra.jpg" alt="" />
-            </picture>
-            <div class="datos-producto">
-                <h3>Fondo negro</h3>
-                <p class="detalle-producto">
-                    Tallas disponibles
-                </p>
-                <div class="row">
-                    <p class="col"><span>12.00€ (+gastos de envío)</span></p>
+        <?php endforeach; ?>
 
-                </div>
-                <a href="" class="boton-fireBrick-block disabled">Disponible</a>
-
-            </div>
-        </div>
-        <div class="producto">
-            <picture>
-                <source srcset="/build/img/logo buffalo_roja.webp" type="image/webp" />
-                <source srcset="/build/img/logo buffalo_roja.jpg" type="image/jpeg" />
-                <img loading="lazy" width="200" height="300" src="/build/img/logo buffalo_roja.jpg" alt="" />
-            </picture>
-            <div class="datos-producto">
-                <h3>Fondo rojo</h3>
-                <p class="detalle-producto">
-                    Tallas disponibles
-                </p>
-                <div class="row">
-                    <p class="col"><span>12.00€ (+gastos de envío)</span></p>
-                </div>
-                <a class="boton-fireBrick-block disabled">Disponible</a>
-
-            </div>
-        </div>
     </div>
 </section>

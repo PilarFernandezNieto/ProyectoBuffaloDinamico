@@ -65,9 +65,12 @@ class PaginasController{
     }
     public static function tienda(Router $router) {
         $title = "Tienda";
+        $discos = Producto::getProducto("discos", "anio_edicion DESC");
+        $camisetas = Producto::getProducto("camisetas");
         $router->render("layout", "paginas/tienda", [
-            "title" => $title
-
+            "title" => $title,
+            "discos" => $discos,
+            "camisetas" => $camisetas
         ]);
     }
     public static function contacto(Router $router) {
