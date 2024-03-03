@@ -16,8 +16,6 @@ class ProductoController {
     public static function crear(Router $router) {
 
         $producto = new Producto();
-
-
         $errores = Producto::getErrores();
         $formatos = $producto->getFormatos();
         $categorias = Categoria::findAll();
@@ -36,7 +34,10 @@ class ProductoController {
             $errores = $producto->validar();
 
             if (empty($errores)) {
-
+                if (!is_dir(CARPETA_IMAGENES)) {
+                    mkdir(CARPETA_IMAGENES);
+                }
+                $imagen->save(CARPETA_IMAGENES . $nombreImagen);
 
                 $producto->guardar();
             }
@@ -54,10 +55,9 @@ class ProductoController {
         $id = validarORedireccionar("/admin");
 
         $errores = Producto::getErrores();
-
-
         $producto = Producto::findById($id);
         $formatos = $producto->getFormatos();
+        $categorias = Categoria::findAll();
 
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -86,7 +86,8 @@ class ProductoController {
         $router->render("layoutAdmin", "productos/actualizar", [
             "producto" => $producto,
             "errores" => $errores,
-            "formatos" => $formatos
+            "formatos" => $formatos,
+            "categorias" => $categorias
         ]);
     }
 

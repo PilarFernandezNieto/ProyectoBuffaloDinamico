@@ -27,6 +27,10 @@
 
             </select>
         </div>
+        <div class="mb-3 col">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" id="stock" name="producto[stock]" placeholder="Stock" value="<?php echo s($producto->stock); ?>">
+        </div>
     </div>
 </fieldset>
 <fieldset>
@@ -40,15 +44,12 @@
             <label for="sello" class="form-label">Sello</label>
             <input type="text" id="anio" name="producto[sello]" placeholder="Sello" value="<?php echo s($producto->sello); ?>">
         </div>
-    </div>
-    <div class="row">
         <div class="mb-3 col">
             <label for="formato" class="form-label">Formato</label>
             <select name="formato" id="formato" class="">
-                <option value="" selected class="mb-1"></option>--Seleccione formato--</option>
+                <option value="" selected class="mb-1">--Seleccione formato--</option>
                 <?php foreach ($formatos as $formato) : ?>
-
-                    <option class="mb-3" <?php echo (strtoupper($producto->formato) === $formato) ? "selected" : ""; ?> value="<?php echo s($formato); ?>"><?php echo s($formato); ?></option>
+                    <option class="mb-3" <?php echo (strtoupper($producto->formato ?? "") === $formato) ? "selected" : ""; ?> value="<?php echo s($formato); ?>"><?php echo s($formato); ?></option>
                 <?php endforeach; ?>
 
             </select>
@@ -81,8 +82,8 @@
                     </textarea>
 </div>
 <div class="mb-3">
-    <label class="form-label" for="textos">Textos</label>
-    <textarea id="textos" name="producto[textos]"><?php echo limpiarHTML($producto->textos); ?>
+    <label class="form-label" for="texto">Textos</label>
+    <textarea id="texto" name="producto[texto]"><?php echo limpiarHTML($producto->texto); ?>
                     </textarea>
 </div>
 

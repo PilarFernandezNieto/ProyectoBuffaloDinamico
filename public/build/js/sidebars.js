@@ -22,12 +22,13 @@ function lanza() {
   listadoMusicos();
   listadoCategorias();
   listadoProductos();
-  textoDiscos();
-  textosDiscos();
+  informacionProductos();
+  textosProductos();
   textoNoticias();
   textoMusicos();
-  lanzaModalDisco();
+  //lanzaModalDisco();
   lanzaModalMusico();
+  lanzaModalProducto();
 }
 
 /*** modales eliminar **/
@@ -166,9 +167,10 @@ function listadoCategorias() {
       responsive: true,
       order: [[5, "desc"]],
       columnDefs: [
-        { width: "5%", targets: 0 },
-        { width: "30%", targets: [1] },
-        { width: "10%", targets: [2, 3, 4, 5, 6] },
+        { width: "5%", targets: [0, 2] },
+        { width: "25%", targets: [1] },
+        { width: "10%", targets: [3, 4, 5] },
+        { width: "15%", targets: [6] },
         { className: "text-center", targets: [0, 4, 5] },
       ],
       language: {
@@ -426,11 +428,11 @@ function textoNoticias(){
     ],
   });
 }
-function textoDiscos(){
+function informacionProductos(){
   $("#informacion").summernote({
     placeholder: "Información del disco",
     tabsize: 2,
-    height: 120,
+    height: 200,
     toolbar: [
       ["style", ["style"]],
       ["font", ["bold", "underline", "clear"]],
@@ -442,11 +444,11 @@ function textoDiscos(){
     ],
   });
 }
-function textosDiscos() {
+function textosProductos() {
   $("#textos").summernote({
     placeholder: "Información del disco",
     tabsize: 2,
-    height: 120,
+    height: 200,
     toolbar: [
       ["style", ["style"]],
       ["font", ["bold", "underline", "clear"]],
@@ -486,11 +488,28 @@ function lanzaModalDisco(){
        dataType: "json",
        cache: false,
        success: function (response) {
+        console.log(response);
          lanzaInformacion(response.titulo, response.informacion);
        },
      });
    });
 
+}
+function lanzaModalProducto() {
+  $(".texto-recortado").on("click", function (e) {
+    let productoID = $(this).closest("tr").find("td:eq(0)").text();
+    $.ajax({
+      type: "POST",
+      url:
+        "http://localhost:3000/api/getTextoCompletoProducto.php?id=" + productoID,
+      contentType: "application/json",
+      dataType: "json",
+      cache: false,
+      success: function (response) {
+        lanzaInformacion(response.nombre, response.informacion);
+      },
+    });
+  });
 }
 function lanzaModalMusico() {
   $(".texto-recortado-musico").on("click", function (e) {

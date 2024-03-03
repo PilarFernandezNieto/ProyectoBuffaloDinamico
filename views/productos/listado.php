@@ -20,13 +20,9 @@
                                 <th>#ID</th>
                                 <th>Nombre</th>
                                 <th>Imagen</th>
+                                <th>Precio</th>
                                 <th>Categoria</th>
-                                <th>Año Edición</th>
-                                <th>Formato</th>
-                                <th>Sello</th>
-                                <th>Información</th>
-                                <th>Color</th>
-                                <th>Talla</th>
+                                <th>Stock</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -35,16 +31,11 @@
                                 <tr>
                                     <td id="productoId"><?php echo $producto->id; ?></td>
                                     <td><?php echo $producto->nombre; ?></td>
-                                    <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $producto->imagen; ?>" style="width: 150px" alt="">
+                                    <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $producto->imagen; ?>" style="width: 100px" alt="">
                                     </td>
+                                    <td><?php echo $producto->precio; ?></td>
                                     <td><?php echo $producto->categoria; ?></td>
-                                    <td><?php echo $producto->anio_edicion; ?></td>
-                                    <td><?php echo $producto->formato; ?></td>
-                                    <td><?php echo $producto->sello; ?></td>
-                                    <td><?php echo $producto->color; ?></td>
-                                    <td><?php echo $producto->talla; ?></td>
-                                    <td class="texto-recortado"><?php echo $producto->informacion; ?>
-
+                                    <td><?php echo $producto->stock; ?></td>
                                     </td>
                                     <td>
                                         <div class="acciones">
