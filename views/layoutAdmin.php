@@ -55,6 +55,13 @@
                 </ul>
             </li>
 
+            <!-- CONTENIDOS DESTACADOS -->
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-newspaper"></i><span class="app-menu__label">Contenido</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="/contenidos/listado"><i class="icon bi bi-circle-fill"></i>Listado de contenidos</a></li>
+                </ul>
+            </li>
+
             <!-- CATEGORIAS -->
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-table"></i><span class="app-menu__label">Categorías</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">

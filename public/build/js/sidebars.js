@@ -22,11 +22,12 @@ function lanza() {
   listadoMusicos();
   listadoCategorias();
   listadoProductos();
+  listadoContenidos();
   informacionProductos();
   textosProductos();
   textoNoticias();
   textoMusicos();
-  //lanzaModalDisco();
+  lanzaModalContenido();
   lanzaModalMusico();
   lanzaModalProducto();
 }
@@ -420,6 +421,52 @@ function listadoMusicos() {
     },
   });
 }
+function listadoContenidos() {
+  $("#listado_contenidos").DataTable({
+    responsive: true,
+    columnDefs: [
+      { width: "5%", targets: [0, 3, 4] },
+      { width: "15%", targets: 1 },
+      { width: "40%", targets: [2] },
+      {
+        targets: 2,
+        render: function (data, type, row, meta) {
+          if (type === "display") {
+            return data.length > 50 ? data.substr(0, 150) + "..." : data;
+          } else {
+            return data;
+          }
+        },
+      },
+
+      { className: "text-center", targets: [0, 3, 4] },
+    ],
+    language: {
+      decimal: "",
+      emptyTable: "No hay datos que mostrar",
+      info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+      infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+      infoFiltered: "(filtered from _MAX_ total entries)",
+      infoPostFix: "",
+      thousands: ",",
+      lengthMenu: "Mostrando _MENU_ entradas",
+      loadingRecords: "Cargando...",
+      processing: "",
+      search: "Búsqueda:",
+      zeroRecords: "No hay registros",
+      paginate: {
+        first: "Primera",
+        last: "Última",
+        next: "Siguiente",
+        previous: "Anterior",
+      },
+      aria: {
+        sortAscending: ": activate to sort column ascending",
+        sortDescending: ": activate to sort column descending",
+      },
+    },
+  });
+}
 
 
 function textoNoticias(){
@@ -534,6 +581,25 @@ function lanzaModalMusico() {
       success: function (response) {
         console.log(response);
         lanzaInformacion(response.nombre + " " + response.apellidos, response.biografia);
+      },
+    });
+  });
+}
+function lanzaModalContenido() {
+  $(".texto-recortado-contenido").on("click", function (e) {
+    let musicoID = $(this).closest("tr").find("td:eq(0)").text();
+    $.ajax({
+      type: "POST",
+      url:
+        "http://localhost:3000/api/getTextoCompletoContenido.php?id=" + musicoID,
+      contentType: "application/json",
+      dataType: "json",
+      cache: false,
+      success: function (response) {
+        console.log(response);
+        lanzaInformacion(
+          response.texto
+        );
       },
     });
   });

@@ -7,7 +7,7 @@
             <div class="contenido-disco">
                 <h2><?php echo $disco->nombre; ?></h2>
                 <p><span>Año de edición: </span><?php echo $disco->anio_edicion; ?></p>
-                <p><?php echo $disco->informacion; ?></p>
+                <p><?php echo $disco->texto; ?></p>
                 <a href="/ficha_disco?id=<?php echo $disco->id; ?>" class="boton-fireBrick">Ver ficha</a>
             </div>
 

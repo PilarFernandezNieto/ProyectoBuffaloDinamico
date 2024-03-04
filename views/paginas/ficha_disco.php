@@ -5,7 +5,7 @@
             <p>Año de edición: <span><?php echo $disco->anio_edicion; ?></span></p>
             <p>Sello: <span><?php echo $disco->sello; ?></span></p>
             <p>Formato: <span><?php echo $disco->formato; ?></span></p>
-            <p><?php echo $disco->texto; ?></p>
+            <p><?php echo $disco->informacion; ?></p>
 
         </div>
         <div class="imagen-disco">

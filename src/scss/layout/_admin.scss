@@ -70,7 +70,10 @@ table.dataTable thead>tr>th{
     }
 }
 
-.texto-recortado:hover, .texto-recortado-musico:hover {
+.texto-recortado:hover, 
+.texto-recortado-musico:hover, 
+.texto-recortado-producto:hover, 
+.texto-recortado-contenido:hover {
     cursor:pointer;
 }
 fieldset {

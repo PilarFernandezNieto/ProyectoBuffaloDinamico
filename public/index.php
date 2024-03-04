@@ -12,7 +12,7 @@ use Controllers\UsuarioController;
 use Controllers\CamisetaController;
 use Controllers\ProductoController;
 use Controllers\CategoriaController;
-use Controllers\InstrumentoController;
+use Controllers\ContenidoController;
 
 $router = new Router();
 
@@ -27,6 +27,14 @@ $router->post("/noticias/crear",[NoticiaController::class, "crear"]);
 $router->get("/noticias/actualizar", [NoticiaController::class, "actualizar"]);
 $router->post("/noticias/actualizar", [NoticiaController::class, "actualizar"]);
 $router->post("/noticias/eliminar", [NoticiaController::class, "eliminar"]);
+
+/** NOTICIAS **/
+$router->get("/contenidos/listado", [ContenidoController::class, "listado"]);
+$router->get("/contenidos/crear", [ContenidoController::class, "crear"]);
+$router->post("/contenidos/crear", [ContenidoController::class, "crear"]);
+$router->get("/contenidos/actualizar", [ContenidoController::class, "actualizar"]);
+$router->post("/contenidos/actualizar", [ContenidoController::class, "actualizar"]);
+$router->post("/contenidos/eliminar", [ContenidoController::class, "eliminar"]);
 
 /** USUARIOS **/
 $router->get("/usuarios/listado", [UsuarioController::class, "listado"]);
@@ -75,6 +83,7 @@ $router->get("/disco", [PaginasController::class, "disco"]);
 $router->get("/tienda", [PaginasController::class, "tienda"]);
 $router->get("/contacto", [PaginasController::class, "contacto"]);
 $router->post("/contacto", [PaginasController::class, "contacto"]);
+$router->get("/contenido", [PaginasController::class, "contenido"]);
 
 
 $router->comprobarRutas();
