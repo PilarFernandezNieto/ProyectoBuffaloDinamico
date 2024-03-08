@@ -3,6 +3,9 @@ namespace Controllers;
 use MVC\Router;
 use Model\Noticia;
 use Model\Producto;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 class PaginasController{
     public static function index(Router $router){
@@ -75,6 +78,53 @@ class PaginasController{
     }
     public static function contacto(Router $router) {
         $title = "Contacto";
+
+        if($_SERVER["REQUEST_METHOD"] === "POST"){
+
+            $contacto = $_POST["contacto"];
+            $mail = new PHPMailer;
+            $remite = $contacto["nombre"] . " " . $contacto["apellidos"];
+            $email = $contacto["email"];
+            $telefono = $contacto["telefono"];
+            $direccion = $contacto["direccion"];
+            $localidad = $contacto["localidad"];
+            $provincia = $contacto["provincia"];
+            $mensaje = $contacto["mensaje"];
+
+
+            try{
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->isSMTP();
+
+            $mail->Host = "smtp.ionos.es";
+            $mail->SMTPAuth = true;
+            $mail->Username = "info@theelectricbuffalo.com";
+            $mail->Password = "QDj7yNir8?UmUQ+";
+            $mail->SMTPSecure = "tls";
+            $mail->Port = 587;
+         
+
+
+
+            $mail->setFrom($email, $remite);
+            $mail->addAddress("info@theelectricbuffalo.com", "The Electric Buffalo");
+            $mail->Subject = "Tienes un nuevo mensaje";
+            $mail->isHTML(true);
+            $mail->CharSet = "UTF-8";
+            $contenido = "<html><p>". $mensaje ."</p></html>";
+
+            $mail->Body = $contenido;
+            $mail->AltBody = "Esto es texto alternativo sin HTML";
+            $mail->send();
+            } catch(Exception $e){
+                echo "Error al enviar el correo: {$mail->ErrorInfo} <br>";
+            }
+            
+
+
+        }
+
+      
         $router->render("layout", "paginas/contacto", [
             "title" => $title
 
