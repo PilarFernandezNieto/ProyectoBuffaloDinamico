@@ -52,3 +52,10 @@ function validarORedireccionar(string $url){
     }
     return $id;
 }
+
+function protegeRuta(){
+
+    if (!isset($_SESSION["login"])) {
+        header("Location: /");
+    }
+}

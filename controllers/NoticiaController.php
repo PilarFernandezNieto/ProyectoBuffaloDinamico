@@ -7,6 +7,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class NoticiaController{
     public static function listado(Router $router) {
+        protegeRuta();
         $noticias = Noticia::findAll("fecha DESC");
 
         $router->render("layoutAdmin", "noticias/listado", [
@@ -15,6 +16,7 @@ class NoticiaController{
     }
 
     public static function crear(Router $router) {
+        protegeRuta();
         $noticia = new Noticia();
         $errores = Noticia::getErrores();
         if($_SERVER["REQUEST_METHOD"] === "POST"){
@@ -47,6 +49,7 @@ class NoticiaController{
     }
 
     public static function actualizar(Router $router) {
+        protegeRuta();
         $id = validarORedireccionar("/admin");
 
         $errores = Noticia::getErrores();
@@ -82,6 +85,7 @@ class NoticiaController{
     }
 
     public static function eliminar(Router $router) {
+        protegeRuta();
         $id = filter_var($_POST["id"], FILTER_VALIDATE_INT);
     
         if($_SERVER["REQUEST_METHOD"] === "POST"){

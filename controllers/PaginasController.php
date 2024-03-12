@@ -1,5 +1,7 @@
 <?php
+
 namespace Controllers;
+
 use MVC\Router;
 use Model\Noticia;
 use Model\Producto;
@@ -7,8 +9,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-class PaginasController{
-    public static function index(Router $router){
+class PaginasController {
+    public static function index(Router $router) {
         $noticias = Noticia::findAll("fecha DESC", 3);
         $title = "Inicio";
         $router->render("layout", "paginas/index", [
@@ -32,11 +34,10 @@ class PaginasController{
             "title" => $title
 
         ]);
-  
     }
     public static function noticia(Router $router) {
-       $id = validarORedireccionar("/");
-       $noticia = Noticia::findById($id);
+        $id = validarORedireccionar("/");
+        $noticia = Noticia::findById($id);
         $title = "Noticia";
         $router->render("layout", "paginas/noticia", [
             "noticia" => $noticia,
@@ -58,7 +59,7 @@ class PaginasController{
         $id = validarORedireccionar("/");
         $disco = Producto::findById($id);
         $title = $disco->nombre;
-       
+
 
         $router->render("layout", "paginas/ficha_disco", [
             "disco" => $disco,
@@ -79,7 +80,7 @@ class PaginasController{
     public static function contacto(Router $router) {
         $title = "Contacto";
 
-        if($_SERVER["REQUEST_METHOD"] === "POST"){
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $contacto = $_POST["contacto"];
             $mail = new PHPMailer;
@@ -92,39 +93,43 @@ class PaginasController{
             $mensaje = $contacto["mensaje"];
 
 
-            try{
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-            $mail->isSMTP();
+            try {
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->isSMTP();
 
-            $mail->Host = "smtp.ionos.es";
-            $mail->SMTPAuth = true;
-            $mail->Username = "info@theelectricbuffalo.com";
-            $mail->Password = "QDj7yNir8?UmUQ+";
-            $mail->SMTPSecure = "tls";
-            $mail->Port = 587;
-         
+                $mail->Host = "smtp.ionos.es";
+                $mail->SMTPAuth = true;
+                $mail->Username = "info@theelectricbuffalo.com";
+                $mail->Password = "QDj7yNir8?UmUQ+";
+                $mail->SMTPSecure = "tls";
+                $mail->Port = 587;
+
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    )
+                );
 
 
 
-            $mail->setFrom($email, $remite);
-            $mail->addAddress("info@theelectricbuffalo.com", "The Electric Buffalo");
-            $mail->Subject = "Tienes un nuevo mensaje";
-            $mail->isHTML(true);
-            $mail->CharSet = "UTF-8";
-            $contenido = "<html><p>". $mensaje ."</p></html>";
+                $mail->setFrom("info@theelectricbuffalo.com", $remite);
+                $mail->addAddress("info@theelectricbuffalo.com", "The Electric Buffalo");
+                $mail->Subject = "Tienes un nuevo mensaje";
+                $mail->isHTML(true);
+                $mail->CharSet = "UTF-8";
+                $contenido = "<html><p>" . $mensaje . "</p></html>";
 
-            $mail->Body = $contenido;
-            $mail->AltBody = "Esto es texto alternativo sin HTML";
-            $mail->send();
-            } catch(Exception $e){
+                $mail->Body = $contenido;
+                $mail->AltBody = "Esto es texto alternativo sin HTML";
+                $mail->send();
+            } catch (Exception $e) {
                 echo "Error al enviar el correo: {$mail->ErrorInfo} <br>";
             }
-            
-
-
         }
 
-      
+
         $router->render("layout", "paginas/contacto", [
             "title" => $title
 

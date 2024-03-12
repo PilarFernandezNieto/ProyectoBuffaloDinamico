@@ -13,6 +13,7 @@ use Controllers\CamisetaController;
 use Controllers\ProductoController;
 use Controllers\CategoriaController;
 use Controllers\ContenidoController;
+use Controllers\LoginController;
 
 $router = new Router();
 
@@ -84,6 +85,11 @@ $router->get("/tienda", [PaginasController::class, "tienda"]);
 $router->get("/contacto", [PaginasController::class, "contacto"]);
 $router->post("/contacto", [PaginasController::class, "contacto"]);
 $router->get("/contenido", [PaginasController::class, "contenido"]);
+
+/** LOGIN Y AUTENTICACION **/
+$router->get("/login", [LoginController::class, "login"]);
+$router->post("/login", [LoginController::class, "login"]);
+$router->get("/logout", [LoginController::class, "logout"]);
 
 
 $router->comprobarRutas();

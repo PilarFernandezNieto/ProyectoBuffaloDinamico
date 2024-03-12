@@ -8,6 +8,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class MusicoController{
     public static function listado(Router $router) {
+        protegeRuta();
         $musicos = Musico::findAll();
 
         $router->render("layoutAdmin", "musicos/listado", [
@@ -16,6 +17,7 @@ class MusicoController{
     }
 
     public static function crear(Router $router) {
+        protegeRuta();
         $musico = new Musico();
         $errores = Musico::getErrores();
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -48,6 +50,7 @@ class MusicoController{
     }
 
     public static function actualizar(Router $router) {
+        protegeRuta();
         $id = validarORedireccionar("/admin");
 
         $errores = Musico::getErrores();
@@ -84,6 +87,7 @@ class MusicoController{
     }
 
     public static function eliminar() {
+        protegeRuta();
         $id = filter_var($_POST["id"], FILTER_VALIDATE_INT);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {

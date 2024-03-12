@@ -8,6 +8,7 @@ use Model\Usuario;
 
 class AdminController{
     public static function index(Router $router){
+        protegeRuta();
 
         $router->render("layoutAdmin", "admin/index", []);
     }

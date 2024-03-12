@@ -15,6 +15,7 @@ class UsuarioController{
     }
 
     public static function crear(Router $router) {
+        protegeRuta();
         $usuario = new Usuario();
         $roles = Rol::findAll();
         $errores = Usuario::getErrores();
@@ -39,6 +40,7 @@ class UsuarioController{
         ]);
     }
     public static function actualizar(Router $router) {
+        protegeRuta();
         
         $id = validarORedireccionar("/admin");
         $usuario = Usuario::findById($id);
@@ -65,6 +67,7 @@ class UsuarioController{
     }
 
     public static function eliminar(Router $router) {
+        protegeRuta();
         $id = filter_var($_POST["id"], FILTER_VALIDATE_INT);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {

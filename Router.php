@@ -14,8 +14,18 @@ class Router {
     }
 
     public function comprobarRutas(){
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        $auth = $_SESSION["login"] ?? false;
+
+        // Rutas protegidas
+        //  $rutas_protegidas = ["/admin", "/noticias/listado", "/noticias/crear", "/noticias/actualizar"];
+
         $urlActual = $_SERVER["PATH_INFO"] ?? "/";
         $metodo = $_SERVER["REQUEST_METHOD"];
+
+      
 
         if ($metodo === "GET"){
             $fn = $this->rutasGET[$urlActual] ?? null;
@@ -23,6 +33,11 @@ class Router {
 
             $fn = $this->rutasPOST[$urlActual] ?? null;
         } 
+
+        // if(in_array($urlActual, $rutas_protegidas) && !$auth){
+        //    header("Location: /");
+            
+        // }
 
         if($fn){
             call_user_func($fn, $this);

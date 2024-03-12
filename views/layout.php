@@ -1,3 +1,10 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+$auth = $_SESSION["login"] ?? false;
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -63,8 +70,11 @@
                     </a>
                 </div>
                 <nav class="navegacion-principal">
-            
-                    <a href="/admin"><i class="fa-solid fa-lock"></i></a>
+                    <?php if ($auth) : ?>
+                        <a href="/logout"><i class="fa-solid fa-lock-open"></i></a>
+                    <?php else : ?>
+                        <a href="/login"><i class="fa-solid fa-lock"></i></a>
+                    <?php endif; ?>
 
                     <a href="/historia">Historia</a>
                     <a href="/discografia">Discografía</a>

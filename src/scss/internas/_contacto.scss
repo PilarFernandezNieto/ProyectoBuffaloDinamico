@@ -1,6 +1,13 @@
 .contenedor-formulario {
   width: 50%;
   margin: 5rem auto;
+  a {
+    font-weight: 600;
+    color: $negro;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }
 .formulario {
   border: 1px solid $oilBlack;

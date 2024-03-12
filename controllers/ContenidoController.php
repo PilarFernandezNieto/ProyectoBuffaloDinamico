@@ -8,6 +8,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class ContenidoController{
     public static function listado(Router $router) {
+        protegeRuta();
         $contenidos = Contenido::findAll("fecha_creacion");
 
         $router->render("layoutAdmin", "contenidos/listado", [
@@ -15,6 +16,7 @@ class ContenidoController{
         ]);
     }
     public static function crear(Router $router) {
+        protegeRuta();
         $contenido = new Contenido();
         $errores = Contenido::getErrores();
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -47,6 +49,7 @@ class ContenidoController{
     }
 
     public static function actualizar(Router $router) {
+        protegeRuta();
         $id = validarORedireccionar("/admin");
 
         $errores = Contenido::getErrores();
@@ -82,6 +85,7 @@ class ContenidoController{
     }
 
     public static function eliminar(Router $router) {
+        protegeRuta();
         $id = filter_var($_POST["id"], FILTER_VALIDATE_INT);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {

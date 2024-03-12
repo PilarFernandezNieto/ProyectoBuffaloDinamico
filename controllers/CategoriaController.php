@@ -6,6 +6,7 @@ use MVC\Router;
 
 class CategoriaController{
     public static function listado(Router $router) {
+        protegeRuta();
         $categorias = Categoria::findAll();
 
         $router->render("layoutAdmin", "categorias/listado", [
@@ -14,6 +15,7 @@ class CategoriaController{
     }
 
     public static function crear(Router $router) {
+        protegeRuta();
         $categoria = new Categoria();
         $errores = Categoria::getErrores();
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -36,6 +38,7 @@ class CategoriaController{
     }
     public static function actualizar(Router $router) {
 
+        protegeRuta();
         $id = validarORedireccionar("/admin");
         $categoria = Categoria::findById($id);
         $errores = Categoria::getErrores();
@@ -58,6 +61,7 @@ class CategoriaController{
     }
 
     public static function eliminar(Router $router) {
+        protegeRuta();
         $id = filter_var($_POST["id"], FILTER_VALIDATE_INT);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {

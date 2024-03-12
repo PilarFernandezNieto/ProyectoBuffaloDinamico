@@ -7,6 +7,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class ProductoController {
     public static function listado(Router $router) {
+        protegeRuta();
         $productos = Producto::findProductosAndCategorias();
         $router->render("layoutAdmin", "productos/listado", [
             "productos" => $productos
@@ -15,6 +16,7 @@ class ProductoController {
 
     public static function crear(Router $router) {
 
+        protegeRuta();
         $producto = new Producto();
         $errores = Producto::getErrores();
         $formatos = $producto->getFormatos();
@@ -55,6 +57,7 @@ class ProductoController {
     }
 
     public static function actualizar(Router $router) {
+        protegeRuta();
         $id = validarORedireccionar("/admin");
 
         $errores = Producto::getErrores();
@@ -98,6 +101,7 @@ class ProductoController {
     }
 
     public static function eliminar() {
+        protegeRuta();
         $id = filter_var($_POST["id"], FILTER_VALIDATE_INT);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {

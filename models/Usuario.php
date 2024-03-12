@@ -1,7 +1,8 @@
 <?php
+
 namespace Model;
 
-class Usuario extends ActiveRecord{
+class Usuario extends ActiveRecord {
     protected static $tabla = "usuarios";
     protected static $columnasDB = ["id", "nombre", "apellidos", "email", "password", "fecha_creacion", "idrol"];
 
@@ -13,7 +14,7 @@ class Usuario extends ActiveRecord{
     public $fecha_creacion;
     public $idrol;
 
-    public function __construct($args=[]){
+    public function __construct($args = []) {
         $this->id = $args["id"] ?? null;
         $this->nombre = $args["nombre"] ?? "";
         $this->apellidos = $args["apellidos"] ?? "";
@@ -21,9 +22,7 @@ class Usuario extends ActiveRecord{
         $this->password = $args["password"] ?? "";
         $this->idrol = $args["idrol"] ?? 2;
         $this->fecha_creacion = date("Y/m/d");
-
     }
-
     public function validar() {
         if (!$this->nombre) {
             self::$errores[] = "El nombre es obligatorio";
@@ -40,21 +39,43 @@ class Usuario extends ActiveRecord{
         return self::$errores;
     }
 
-    public function hashPassword($password){
-        return password_hash($this->$password, PASSWORD_BCRYPT);
+
+    public function existeUsuario() {
+        $query = "SELECT * FROM " . self::$tabla . " WHERE email='" . $this->email . "' LIMIT 1";
+        $resultado = self::$db->query($query);
+        if (!$resultado->num_rows) {
+            self::$errores[] = "El usuario no existe";
+            return;
+        }
+        return $resultado;
     }
 
-    public static function findByEmail(string $email){
-        $query = "SELECT * FROM ". self::$tabla . " WHERE email='{$email}'";
-        $resultado = self::consultarSQL($query);
-        return array_shift($resultado);
+    public function comprobarPassword($resultado) {
+        $usuario = $resultado->fetch_object();
+        $autenticado = password_verify($this->password, $usuario->password);
+        if(!$autenticado){
+            self::$errores[] = "El password es incorrecto";
+        }
+        return $autenticado;
     }
 
-    public function validarPassword($password){
-      
-        return (password_verify($password, $this->password));
+    public function autenticar(){
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        $_SESSION["usuario"] = $this->email;
+        $_SESSION["login"] = true;
+
+        header("Location: /admin");
     }
-      
 
-
+    public function validaLogin() {
+        if (!$this->email) {
+            self::$errores[] = "El email es obligatorio";
+        }
+        if (!$this->password) {
+            self::$errores[] = "El password es obligatorio";
+        }
+        return self::$errores;
+    }
 }

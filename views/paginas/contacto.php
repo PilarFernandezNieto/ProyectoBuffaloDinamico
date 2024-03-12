@@ -1,6 +1,6 @@
 <main class="contenedor-formulario">
     <h1>Contacta con nosotros</h1>
-    <p>Utiliza este formulario o escríbenos a <span>info@theelectricbuffalo.com</span></p>
+    <p>Utiliza este formulario o escríbenos a <a href="mailto:info@theelectricbuffalo.com">info@theelectricbuffalo.com</a></p>
     <form class="formulario" action="/contacto" method="POST">
         <div class="row">
             <div class="col-12 col-md-5">
