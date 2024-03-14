@@ -9,6 +9,7 @@ class LoginController {
 
     public static function login(Router $router) {
         $errores = [];
+        $title = "Login";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $auth = new Usuario($_POST);
@@ -31,10 +32,42 @@ class LoginController {
         }
       
         $router->render("layout", "auth/login", [
-            "errores" => $errores
+            "errores" => $errores,
+            "title" => $title
 
         ]);
     }
+
+    public static function olvide(Router $router){
+        $title = "Recuperar contraseña";
+        $errores = [];
+
+        $router->render("layout", "auth/olvide", [
+            "title" => $title,
+            "errores" => $errores
+        ]);
+    }
+    public static function recuperar(Router $router) {
+        echo "Desde recuperar";
+    }
+    public static function registrar(Router $router) {
+        $errores=[];
+        $title= "Página de registro";
+        $usuario = new Usuario;
+
+        if($_SERVER["REQUEST_METHOD"] === "POST"){
+            $usuario = new Usuario($_POST["usuario"]);
+
+           
+        }
+
+        $router->render("layout", "auth/registrar", [
+            "errores" => $errores,
+            "title" => $title,
+            "usuario" => $usuario
+        ]);
+    }
+
 
     public static function logout(Router $router) {
        session_start();

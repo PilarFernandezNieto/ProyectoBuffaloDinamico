@@ -42,7 +42,8 @@ class Router {
         if($fn){
             call_user_func($fn, $this);
         } else {
-            echo "Página no encontrada";
+            //echo "Página no encontrada";
+            $this->render("layout", "paginas/error");
         }
     }
 

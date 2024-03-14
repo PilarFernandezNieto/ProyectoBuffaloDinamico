@@ -8,19 +8,21 @@
         <h3><i class="fa-solid fa-arrow-right-to-bracket me-3"></i>Introduce tus datos</h3>
         <div class="mb-5">
             <label for="email">Email</label>
-            <input type="email" placeholder="Email" id="email" name="email" >
+            <input type="email" placeholder="Email" id="email" name="email">
         </div>
         <div class="mb-5">
             <label for="password">Contraseña</label>
             <input type="password" placeholder="Contraseña" id="password" name="password">
         </div>
-        <div class="mb-3 d-grid">
-            <input type="submit" class="boton-fireBrick-block" value="Inicia sesión" required></input>
-        </div>
         <div class="mb-3">
-            <p class="registro">¿Aún no tienes una cuenta? <a href="registro.php">Regístrate aquí</a></p>
+            <input type="submit" class="boton-fireBrick-block w-100" value="Inicia sesión"></input>
         </div>
 
+
     </form>
+    <div class="mb-3 acciones-login">
+        <p>¿Aún no tienes una cuenta? <a href="/registrar">Regístrate aquí</a></p>
+        <p>¿Olvidaste tu contraseña? <a href="/olvide">Recuperar</a></p>
+    </div>
 
 </main>

@@ -91,6 +91,18 @@ $router->get("/login", [LoginController::class, "login"]);
 $router->post("/login", [LoginController::class, "login"]);
 $router->get("/logout", [LoginController::class, "logout"]);
 
+/** RECUPERAR PASSWORD */
+$router->get("/olvide", [LoginController::class, "olvide"]);
+$router->post("/olvide", [LoginController::class, "olvide"]);
+$router->get("/recuperar", [LoginController::class, "recuperar"]);
+$router->post("/recuperar", [LoginController::class, "recuperar"]);
+
+/** CREAR CUENTA */
+$router->get("/registrar", [LoginController::class, "registrar"]);
+$router->post("/registrar", [LoginController::class, "registrar"]);
+
+
+
 
 $router->comprobarRutas();
 

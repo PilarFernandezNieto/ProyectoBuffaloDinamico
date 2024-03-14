@@ -72,6 +72,7 @@ $auth = $_SESSION["login"] ?? false;
                 <nav class="navegacion-principal">
                     <?php if ($auth) : ?>
                         <a href="/logout"><i class="fa-solid fa-lock-open"></i></a>
+                        <a href="/admin">Panel</a>
                     <?php else : ?>
                         <a href="/login"><i class="fa-solid fa-lock"></i></a>
                     <?php endif; ?>
@@ -86,8 +87,10 @@ $auth = $_SESSION["login"] ?? false;
         </div>
     </header>
     <!-- FIN HEADER -->
+    <div class="alto-min">
 
-    <?php echo $contenido; ?>
+        <?php echo $contenido; ?>
+    </div>
 
     <!-- FOOTER -->
     <footer class="site-footer">

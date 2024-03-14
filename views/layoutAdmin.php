@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+$auth = $_SESSION["login"] ?? false;
+?>
 <!DOCTYPE html>
 
 <head>
@@ -23,7 +29,7 @@
 </head>
 
 <body class="app sidebar-mini">
-    <header class="app-header"><a class="app-header__logo" href="/index.php">The Electric Buffalo</a>
+    <header class="app-header"><a class="app-header__logo" href="/">The Electric Buffalo</a>
         <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
 
         <ul class="app-nav">
@@ -33,11 +39,10 @@
 
 
                 <!-- User Menu -->
-            <li class="dropdown"><a class="app-nav__item" href="#" data-bs-toggle="dropdown" aria-label="Open Profile Menu"><i class="bi bi-person"></i></a>
+            <li class="dropdown menu-admin"><a class="app-nav__item" href="#" data-bs-toggle="dropdown" aria-label="Open Profile Menu"><i class="bi bi-person"></i></a>
                 <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                    <li><a class="dropdown-item" href="page-user.html"><i class="bi bi-gear me-2 fs-5"></i> Settings</a></li>
-                    <li><a class="dropdown-item" href="page-user.html"><i class="bi bi-person me-2 fs-5"></i> Profile</a></li>
-                    <li><a class="dropdown-item" href="/logout.php"><i class="bi bi-box-arrow-right me-2 fs-5"></i> Logout</a></li>
+                    <li><a class="dropdown-item" href="page-user.html"><i class="bi bi-person me-2"></i> Perfil</a></li>
+                    <li><a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>

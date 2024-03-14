@@ -79,7 +79,7 @@
     <div class="overlay-central"></div>
     <div class="contenido-central">
         <h3>Discografía del Búfalo Eléctrico</h3>
-        <a href="discografia.php" class="boton-fireBrick">Pincha aquí</a>
+        <a href="/discografia" class="boton-fireBrick">Pincha aquí</a>
     </div>
 
 
