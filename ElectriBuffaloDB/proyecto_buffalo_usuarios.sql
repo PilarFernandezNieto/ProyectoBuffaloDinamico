@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: proyecto_buffalo
 -- ------------------------------------------------------
--- Server version	8.0.30
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -47,7 +47,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Pilar','Fernandez',NULL,NULL,'correo@correo.com','$2y$10$Y5icNUR1KovdiCqJBlJS/uMosCf8pr5GpLwyRfqV3bey2QDBdTix6',NULL,1,NULL,'2024-02-23'),(9,'Pepe','Pérez',NULL,NULL,'pepe@pepe.com','123456',NULL,2,NULL,'2024-02-24');
+INSERT INTO `usuarios` VALUES (1,'Pilar','Fernandez',NULL,NULL,'correo@correo.com','$2y$10$Y5icNUR1KovdiCqJBlJS/uMosCf8pr5GpLwyRfqV3bey2QDBdTix6',NULL,1,1,'2024-02-23'),(9,'Pepe','Pérez',NULL,NULL,'pepe@pepe.com','123456',NULL,2,0,'2024-02-24');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-16 18:58:05
+-- Dump completed on 2024-03-16 21:15:04
