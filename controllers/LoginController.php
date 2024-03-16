@@ -50,13 +50,17 @@ class LoginController {
     public static function recuperar(Router $router) {
         echo "Desde recuperar";
     }
+
+    /** REGISTRO DE USUARIOS **/
     public static function registrar(Router $router) {
         $errores=[];
         $title= "Página de registro";
         $usuario = new Usuario;
 
         if($_SERVER["REQUEST_METHOD"] === "POST"){
-            $usuario = new Usuario($_POST["usuario"]);
+            $usuario->sincronizar($_POST["usuario"]);
+            debuguear($usuario);
+
 
            
         }

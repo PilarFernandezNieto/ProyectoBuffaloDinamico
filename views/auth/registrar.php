@@ -8,35 +8,35 @@
         <div class="row">
             <div class="mb-5 col-12 col-md-5">
                 <label for="nombre">Nombre</label>
-                <input type="text" placeholder="Nombre" id="nombre" name="usuario[nombre]">
+                <input type="text" placeholder="Nombre" id="nombre" name="usuario[nombre]" value="<?php echo s($usuario->nombre); ?>">
             </div>
             <div class="mb-5 col-12 col-md-7">
                 <label for="apellidos">Apellidos</label>
-                <input type="text" placeholder="Apellidos" id="apellidos" name="usuario[apellidos]">
+                <input type="text" placeholder="Apellidos" id="apellidos" name="usuario[apellidos]" value="<?php echo s($usuario->apellidos); ?>">
             </div>
         </div>
         <div class="row">
             <div class="mb-5 col-12 col-md-6">
                 <label for="dni">DNI</label>
-                <input type="text" placeholder="DNI" id="dni" name="usuario[dni]">
+                <input type="text" placeholder="DNI" id="dni" name="usuario[dni]" value="<?php echo s($usuario->dni); ?>">
             </div>
             <div class="mb-5 col-12 col-md-6">
                 <label for="telefono">Teléfono</label>
-                <input type="tel" placeholder="Teléfono" id="telefono" name="usuario[telefono]">
+                <input type="tel" placeholder="Teléfono" id="telefono" name="usuario[telefono]" value="<?php echo s($usuario->telefono); ?>">
             </div>
         </div>
         <div class="row">
             <div class="mb-5 col-12 col-md-6">
                 <label for="email">Email</label>
-                <input type="email" placeholder="Email" id="email" name="usuario[email]">
+                <input type="email" placeholder="Email" id="email" name="usuario[email]" value="<?php echo s($usuario->email); ?>">
             </div>
             <div class="mb-5 col-12 col-md-6">
                 <label for="password">Contraseña</label>
                 <input type="password" placeholder="Contraseña" id="password" name="usuario[password]">
             </div>
         </div>
-
-        <input type="hidden" name="usuario[fecha_creacion]" value="<?php echo s($usuario->fecha_creacion); ?>">
+<!-- 
+        <input type="hidden" name="usuario[fecha_creacion]" value="<?php echo s($usuario->fecha_creacion); ?>"> -->
         <div class="mb-3">
             <input type="submit" class="boton-fireBrick-block w-100" value="Inicia sesión"></input>
         </div>

@@ -14,7 +14,8 @@ class Usuario extends ActiveRecord {
         "telefono", 
         "email", 
         "password",
-        "token", 
+        "token",
+        "confirmado", 
         "fecha_creacion", 
         "idrol"
     ];
@@ -27,6 +28,7 @@ class Usuario extends ActiveRecord {
     public $email;
     public $password;
     public $token;
+    public $confirmado;
     public $idrol;
     public $fecha_creacion;
 
@@ -39,6 +41,7 @@ class Usuario extends ActiveRecord {
         $this->email = $args["email"] ?? "";
         $this->password = $args["password"] ?? "";
         $this->token = $args["token"] ?? "";
+        $this->confirmado = $args["confirmado"] ?? 0;
         $this->idrol = $args["idrol"] ?? 2;
         $this->fecha_creacion = date("Y/m/d");
     }
@@ -52,9 +55,7 @@ class Usuario extends ActiveRecord {
         if (!$this->password) {
             self::$errores[] = "La contraseña es obligatoria";
         }
-        if (!$this->idrol) {
-            self::$errores[] = "Debes seleccionar un rol";
-        }
+
         return self::$errores;
     }
 

@@ -16,27 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `contenidos_destacados`
+-- Table structure for table `contenidos`
 --
 
-DROP TABLE IF EXISTS `contenidos_destacados`;
+DROP TABLE IF EXISTS `contenidos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `contenidos_destacados` (
+CREATE TABLE `contenidos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `imagen_destacada` varchar(100) DEFAULT NULL,
-  `texto_destacado` text,
+  `imagen` varchar(100) DEFAULT NULL,
+  `texto` text,
+  `fecha_creacion` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contenidos_destacados`
+-- Dumping data for table `contenidos`
 --
 
-LOCK TABLES `contenidos_destacados` WRITE;
-/*!40000 ALTER TABLE `contenidos_destacados` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contenidos_destacados` ENABLE KEYS */;
+LOCK TABLES `contenidos` WRITE;
+/*!40000 ALTER TABLE `contenidos` DISABLE KEYS */;
+INSERT INTO `contenidos` VALUES (1,'79f97cdc6b65fb7b7ba890cd877b3c02.jpg','<p>Este trabajo, el tercero de su andadura por los sinuosos senderos del rock, se eleva como una plegaria y acaba constituyendo un exorcismo de todos los demonios aparecidos tras la muerte, en 2016, de Alejandro “Espina” Blanco, miembro fundador de la banda y también bajista de Ilegales durante 20 años.</p><p>Patrolman (Boomerang Discos) es, con toda la autoridad, un disco de rock con mayúsculas. La producción, a cargo del también miembro de la banda Sergio “Tutu”, no da opción a la especulación. Las canciones, el arma secreta del cuarteto, suenan como una apisonadora con rodillo de seda, y esa voz, quizá una de las mejores de España, se deja oír con ese timbre precioso, delicado pero no sensiblero y seguro sin ser arrogante, de los que saben perfectamente qué se traen entre manos.</p>','2024-03-04');
+/*!40000 ALTER TABLE `contenidos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-03 20:48:37
+-- Dump completed on 2024-03-16 18:58:04
