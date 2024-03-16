@@ -30,14 +30,21 @@
   </div>
 
   <div class="row">
-      <label for="rol" class="form-label">Rol</label>
-      <select name="usuario[idrol]" id="rol" class="">
-          <option value="" selected>--Seleccione rol--</option>
-          <?php foreach ($roles as $rol) : ?>
+      <div class="col-7">
+          <label for="rol" class="form-label">Rol</label>
+          <select name="usuario[idrol]" id="rol" class="">
+              <option value="" selected>--Seleccione rol--</option>
+              <?php foreach ($roles as $rol) : ?>
+                  <option class="mb-3" <?php echo ($usuario->idrol === $rol->id) ? "selected" : ""; ?> value="<?php echo s($rol->id); ?>"><?php echo s(strtoupper($rol->nombre)); ?></option>
+              <?php endforeach; ?>
+          </select>
+      </div>
 
-              <option class="mb-3" <?php echo ($usuario->idrol === $rol->id) ? "selected" : ""; ?> value="<?php echo s($rol->id); ?>"><?php echo s(strtoupper($rol->nombre)); ?></option>
-          <?php endforeach; ?>
+      <div class="form-check form-switch col-5 check">
+          <label class="form-check-label" for="confirmado">Confirmado</label>
+          <input class="form-check-input" type="checkbox" id="confirmado" name="usuario[confirmado]" value="<?php echo s($usuario->confirmado); ?>">
 
-      </select>
+      </div>
+
   </div>
   <input type="hidden" id="fecha_creacion" name="usuario[fecha_creacion]" value="<?php echo s($usuario->fecha_creacion); ?>">

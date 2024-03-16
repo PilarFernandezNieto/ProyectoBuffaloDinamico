@@ -95,3 +95,12 @@ fieldset {
         color: $fireBrick;
     }
 }
+.check{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.form-check-input{
+   height: 2rem !important;
+   width: 4rem !important;
+}

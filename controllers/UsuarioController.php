@@ -48,6 +48,7 @@ class UsuarioController{
         $alertas = Usuario::getAlertas();
      
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            debuguear($_POST);
           
 
             $args = $_POST["usuario"];
