@@ -22,11 +22,13 @@ class Contenido extends ActiveRecord{
 
     public function validar(){
         if(!$this->imagen){
-            self::$errores[] = "Debes introducir una imagen";
+            self::
+            $alertas["error"][] = "Debes introducir una imagen";
         }
         if (!$this->texto) {
-            self::$errores[] = "Debes introducir texto";
+            self::
+            $alertas["error"][] = "Debes introducir texto";
         }
-        return self::$errores;
+        return self::$alertas;
     }
 }

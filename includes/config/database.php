@@ -9,6 +9,8 @@ function conectarDB() : mysqli {
 
     if (!$db) {
         echo "Error. No se pudo conectar";
+        echo "errno de depuración: " .mysqli_connect_errno();
+        echo "error de depuración: " . mysqli_connect_error();
         exit;
     }
     return $db;

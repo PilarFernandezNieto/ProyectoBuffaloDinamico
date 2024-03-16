@@ -42,24 +42,24 @@ class Producto extends ActiveRecord {
 
     public function validar(){
         if(!$this->nombre){
-            self::$errores[] = "Debes introducir un nombre";
+            self::$alertas["error"][] = "Debes introducir un nombre";
         }
         if (!$this->imagen) {
-            self::$errores[] = "Debes introducir una imagen";
+            self::$alertas["error"][] = "Debes introducir una imagen";
         }
         if (!$this->precio) {
-            self::$errores[] = "Debes introducir un precio";
+            self::$alertas["error"][] = "Debes introducir un precio";
         }
         if (!$this->idcategoria) {
-            self::$errores[] = "Debes introducir una categoria";
+            self::$alertas["error"][] = "Debes introducir una categoria";
         }
         if (empty(trim($this->informacion))) {
-            self::$errores[] = "Debes introducir la información";
+            self::$alertas["error"][] = "Debes introducir la información";
         }
         // if(empty(trim($this->texto))){
-        //     self::$errores[] = "Debes introducir el texto";
+        //     self::$alertas[] = "Debes introducir el texto";
         // }
-        return self::$errores;
+        return self::$alertas;
     }
 
     public static function findProductosAndCategorias() {

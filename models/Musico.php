@@ -29,21 +29,22 @@ class Musico extends ActiveRecord{
 
     public function validar() {
         if (!$this->nombre) {
-            self::$errores[] = "El nombre es obligatorio";
+            self::
+            $alertas["error"][] = "El nombre es obligatorio";
         }
         if (!$this->apellidos) {
-            self::$errores[] = "Los apellidos son obligatorios";
+            self::$alertas["error"][] = "Los apellidos son obligatorios";
         }
         if (!$this->origen) {
-            self::$errores[] = "El origen es obligatorio";
+            self::$alertas["error"][] = "El origen es obligatorio";
         }
         if (!$this->imagen) {
-            self::$errores[] = "La imagen es obligatoria";
+            self::$alertas["error"][] = "La imagen es obligatoria";
         }
         if (!$this->biografia) {
-            self::$errores[] = "Debes escribir algo en la biografia";
+            self::$alertas["error"][] = "Debes escribir algo en la biografia";
         }
 
-        return self::$errores;
+        return self::$alertas;
     }
 }

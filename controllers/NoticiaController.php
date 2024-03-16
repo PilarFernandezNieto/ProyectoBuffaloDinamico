@@ -18,7 +18,7 @@ class NoticiaController{
     public static function crear(Router $router) {
         protegeRuta();
         $noticia = new Noticia();
-        $errores = Noticia::getErrores();
+        $alertas = Noticia::getAlertas();
         if($_SERVER["REQUEST_METHOD"] === "POST"){
             $noticia = new Noticia($_POST["noticia"]);
 
@@ -28,9 +28,9 @@ class NoticiaController{
                 $imagen = Image::make($_FILES["noticia"]["tmp_name"]["imagen"])->fit(600, 600);
                 $noticia->setImagen($nombreImagen);
             }
-            $errores = $noticia->validar();
+            $alertas = $noticia->validar();
 
-            if (empty($errores)) {
+            if (empty($alertas)) {
 
                 if (!is_dir(CARPETA_IMAGENES)) {
                     mkdir(CARPETA_IMAGENES);
@@ -43,7 +43,7 @@ class NoticiaController{
 
         $router->render("layoutAdmin", "noticias/crear", [
             "noticia" => $noticia,
-            "errores" => $errores
+            "alertas" => $alertas
             
         ]);
     }
@@ -52,7 +52,7 @@ class NoticiaController{
         protegeRuta();
         $id = validarORedireccionar("/admin");
 
-        $errores = Noticia::getErrores();
+        $alertas = Noticia::getAlertas();
 
         $noticia = Noticia::findById($id);
 
@@ -60,7 +60,7 @@ class NoticiaController{
 
             $args = $_POST["noticia"];
             $noticia->sincronizar($args);
-            $errores = $noticia->validar();
+            $alertas = $noticia->validar();
 
             $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
@@ -70,7 +70,7 @@ class NoticiaController{
             }
 
 
-            if (empty($errores)) {
+            if (empty($alertas)) {
                 if ($_FILES["noticia"]["tmp_name"]["imagen"]) {
                     $imagen->save(CARPETA_IMAGENES . '/' . $nombreImagen);
                 }
@@ -80,7 +80,7 @@ class NoticiaController{
 
         $router->render("layoutAdmin", "noticias/actualizar", [
             "noticia" => $noticia,
-            "errores" => $errores
+            "alertas" => $alertas
         ]);
     }
 

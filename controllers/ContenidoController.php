@@ -18,7 +18,7 @@ class ContenidoController{
     public static function crear(Router $router) {
         protegeRuta();
         $contenido = new Contenido();
-        $errores = Contenido::getErrores();
+        $alertas = Contenido::getAlertas();
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $contenido = new Contenido($_POST["contenido"]);
 
@@ -28,9 +28,9 @@ class ContenidoController{
                 $imagen = Image::make($_FILES["contenido"]["tmp_name"]["imagen"])->fit(600, 600);
                 $contenido->setImagen($nombreImagen);
             }
-            $errores = $contenido->validar();
+            $alertas = $contenido->validar();
 
-            if (empty($errores)) {
+            if (empty($alertas)) {
 
                 if (!is_dir(CARPETA_IMAGENES)) {
                     mkdir(CARPETA_IMAGENES);
@@ -43,7 +43,7 @@ class ContenidoController{
 
         $router->render("layoutAdmin", "contenidos/crear", [
             "contenido" => $contenido,
-            "errores" => $errores
+            "alertas" => $alertas
 
         ]);
     }
@@ -52,7 +52,7 @@ class ContenidoController{
         protegeRuta();
         $id = validarORedireccionar("/admin");
 
-        $errores = Contenido::getErrores();
+        $alertas = Contenido::getAlertas();
 
         $contenido = Contenido::findById($id);
 
@@ -60,7 +60,7 @@ class ContenidoController{
 
             $args = $_POST["contenido"];
             $contenido->sincronizar($args);
-            $errores = $contenido->validar();
+            $alertas = $contenido->validar();
 
             $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
@@ -70,7 +70,7 @@ class ContenidoController{
             }
 
 
-            if (empty($errores)) {
+            if (empty($alertas)) {
                 if ($_FILES["contenido"]["tmp_name"]["imagen"]) {
                     $imagen->save(CARPETA_IMAGENES . '/' . $nombreImagen);
                 }
@@ -80,7 +80,7 @@ class ContenidoController{
 
         $router->render("layoutAdmin", "contenidos/actualizar", [
             "contenido" => $contenido,
-            "errores" => $errores
+            "alertas" => $alertas
         ]);
     }
 

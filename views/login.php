@@ -1,10 +1,11 @@
 <main class="contenedor seccion alto-min seccion-login">
     <h1>Inicia sesión</h1>
+    <?php
+    include_once __DIR__ . "/../templates/alertas.php";
+    ?>
 
     <form action="/login" class="formulario ancho-login" method="POST">
-        <?php foreach ($errores as $error) : ?>
-            <div class="alerta error"><?php echo $error; ?></div>
-        <?php endforeach; ?>
+
         <h3><i class="fa-solid fa-arrow-right-to-bracket me-3"></i>Introduce tus datos</h3>
         <div class="mb-5">
             <label for="email">Email</label>

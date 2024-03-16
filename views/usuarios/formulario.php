@@ -9,6 +9,16 @@
       </div>
   </div>
   <div class="row">
+      <div class="mb-5 col-12 col-md-6">
+          <label for="dni">DNI</label>
+          <input type="text" placeholder="DNI" id="dni" name="usuario[dni]" value="<?php echo s($usuario->dni); ?>">
+      </div>
+      <div class="mb-5 col-12 col-md-6">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" placeholder="Teléfono" id="telefono" name="usuario[telefono]" value="<?php echo s($usuario->telefono); ?>">
+      </div>
+  </div>
+  <div class="row">
       <div class="mb-3 col-6">
           <label class="form-label" for="email">Email</label>
           <input type="email" id="email" name="usuario[email]" placeholder="Email" value="<?php echo s($usuario->email); ?>">

@@ -18,23 +18,23 @@ class UsuarioController{
         protegeRuta();
         $usuario = new Usuario();
         $roles = Rol::findAll();
-        $errores = Usuario::getErrores();
+        $alertas = Usuario::getAlertas();
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //debuguear($_POST);
 
             $usuario = new Usuario($_POST["usuario"]);
 
             //debuguear($usuario);
-            $errores = $usuario->validar();
+            $alertas = $usuario->validar();
 
-            if (empty($errores)) {
+            if (empty($alertas)) {
                 $usuario->guardar();
             }
         }
     
         $router->render("layoutAdmin", "usuarios/crear", [
             "usuario" => $usuario,
-            "errores" => $errores,
+            "alertas" => $alertas,
             "roles" => $roles
            
         ]);
@@ -45,28 +45,29 @@ class UsuarioController{
         $id = validarORedireccionar("/admin");
         $usuario = Usuario::findById($id);
         $roles = Rol::findAll();
-        $errores = Usuario::getErrores();
+        $alertas = Usuario::getAlertas();
      
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
+          
 
             $args = $_POST["usuario"];
             $usuario->sincronizar($args);
-            $errores = $usuario->validar();
+            $alertas = $usuario->validar();
 
-            if (empty($errores)) {
+            if (empty($alertas)) {
                 $usuario->guardar();
             }
         }
 
         $router->render("layoutAdmin", "usuarios/actualizar", [
             "usuario" => $usuario,
-            "errores" => $errores,
+            "alertas" => $alertas,
             "roles" => $roles
 
         ]);
     }
 
-    public static function eliminar(Router $router) {
+    public static function eliminar() {
         protegeRuta();
         $id = filter_var($_POST["id"], FILTER_VALIDATE_INT);
 

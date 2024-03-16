@@ -17,23 +17,23 @@ class CategoriaController{
     public static function crear(Router $router) {
         protegeRuta();
         $categoria = new Categoria();
-        $errores = Categoria::getErrores();
+        $alertas = Categoria::getAlertas();
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //debuguear($_POST);
 
             $categoria = new Categoria($_POST["categoria"]);
 
          
-            $errores = $categoria->validar();
+            $alertas = $categoria->validar();
 
-            if (empty($errores)) {
+            if (empty($alertas)) {
                 $categoria->guardar();
             }
         }
 
         $router->render("layoutAdmin", "categorias/crear", [
             "categoria" => $categoria,
-            "errores" => $errores
+            "alertas" => $alertas
         ]);
     }
     public static function actualizar(Router $router) {
@@ -41,22 +41,22 @@ class CategoriaController{
         protegeRuta();
         $id = validarORedireccionar("/admin");
         $categoria = Categoria::findById($id);
-        $errores = Categoria::getErrores();
+        $alertas = Categoria::getAlertas();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $args = $_POST["categoria"];
             $categoria->sincronizar($args);
-            $errores = $categoria->validar();
+            $alertas = $categoria->validar();
 
-            if (empty($errores)) {
+            if (empty($alertas)) {
                 $categoria->guardar();
             }
         }
 
         $router->render("layoutAdmin", "categorias/actualizar", [
             "categoria" => $categoria,
-            "errores" => $errores
+            "alertas" => $alertas
         ]);
     }
 

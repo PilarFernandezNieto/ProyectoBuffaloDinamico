@@ -47,36 +47,62 @@ class Usuario extends ActiveRecord {
     }
     public function validar() {
         if (!$this->nombre) {
-            self::$errores[] = "El nombre es obligatorio";
+            self::$alertas["error"][] = "El nombre es obligatorio";
         }
         if (!$this->email) {
-            self::$errores[] = "El email es obligatorio";
+            self::
+            $alertas["error"][] = "El email es obligatorio";
         }
         if (!$this->password) {
-            self::$errores[] = "La contraseña es obligatoria";
+            self::
+            $alertas["error"][] = "La contraseña es obligatoria";
         }
 
-        return self::$errores;
+
+        return self::$alertas;
     }
 
+    public function validarNuevaCuenta() {
+        if (!$this->nombre) {
+            self::$alertas["error"][] = "El nombre es obligatorio";
+        }
+        if (!$this->email) {
+            self::$alertas["error"][] = "El email es obligatorio";
+        }
+        if (!$this->password) {
+            self::$alertas["error"][] = "La contraseña es obligatoria";
+        }
+        if(strlen($this->password) < 6){
+            self::$alertas["error"][] = "El password debe tener al menos 6 caracteres";
+        }
+        if (!$this->dni) {
+            self::$alertas["error"][] = "El DNI es obligatorio";
+        }
+        if (!$this->telefono) {
+            self::$alertas["error"][] = "El teléfono es obligatorio";
+        }
+
+        return self::$alertas;
+    }
 
     public function existeUsuario() {
         $query = "SELECT * FROM " . self::$tabla . " WHERE email='" . $this->email . "' LIMIT 1";
         $resultado = self::$db->query($query);
-        if (!$resultado->num_rows) {
-            self::$errores[] = "El usuario no existe";
-            return;
-        }
+        if ($resultado->num_rows) {
+            self::$alertas["error"][] = "El usuario ya está registrado";
+        } 
         return $resultado;
+        
     }
 
     public function comprobarPassword($resultado) {
         $usuario = $resultado->fetch_object();
         $autenticado = password_verify($this->password, $usuario->password);
         if(!$autenticado){
-            self::$errores[] = "El password es incorrecto";
+            self::
+            $alertas["error"][] = "El password es incorrecto";
         }
-        return $autenticado;
+       return $autenticado;
     }
 
     public function autenticar(){
@@ -91,11 +117,11 @@ class Usuario extends ActiveRecord {
 
     public function validaLogin() {
         if (!$this->email) {
-            self::$errores[] = "El email es obligatorio";
+            self::$alertas["error"][] = "El email es obligatorio";
         }
         if (!$this->password) {
-            self::$errores[] = "El password es obligatorio";
+            self::$alertas["error"][] = "El password es obligatorio";
         }
-        return self::$errores;
+        return self::$alertas;
     }
 }

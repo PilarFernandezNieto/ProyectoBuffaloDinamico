@@ -18,7 +18,7 @@ class ProductoController {
 
         protegeRuta();
         $producto = new Producto();
-        $errores = Producto::getErrores();
+        $alertas = Producto::getAlertas();
         $formatos = $producto->getFormatos();
         $categorias = Categoria::findAll();
         $tallas = $producto->getTallas();
@@ -35,9 +35,9 @@ class ProductoController {
                 $imagen = Image::make($_FILES["producto"]["tmp_name"]["imagen"])->fit(600, 600);
                 $producto->setImagen($nombreImagen);
             }
-            $errores = $producto->validar();
+            $alertas = $producto->validar();
 
-            if (empty($errores)) {
+            if (empty($alertas)) {
                 if (!is_dir(CARPETA_IMAGENES)) {
                     mkdir(CARPETA_IMAGENES);
                 }
@@ -50,7 +50,7 @@ class ProductoController {
         $router->render("layoutAdmin", "productos/crear", [
             "producto" => $producto,
             "formatos" => $formatos,
-            "errores" => $errores,
+            "alertas" => $alertas,
             "categorias" => $categorias,
             "tallas" => $tallas
         ]);
@@ -60,7 +60,7 @@ class ProductoController {
         protegeRuta();
         $id = validarORedireccionar("/admin");
 
-        $errores = Producto::getErrores();
+        $alertas = Producto::getAlertas();
         $producto = Producto::findById($id);
         $formatos = $producto->getFormatos();
         $categorias = Categoria::findAll();
@@ -73,7 +73,7 @@ class ProductoController {
             $args["formato"] = $_POST["formato"];
             $args["talla"] = $_POST["talla"];
             $producto->sincronizar($args);
-            $errores = $producto->validar();
+            $alertas = $producto->validar();
 
             $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
@@ -83,7 +83,7 @@ class ProductoController {
             }
 
 
-            if (empty($errores)) {
+            if (empty($alertas)) {
                 if ($_FILES["producto"]["tmp_name"]["imagen"]) {
                     $imagen->save(CARPETA_IMAGENES . '/' . $nombreImagen);
                 }
@@ -93,7 +93,7 @@ class ProductoController {
 
         $router->render("layoutAdmin", "productos/actualizar", [
             "producto" => $producto,
-            "errores" => $errores,
+            "alertas" => $alertas,
             "formatos" => $formatos,
             "categorias" => $categorias,
             "tallas" => $tallas

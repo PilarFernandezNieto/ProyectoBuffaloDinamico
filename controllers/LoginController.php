@@ -8,31 +8,32 @@ use Model\Usuario;
 class LoginController {
 
     public static function login(Router $router) {
-        $errores = [];
+        $alertas = [];
         $title = "Login";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $auth = new Usuario($_POST);
-            $errores = $auth->validaLogin();
+            $alertas = $auth->validaLogin();
 
-            if (empty($errores)) {
+            if (empty($alertas)) {
                 $resultado = $auth->existeUsuario();
 
                 if (!$resultado) {
-                    $errores = Usuario::getErrores();
+                    $alertas = Usuario::getAlertas();
+
                 } else {
                     $autenticado = $auth->comprobarPassword($resultado);
                     if ($autenticado) {
                         $auth->autenticar();
                     } else {
-                        $errores = Usuario::getErrores();
+                        $alertas = Usuario::getAlertas();
                     }
                 }
             }
         }
       
         $router->render("layout", "auth/login", [
-            "errores" => $errores,
+            "alertas" => $alertas,
             "title" => $title
 
         ]);
@@ -40,11 +41,11 @@ class LoginController {
 
     public static function olvide(Router $router){
         $title = "Recuperar contraseña";
-        $errores = [];
+        $alertas = [];
 
         $router->render("layout", "auth/olvide", [
             "title" => $title,
-            "errores" => $errores
+            "alertas" => $alertas
         ]);
     }
     public static function recuperar(Router $router) {
@@ -53,20 +54,27 @@ class LoginController {
 
     /** REGISTRO DE USUARIOS **/
     public static function registrar(Router $router) {
-        $errores=[];
+        $alertas=[];
         $title= "Página de registro";
         $usuario = new Usuario;
 
         if($_SERVER["REQUEST_METHOD"] === "POST"){
             $usuario->sincronizar($_POST["usuario"]);
-            debuguear($usuario);
+            $alertas = $usuario->validarNuevaCuenta();
+           
+            if(empty($alertas)){
+                $resultado = $usuario->existeUsuario();
+                if($resultado->num_rows){
+                    $alertas = Usuario::getAlertas();
+                }
+            }
 
 
            
         }
 
         $router->render("layout", "auth/registrar", [
-            "errores" => $errores,
+            "alertas" => $alertas,
             "title" => $title,
             "usuario" => $usuario
         ]);

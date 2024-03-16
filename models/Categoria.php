@@ -16,9 +16,10 @@ class Categoria extends ActiveRecord {
 
     public function validar(){
         if(!$this->nombre){
-            self::$errores[] = "Introduce un nombre para la categoría";
+            self::
+            $alertas["error"][] = "Introduce un nombre para la categoría";
         }
-        return self::$errores;
+        return self::$alertas;
 
     }
 }

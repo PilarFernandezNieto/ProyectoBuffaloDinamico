@@ -1,9 +1,10 @@
 <main class="contenedor seccion alto-min seccion-login">
     <h1>Recuperar Contraseña</h1>
+    <?php
+    include_once __DIR__ . "/../templates/alertas.php";
+    ?>
     <form action="/login" class="formulario ancho-login" method="POST">
-        <?php foreach ($errores as $error) : ?>
-            <div class="alerta error"><?php echo $error; ?></div>
-        <?php endforeach; ?>
+
 
         <div class="mb-5">
             <label for="email">Email</label>

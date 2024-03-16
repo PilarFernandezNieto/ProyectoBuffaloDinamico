@@ -24,26 +24,26 @@ class Noticia extends ActiveRecord {
     }
     public function validar() {
         if (!$this->titulo) {
-            self::$errores[] = "Debes introducir un título";
+            self::$alertas["error"][] = "Debes introducir un título";
         }
         if (!$this->titulo) {
-            self::$errores[] = "Debes introducir una intro";
+            self::$alertas["error"][] = "Debes introducir una intro";
         }
         if (empty(trim($this->texto))) {
-            self::$errores[] = "Debes introducir un texto";
+            self::$alertas["error"][] = "Debes introducir un texto";
         } else {
             $texto_limpio = strip_tags($this->texto); // Elimina todas las etiquetas HTML del texto
             if (empty(trim($texto_limpio))) {
-                self::$errores[] = "Debes introducir un texto válido";
+                self::$alertas["error"][] = "Debes introducir un texto válido";
             }
         }
         if (!$this->fecha) {
-            self::$errores[] = "Debes introducir una fecha";
+            self::$alertas["error"][] = "Debes introducir una fecha";
         }
         if (!$this->imagen) {
-            self::$errores[] = "Debes introducir una imagen";
+            self::$alertas["error"][] = "Debes introducir una imagen";
         }
 
-        return self::$errores;
+        return self::$alertas;
     }
 }

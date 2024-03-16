@@ -9,7 +9,7 @@ class ActiveRecord {
     protected static $columnasDB = [];
 
     protected static $tabla = "";
-    protected static $errores = [];
+    protected static $alertas = [];
 
 
 
@@ -59,6 +59,7 @@ class ActiveRecord {
         $query .= join(", ", $valores);
         $query .= " WHERE id='" . self::$db->escape_string($this->id) . "'";
         $query .= " LIMIT 1";
+       
         
         try {
 
@@ -140,12 +141,12 @@ class ActiveRecord {
         }
     }
 
-    public static function getErrores() {
-        return static::$errores;
+    public static function getAlertas() {
+        return static::$alertas;
     }
     public function validar() {
-        static::$errores = [];
-        return static::$errores;
+        static::$alertas = [];
+        return static::$alertas;
     }
 
     public static function consultarSQL($query) {
