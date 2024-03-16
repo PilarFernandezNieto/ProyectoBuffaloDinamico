@@ -1,8 +1,7 @@
 .ancho-login {
-  @include tablet{
+  @include tablet {
     width: 50%;
   }
-  
 }
 .seccion-login {
   display: flex;
@@ -14,18 +13,22 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  max-width: 50%;
-}
-
-.registro {
-  font-size: 2rem;
-  a {
-    color: $negro;
-    font-weight: 600;
-    font-size: 2.5rem;
-    &:hover {
-      color: $fireBrick;
-      text-decoration: underline;
-    }
+  @include desktop {
+    max-width: 50%;
   }
 }
+.acciones-login {
+  text-align: center;
+  a {
+    color: $fireBrick;
+    font-size: 2rem;
+    margin-left: 1rem;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  p {
+    margin: 0;
+  }
+}
+

@@ -17,16 +17,6 @@
         </div>
         <div class="row">
             <div class="mb-5 col-12 col-md-6">
-                <label for="email">Email</label>
-                <input type="email" placeholder="Email" id="email" name="usuario[email]">
-            </div>
-            <div class="mb-5 col-12 col-md-6">
-                <label for="password">Contraseña</label>
-                <input type="password" placeholder="Contraseña" id="password" name="usuario[password]">
-            </div>
-        </div>
-        <div class="row">
-            <div class="mb-5 col-12 col-md-6">
                 <label for="dni">DNI</label>
                 <input type="text" placeholder="DNI" id="dni" name="usuario[dni]">
             </div>
@@ -35,6 +25,17 @@
                 <input type="tel" placeholder="Teléfono" id="telefono" name="usuario[telefono]">
             </div>
         </div>
+        <div class="row">
+            <div class="mb-5 col-12 col-md-6">
+                <label for="email">Email</label>
+                <input type="email" placeholder="Email" id="email" name="usuario[email]">
+            </div>
+            <div class="mb-5 col-12 col-md-6">
+                <label for="password">Contraseña</label>
+                <input type="password" placeholder="Contraseña" id="password" name="usuario[password]">
+            </div>
+        </div>
+
         <input type="hidden" name="usuario[fecha_creacion]" value="<?php echo s($usuario->fecha_creacion); ?>">
         <div class="mb-3">
             <input type="submit" class="boton-fireBrick-block w-100" value="Inicia sesión"></input>

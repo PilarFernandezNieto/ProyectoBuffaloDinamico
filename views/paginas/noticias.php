@@ -13,7 +13,7 @@
                         <p class="texto"><?php echo truncate($noticia->texto, 150); ?></p>
                         <p class="fecha alinear-derecha"><?php echo fechas($noticia->fecha); ?></p>
                     </div>
-                    <a href="/noticia?id=<?php echo $noticia->id; ?>" class="boton-fireBrick">Más...</a>
+                    <a href="/noticia?id=<?php echo $noticia->id; ?>" class="boton-fireBrick boton-mas">Más...</a>
 
                 </div>
             </div>

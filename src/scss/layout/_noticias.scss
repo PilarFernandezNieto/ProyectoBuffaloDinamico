@@ -16,6 +16,7 @@
   border-radius: 3.75px;
   margin-bottom: 2rem;
   transition: box-shadow 0.5s ease, transform 0.3s ease;
+  position: relative;
   @include desktop {
     margin-bottom: 0;
   }
@@ -26,8 +27,14 @@
     border-top-left-radius: 3.75px;
     border-top-right-radius: 3.75px;
   }
+  .boton-mas {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+  }
 
 }
+
 .noticia-individual{
   width: 80%;
   margin: 0 auto;

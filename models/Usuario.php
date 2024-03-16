@@ -3,23 +3,42 @@
 namespace Model;
 
 class Usuario extends ActiveRecord {
+
     protected static $tabla = "usuarios";
-    protected static $columnasDB = ["id", "nombre", "apellidos", "email", "password", "fecha_creacion", "idrol"];
+
+    protected static $columnasDB = [
+        "id", 
+        "nombre", 
+        "apellidos",
+        "dni",
+        "telefono", 
+        "email", 
+        "password",
+        "token", 
+        "fecha_creacion", 
+        "idrol"
+    ];
 
     public $id;
     public $nombre;
     public $apellidos;
+    public $dni;
+    public $telefono;
     public $email;
     public $password;
-    public $fecha_creacion;
+    public $token;
     public $idrol;
+    public $fecha_creacion;
 
     public function __construct($args = []) {
         $this->id = $args["id"] ?? null;
         $this->nombre = $args["nombre"] ?? "";
         $this->apellidos = $args["apellidos"] ?? "";
+        $this->dni = $args["dni"] ?? "";
+        $this->telefono = $args["telefono"] ?? "";
         $this->email = $args["email"] ?? "";
         $this->password = $args["password"] ?? "";
+        $this->token = $args["token"] ?? "";
         $this->idrol = $args["idrol"] ?? 2;
         $this->fecha_creacion = date("Y/m/d");
     }
