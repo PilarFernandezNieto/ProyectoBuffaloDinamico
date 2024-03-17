@@ -52,7 +52,12 @@ class LoginController {
         echo "Desde recuperar";
     }
 
-    /** REGISTRO DE USUARIOS **/
+   /**
+    * Registro de usuarios desde zona pública
+    *
+    * @param Router $router
+    * @return void
+    */
     public static function registrar(Router $router) {
         $alertas=[];
         $title= "Página de registro";
@@ -64,13 +69,13 @@ class LoginController {
            
             if(empty($alertas)){
                 $resultado = $usuario->existeUsuario();
+
                 if($resultado->num_rows){
                     $alertas = Usuario::getAlertas();
+                } else {
+                    $usuario->hashPassword();
                 }
             }
-
-
-           
         }
 
         $router->render("layout", "auth/registrar", [
@@ -79,6 +84,7 @@ class LoginController {
             "usuario" => $usuario
         ]);
     }
+
 
 
     public static function logout(Router $router) {

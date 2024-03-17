@@ -32,16 +32,26 @@ function lanza() {
   lanzaModalProducto();
 }
 
-/*** modales eliminar **/
+
+/**
+ * La función "notificacionEliminar" adjunta un detector de eventos de clic a elementos con la clase
+ * "eliminar" para evitar la acción predeterminada, encontrar el elemento del formulario más cercano y
+ * luego llamar a la función "confirmarBorrado" con el elemento del formulario como parámetro.
+ */
 function notificacionEliminar() {
   $(".eliminar").on("click", function (e) {
     e.preventDefault();
     const formulario = $(e.target).closest("form");
-    console.log(formulario);
     confirmarBorrado(formulario);
   });
 }
 
+
+/**
+ * La función `confirmarBorrado` muestra un cuadro de diálogo de confirmación usando SweetAlert2 y
+ * envía un formulario si el usuario confirma la acción.
+ * @param formulario - el formulario a enviar en caso de que se confirme la acción
+ */
 function confirmarBorrado(formulario) {
   Swal.fire({
     title: "¿Estás seguro?",
@@ -61,6 +71,16 @@ function confirmarBorrado(formulario) {
   });
 }
 
+function eliminarParametrosUrl(){
+  let urlActual = window.location.href
+  var urlSinParametros = urlActual.split("?")[0];
+  window.location.href = urlSinParametros;
+}
+
+/**
+ * La función `notificacionesAcciones` verifica el parámetro de URL 'exito' y muestra mensajes de éxito
+ * o error usando SweetAlert según el valor de 'exito' y 'accion'.
+ */
 function notificacionesAcciones() {
   // Obtener el parámetro 'exito' de la URL
   const urlParams = new URLSearchParams(window.location.search);
@@ -68,7 +88,7 @@ function notificacionesAcciones() {
   const accion = urlParams.get("accion");
   const mensaje = urlParams.get("mensaje");
 
-  // Si 'exito' es igual a 'true', mostrar una alerta de éxito
+  // Si 'exito' es igual a 'true', mostrar una alerta de éxito dependiendo de donde se llame
   if (exito === "true") {
     switch (accion) {
       case "crear":
@@ -83,7 +103,7 @@ function notificacionesAcciones() {
           },
         }).then((result) => {
           if (result.isConfirmed) {
-            history.replaceState({}, document.title, window.location.pathname);
+           eliminarParametrosUrl();
           }
         });
         break;
@@ -96,7 +116,8 @@ function notificacionesAcciones() {
           icon: "success",
         }).then((result) => {
           if (result.isConfirmed) {
-            history.replaceState({}, document.title, window.location.pathname);
+            //history.replaceState({}, document.title, window.location.pathname);
+            eliminarParametrosUrl();
           }
         });
         break;
@@ -109,7 +130,7 @@ function notificacionesAcciones() {
           icon: "success",
         }).then((result) => {
           if (result.isConfirmed) {
-            history.replaceState({}, document.title, window.location.pathname);
+           eliminarParametrosUrl();
           }
         });
         break;
@@ -123,11 +144,12 @@ function notificacionesAcciones() {
       text: mensaje,
     }).then((result) => {
       if (result.isConfirmed) {
-        history.replaceState({}, document.title, window.location.pathname);
+        eliminarParametrosUrl();
       }
     });
   }
 }
+/** LISTADOS **/
 function listadoCategorias() {
   $("#listado_categorias").DataTable({
       responsive: true,

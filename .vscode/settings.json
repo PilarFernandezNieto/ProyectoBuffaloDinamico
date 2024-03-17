@@ -7,5 +7,7 @@
             416
         ],
         "vendor/": true,
-    }
+    },
+    "docwriter.language": "Spanish",
+    "docwriter.style": "JSDoc"
 }
