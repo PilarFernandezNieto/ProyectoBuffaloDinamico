@@ -42,7 +42,7 @@
 
       <div class="form-check form-switch col-5 check">
           <label class="form-check-label" for="confirmado">Confirmado</label>
-          <input class="form-check-input" type="checkbox" id="confirmado" name="usuario[confirmado]" value="<?php echo s($usuario->confirmado); ?>">
+          <input class="form-check-input" type="checkbox" id="confirmado" name="usuario[confirmado]" value="1" <?php echo ($usuario->confirmado == 1) ? "checked" : ""; ?>>
 
       </div>
 

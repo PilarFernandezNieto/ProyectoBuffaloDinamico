@@ -16,7 +16,7 @@ class LoginController {
             $alertas = $auth->validaLogin();
 
             if (empty($alertas)) {
-                $resultado = $auth->existeUsuario();
+                $resultado = $auth->confirmaUsuario();
 
                 if (!$resultado) {
                     $alertas = Usuario::getAlertas();

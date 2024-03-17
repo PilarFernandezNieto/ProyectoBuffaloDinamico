@@ -20,11 +20,12 @@ class UsuarioController{
         $roles = Rol::findAll();
         $alertas = Usuario::getAlertas();
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            //debuguear($_POST);
+            // debuguear($_POST);
 
             $usuario = new Usuario($_POST["usuario"]);
-
-            //debuguear($usuario);
+            $confirmado = isset($_POST['usuario']['confirmado']) ? 1 : 0;
+            $usuario->confirmado = $confirmado;
+         
             $alertas = $usuario->validar();
 
             if (empty($alertas)) {
@@ -46,12 +47,15 @@ class UsuarioController{
         $usuario = Usuario::findById($id);
         $roles = Rol::findAll();
         $alertas = Usuario::getAlertas();
+        //debuguear($usuario);
      
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            debuguear($_POST);
+            
           
 
             $args = $_POST["usuario"];
+            $confirmado = isset($_POST['usuario']['confirmado']) ? 1 : 0;
+            $usuario->confirmado = $confirmado;
             $usuario->sincronizar($args);
             $alertas = $usuario->validar();
 

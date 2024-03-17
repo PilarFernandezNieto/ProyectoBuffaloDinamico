@@ -16,7 +16,7 @@ $auth = $_SESSION["login"] ?? false;
     <link rel="stylesheet" type="text/css" href="/../build/css/main.css">
     <link rel="stylesheet" type="text/css" href="/../build/css/datatables.css">
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.css" rel="stylesheet">
-
+    <link rel="icon" type="image/x-icon" href="/build/img/favicon.png">
     <link rel="stylesheet" href="/../build/css/app.css">
     <link rel="stylesheet" href="/../build/css/app.css.map">
     <!-- Font-icon css-->

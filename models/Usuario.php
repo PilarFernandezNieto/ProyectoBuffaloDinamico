@@ -7,16 +7,16 @@ class Usuario extends ActiveRecord {
     protected static $tabla = "usuarios";
 
     protected static $columnasDB = [
-        "id", 
-        "nombre", 
+        "id",
+        "nombre",
         "apellidos",
         "dni",
-        "telefono", 
-        "email", 
+        "telefono",
+        "email",
         "password",
         "token",
-        "confirmado", 
-        "fecha_creacion", 
+        "confirmado",
+        "fecha_creacion",
         "idrol"
     ];
 
@@ -50,12 +50,10 @@ class Usuario extends ActiveRecord {
             self::$alertas["error"][] = "El nombre es obligatorio";
         }
         if (!$this->email) {
-            self::
-            $alertas["error"][] = "El email es obligatorio";
+            self::$alertas["error"][] = "El email es obligatorio";
         }
         if (!$this->password) {
-            self::
-            $alertas["error"][] = "La contraseña es obligatoria";
+            self::$alertas["error"][] = "La contraseña es obligatoria";
         }
 
 
@@ -72,7 +70,7 @@ class Usuario extends ActiveRecord {
         if (!$this->password) {
             self::$alertas["error"][] = "La contraseña es obligatoria";
         }
-        if(strlen($this->password) < 6){
+        if (strlen($this->password) < 6) {
             self::$alertas["error"][] = "El password debe tener al menos 6 caracteres";
         }
         if (!$this->dni) {
@@ -90,29 +88,40 @@ class Usuario extends ActiveRecord {
         $resultado = self::$db->query($query);
         if ($resultado->num_rows) {
             self::$alertas["error"][] = "El usuario ya está registrado";
-        } 
+        }
         return $resultado;
-        
+    }
+    public function confirmaUsuario() {
+        $query = "SELECT * FROM " . self::$tabla . " WHERE email='" . $this->email . "' LIMIT 1";
+        $resultado = self::$db->query($query);
+        if (!$resultado->num_rows) {
+            self::$alertas["error"][] = "El usuario no existe";
+        }
+        return $resultado;
     }
 
     public function comprobarPassword($resultado) {
         $usuario = $resultado->fetch_object();
+
         $autenticado = password_verify($this->password, $usuario->password);
-        if(!$autenticado){
-            self::
-            $alertas["error"][] = "El password es incorrecto";
+        if (!$autenticado) {
+            self::$alertas["error"][] = "El password es incorrecto";
         }
-       return $autenticado;
+        return $autenticado;
     }
 
-    public function autenticar(){
-        if(!isset($_SESSION)){
+    public function autenticar() {
+        if (!isset($_SESSION)) {
             session_start();
         }
         $_SESSION["usuario"] = $this->email;
         $_SESSION["login"] = true;
-
-        header("Location: /admin");
+        $_SESSION["rol"] = $this->idrol;
+        if ($_SESSION["rol"] === 1) {
+            header("Location: /admin");
+        } else {
+            header("Location: /");
+        }
     }
 
     public function validaLogin() {
