@@ -4,6 +4,7 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Usuario;
+use Clases\Email;
 
 class LoginController {
 
@@ -20,7 +21,6 @@ class LoginController {
 
                 if (!$resultado) {
                     $alertas = Usuario::getAlertas();
-
                 } else {
                     $autenticado = $auth->comprobarPassword($resultado);
                     if ($autenticado) {
@@ -31,7 +31,7 @@ class LoginController {
                 }
             }
         }
-      
+
         $router->render("layout", "auth/login", [
             "alertas" => $alertas,
             "title" => $title
@@ -39,7 +39,7 @@ class LoginController {
         ]);
     }
 
-    public static function olvide(Router $router){
+    public static function olvide(Router $router) {
         $title = "Recuperar contraseña";
         $alertas = [];
 
@@ -52,28 +52,34 @@ class LoginController {
         echo "Desde recuperar";
     }
 
-   /**
-    * Registro de usuarios desde zona pública
-    *
-    * @param Router $router
-    * @return void
-    */
+    /**
+     * Registro de usuarios desde zona pública
+     *
+     * @param Router $router
+     * @return void
+     */
     public static function registrar(Router $router) {
-        $alertas=[];
-        $title= "Página de registro";
+        $alertas = [];
+        $title = "Página de registro";
         $usuario = new Usuario;
 
-        if($_SERVER["REQUEST_METHOD"] === "POST"){
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $usuario->sincronizar($_POST["usuario"]);
             $alertas = $usuario->validarNuevaCuenta();
-           
-            if(empty($alertas)){
+
+            if (empty($alertas)) {
                 $resultado = $usuario->existeUsuario();
 
-                if($resultado->num_rows){
+                if ($resultado->num_rows) {
                     $alertas = Usuario::getAlertas();
                 } else {
                     $usuario->hashPassword();
+                    $usuario->crearToken();
+                    $email = new Email($usuario->email, $usuario->nombre . " " . $usuario->apellidos, $usuario->token);
+
+                    $email->enviarConfirmacion();
+
+                    $usuario->guardar();
                 }
             }
         }
@@ -85,11 +91,13 @@ class LoginController {
         ]);
     }
 
+    public static function confirmar(Router $router) {
+    }
 
 
     public static function logout(Router $router) {
-       session_start();
-       $_SESSION = [];
-       header("Location: /");
+        session_start();
+        $_SESSION = [];
+        header("Location: /");
     }
 }

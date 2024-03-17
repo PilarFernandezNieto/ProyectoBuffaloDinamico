@@ -101,6 +101,8 @@ $router->post("/recuperar", [LoginController::class, "recuperar"]);
 $router->get("/registrar", [LoginController::class, "registrar"]);
 $router->post("/registrar", [LoginController::class, "registrar"]);
 
+$router->get("/confirmar-cuenta", [LoginController::class, "confirmar"]);
+
 
 
 

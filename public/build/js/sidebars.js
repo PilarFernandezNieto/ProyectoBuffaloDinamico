@@ -71,6 +71,10 @@ function confirmarBorrado(formulario) {
   });
 }
 
+/**
+ * La función `eliminarParametrosUrl` elimina cualquier parámetro de consulta de la URL actual en
+ * JavaScript y redirige hacia esa url.
+ */
 function eliminarParametrosUrl(){
   let urlActual = window.location.href
   var urlSinParametros = urlActual.split("?")[0];

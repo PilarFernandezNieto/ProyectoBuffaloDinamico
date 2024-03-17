@@ -41,7 +41,7 @@ class Usuario extends ActiveRecord {
         $this->email = $args["email"] ?? "";
         $this->password = $args["password"] ?? "";
         $this->token = $args["token"] ?? "";
-        $this->confirmado = $args["confirmado"] ?? 0;
+        $this->confirmado = $args["confirmado"] ?? "0";
         $this->idrol = $args["idrol"] ?? 2;
         $this->fecha_creacion = date("Y/m/d");
     }
@@ -142,6 +142,10 @@ class Usuario extends ActiveRecord {
     public function hashPassword(){
 
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);
+    }
+
+    public function crearToken(){
+        $this->token = uniqid();
     }
 
 
