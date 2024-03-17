@@ -1,8 +1,8 @@
 <?php
 
 namespace Controllers;
+use Exception;
 use Model\Musico;
-use Model\Instrumento;
 use MVC\Router;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -39,7 +39,14 @@ class MusicoController{
                 }
                 $imagen->save(CARPETA_IMAGENES . $nombreImagen);
 
-                $musico->guardar();
+                try {
+                    $resultado = $musico->guardar();
+                    if ($resultado) {
+                        header("Location: listado?exito=true&accion=crear");
+                    }
+                } catch (Exception $e) {
+                    header("Location: listado?exito=false&accion=crear&mensaje=" . $e->getMessage());
+                }
             }
         }
 
@@ -76,7 +83,14 @@ class MusicoController{
                 if ($_FILES["musico"]["tmp_name"]["imagen"]) {
                     $imagen->save(CARPETA_IMAGENES . '/' . $nombreImagen);
                 }
-                $musico->guardar();
+                try {
+                    $resultado = $musico->guardar();
+                    if ($resultado) {
+                        header("Location: listado?exito=true&accion=actualizar");
+                    }
+                } catch (Exception $e) {
+                    header("Location: listado?exito=false&accion=actualizar&mensaje=" . $e->getMessage());
+                }
             }
         }
 

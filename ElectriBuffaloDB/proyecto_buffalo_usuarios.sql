@@ -36,9 +36,10 @@ CREATE TABLE `usuarios` (
   `fecha_creacion` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `dni_UNIQUE` (`dni`),
   KEY `fk_usuario_rol_idx` (`idrol`),
   CONSTRAINT `fk_usuario_rol` FOREIGN KEY (`idrol`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +48,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Pilar','Fernandez',NULL,NULL,'correo@correo.com','$2y$10$Y5icNUR1KovdiCqJBlJS/uMosCf8pr5GpLwyRfqV3bey2QDBdTix6',NULL,1,1,'2024-02-23'),(9,'Pepe','Pérez',NULL,NULL,'pepe@pepe.com','123456',NULL,2,0,'2024-02-24');
+INSERT INTO `usuarios` VALUES (1,'Pilar','Fernandez','10880331C','626340144','correo@correo.com','$2y$10$Y5icNUR1KovdiCqJBlJS/uMosCf8pr5GpLwyRfqV3bey2QDBdTix6','',1,1,'2024-02-23'),(26,'Lola','Flores','111','666222111','lola@lola.com','$2y$10$WXgOyaxWH4XLzFlj1llyYOlWTL1e3SDt972879oBvOHBwyNdKCrKu','',2,1,'2024-03-17'),(27,'Pepe','Pérez','222','666999777','pepe@pepe.com','$2y$10$ng..ChpFAHhwqIME2d0Cuepb1kMGo2oGJN0mnU46psNSVn8qm0oYe','65f74cf14534d',2,1,'2024-03-17');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-16 21:15:04
+-- Dump completed on 2024-03-17 21:08:02

@@ -19,10 +19,11 @@ class ActiveRecord {
 
     public function guardar() {
         if (isset($this->id)) {
-            $this->actualizar();
+            $resultado = $this->actualizar();
         } else {
-            $this->crear();
+            $resultado = $this->crear();
         }
+        return $resultado;
     }
 
     public function crear() {
@@ -34,18 +35,10 @@ class ActiveRecord {
         $query .= join("', '", array_values($atributos));
         $query .= "' )";
 
+        $resultado = self::$db->query($query);
 
-        try {
-            $resultado = self::$db->query($query);
-            if ($resultado) {
-                header("Location: listado?exito=true&accion=crear");
-            }
-        } catch (\Exception $e) {
-          
-      
-                header("Location: listado?exito=false&accion=crear&mensaje=" . $e->getMessage());
+        return $resultado;
 
-        }
     }
 
     public function actualizar() {
@@ -61,15 +54,9 @@ class ActiveRecord {
         $query .= " WHERE id='" . self::$db->escape_string($this->id) . "'";
         $query .= " LIMIT 1";
 
-        try {
+        $resultado = self::$db->query($query);
 
-            $resultado =  self::$db->query($query);
-            if ($resultado) {
-                header("Location: listado?exito=true&accion=actualizar");
-            }
-        } catch (\Exception $e) {
-            header("Location: listado?exito=false&accion=actualizar");
-        }
+        return $resultado;
     }
 
     public function eliminar() {
@@ -80,9 +67,7 @@ class ActiveRecord {
             if ($resultado) {
                 $this->borrarImagen();
                 header("Location: listado?exito=true&accion=eliminar");
-            } else {
-                header("Location: listado?exito=false&accion=eliminar?mensaje=Ese regisro ya existe");
-            }
+            } 
         } catch (\Exception $e) {
             header("Location: listado?exito=false&accion=eliminar&mensaje=" . $e->getMessage());
         }
@@ -98,6 +83,12 @@ class ActiveRecord {
 
     public static function findById($id) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE id={$id}";
+        $resultado = self::consultarSQL($query);
+        return array_shift($resultado);
+    }
+    
+    public static function where($campo, $valor) {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE {$campo}='{$valor}'";
         $resultado = self::consultarSQL($query);
         return array_shift($resultado);
     }
@@ -143,6 +134,10 @@ class ActiveRecord {
 
     public static function getAlertas() {
         return static::$alertas;
+    }
+    public static function setAlertas($tipo, $mensaje){
+        static::$alertas[$tipo][] = $mensaje;
+
     }
     public function validar() {
         static::$alertas = [];

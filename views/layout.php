@@ -3,6 +3,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 $auth = $_SESSION["login"] ?? false;
+$rol = $_SESSION["rol"] ?? "2";
+//debuguear($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +14,7 @@ $auth = $_SESSION["login"] ?? false;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>The Electric Buffalo | <?php echo $title; ?></title>
+    <title>The Electric Buffalo | <?php echo $title ?? ""; ?></title>
     <meta name="description" content="The Electric Buffalo es una banda de rock asturiana que te llevará en un viaje musical emocionante con la seña de identidad de &quot;lo americano&quot;. Únete a la manada.">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website" />
@@ -72,7 +74,9 @@ $auth = $_SESSION["login"] ?? false;
                 <nav class="navegacion-principal">
                     <?php if ($auth) : ?>
                         <a href="/logout"><i class="fa-solid fa-lock-open"></i></a>
+                        <?php if ($rol == 1): ?>
                         <a href="/admin">Panel</a>
+                        <?php endif; ?>
                     <?php else : ?>
                         <a href="/login"><i class="fa-solid fa-lock"></i></a>
                     <?php endif; ?>

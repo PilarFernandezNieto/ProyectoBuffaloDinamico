@@ -1,6 +1,8 @@
 <?php
 
 namespace Controllers;
+
+use Exception;
 use MVC\Router;
 use Model\Noticia;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -37,7 +39,14 @@ class NoticiaController{
                 }
                 $imagen->save(CARPETA_IMAGENES . $nombreImagen);
 
-                $noticia->guardar();
+                try {
+                    $resultado = $noticia->guardar();
+                    if ($resultado) {
+                        header("Location: listado?exito=true&accion=crear");
+                    }
+                } catch (Exception $e) {
+                    header("Location: listado?exito=false&accion=crear&mensaje=" . $e->getMessage());
+                }
             }
         }
 
@@ -74,7 +83,14 @@ class NoticiaController{
                 if ($_FILES["noticia"]["tmp_name"]["imagen"]) {
                     $imagen->save(CARPETA_IMAGENES . '/' . $nombreImagen);
                 }
-                $noticia->guardar();
+                try {
+                    $resultado = $noticia->guardar();
+                    if ($resultado) {
+                        header("Location: listado?exito=true&accion=actualizar");
+                    }
+                } catch (Exception $e) {
+                    header("Location: listado?exito=false&accion=actualizar&mensaje=" . $e->getMessage());
+                }
             }
         }
 

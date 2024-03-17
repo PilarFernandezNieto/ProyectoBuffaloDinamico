@@ -1,5 +1,8 @@
-<?php 
+<?php
+
 namespace Controllers;
+
+use Exception;
 use MVC\Router;
 use Model\Producto;
 use Model\Categoria;
@@ -43,7 +46,15 @@ class ProductoController {
                 }
                 $imagen->save(CARPETA_IMAGENES . $nombreImagen);
 
-                $producto->guardar();
+
+                try {
+                    $resultado = $producto->guardar();
+                    if ($resultado) {
+                        header("Location: listado?exito=true&accion=crear");
+                    }
+                } catch (Exception $e) {
+                    header("Location: listado?exito=false&accion=crear&mensaje=" . $e->getMessage());
+                }
             }
         }
 
@@ -65,9 +76,10 @@ class ProductoController {
         $formatos = $producto->getFormatos();
         $categorias = Categoria::findAll();
         $tallas = $producto->getTallas();
-
+        //debuguear($tallas);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
 
             $args = $_POST["producto"];
             $args["formato"] = $_POST["formato"];
@@ -87,7 +99,15 @@ class ProductoController {
                 if ($_FILES["producto"]["tmp_name"]["imagen"]) {
                     $imagen->save(CARPETA_IMAGENES . '/' . $nombreImagen);
                 }
-                $producto->guardar();
+                try {
+                    $resultado = $producto->guardar();
+                    if ($resultado) {
+                        header("Location: listado?exito=true&accion=actualizar");
+                    }
+                } catch (Exception $e) {
+                    header("Location: listado?exito=false&accion=actualizar&mensaje=" . $e->getMessage());
+                }
+                
             }
         }
 

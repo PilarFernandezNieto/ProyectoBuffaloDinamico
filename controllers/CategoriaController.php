@@ -1,6 +1,7 @@
 <?php
 
 namespace Controllers;
+use Exception;
 use Model\Categoria;
 use MVC\Router;
 
@@ -27,7 +28,14 @@ class CategoriaController{
             $alertas = $categoria->validar();
 
             if (empty($alertas)) {
-                $categoria->guardar();
+                try {
+                    $resultado = $categoria->guardar();
+                    if ($resultado) {
+                        header("Location: listado?exito=true&accion=crear");
+                    }
+                } catch (Exception $e) {
+                    header("Location: listado?exito=false&accion=crear&mensaje=" . $e->getMessage());
+                }
             }
         }
 
@@ -50,7 +58,14 @@ class CategoriaController{
             $alertas = $categoria->validar();
 
             if (empty($alertas)) {
-                $categoria->guardar();
+                try {
+                    $resultado = $categoria->guardar();
+                    if ($resultado) {
+                        header("Location: listado?exito=true&accion=crear");
+                    }
+                } catch (Exception $e) {
+                    header("Location: listado?exito=false&accion=crear&mensaje=" . $e->getMessage());
+                }
             }
         }
 

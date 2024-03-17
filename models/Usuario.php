@@ -110,6 +110,13 @@ class Usuario extends ActiveRecord {
         return self::$alertas;
     }
 
+    public function validarEmail(){
+        if (!$this->email) {
+            self::$alertas["error"][] = "El email es obligatorio";
+        }
+        return self::$alertas;
+    }
+
 
     /**
      * Comprueba que el usuario no está previamente registrado a la hora de registrarse
@@ -132,6 +139,7 @@ class Usuario extends ActiveRecord {
      */
     public function confirmaUsuario() {
         $query = "SELECT * FROM " . self::$tabla . " WHERE email='" . $this->email . "' LIMIT 1";
+
         $resultado = self::$db->query($query);
         if (!$resultado->num_rows) {
             self::$alertas["error"][] = "El usuario no existe";
@@ -139,46 +147,40 @@ class Usuario extends ActiveRecord {
         return $resultado;
     }
 
-    public function hashPassword(){
+    public function hashPassword() {
 
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);
     }
 
-    public function crearToken(){
+    public function crearToken() {
         $this->token = uniqid();
     }
 
 
-    /**
-     * Comprueba si la contraseña del usuario existe y es correcta
-     *
-     * @param [object] $resultado
-     * @return bool
-     */
-    public function comprobarPassword($resultado) {
-       
-        $usuario = $resultado->fetch_object();
 
-        $autenticado = password_verify($this->password, $usuario->password);
-        if (!$autenticado) {
-            self::$alertas["error"][] = "El password es incorrecto";
+    public function comprobarPasswordAndVerificado($password) {
+        $resultado = password_verify($password, $this->password);
+        if (!$resultado || !$this->confirmado) {
+            self::$alertas["error"][] = "Contraseña incorrecta o cuenta no confirmada";
+        } else {
+            return true;
         }
-        return $autenticado;
     }
 
     public function autenticar() {
         if (!isset($_SESSION)) {
             session_start();
         }
-        $_SESSION["usuario"] = $this->email;
+        $_SESSION["id"] = $this->id;
+        $_SESSION["nombre"] = $this->nombre . " " . $this->apellidos;
+        $_SESSION["email"] = $this->email;
         $_SESSION["login"] = true;
-        $_SESSION["rol"] = $this->idrol;
-        if ($_SESSION["rol"] === 1) {
+
+        if ($this->idrol === "1") {
+            $_SESSION["rol"] = $this->idrol;
             header("Location: /admin");
         } else {
             header("Location: /");
         }
     }
-
-
 }

@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Exception;
 use MVC\Router;
 use Model\Contenido;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -37,7 +38,14 @@ class ContenidoController{
                 }
                 $imagen->save(CARPETA_IMAGENES . $nombreImagen);
 
-                $contenido->guardar();
+                try {
+                    $resultado = $contenido->guardar();
+                    if ($resultado) {
+                        header("Location: listado?exito=true&accion=crear");
+                    }
+                } catch (Exception $e) {
+                    header("Location: listado?exito=false&accion=crear&mensaje=" . $e->getMessage());
+                }
             }
         }
 
@@ -74,7 +82,14 @@ class ContenidoController{
                 if ($_FILES["contenido"]["tmp_name"]["imagen"]) {
                     $imagen->save(CARPETA_IMAGENES . '/' . $nombreImagen);
                 }
-                $contenido->guardar();
+                try {
+                    $resultado = $contenido->guardar();
+                    if ($resultado) {
+                        header("Location: listado?exito=true&accion=actualizar");
+                    }
+                } catch (Exception $e) {
+                    header("Location: listado?exito=false&accion=actualizar&mensaje=" . $e->getMessage());
+                }
             }
         }
 

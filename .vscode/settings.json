@@ -1,6 +1,7 @@
 {
-    "liveServer.settings.port": 5501,
-    "intelephense.diagnostics.undefinedProperties": false,
+    "intelephense.diagnostics.undefinedFunctions": false,
+    "intelephense.diagnostics.undefinedConstants": false,
+    "intelephense.diagnostics.undefinedTypes": false,
     "intelephense.diagnostics.undefinedMethods": false,
     "php.problems.exclude": {
         "/": [

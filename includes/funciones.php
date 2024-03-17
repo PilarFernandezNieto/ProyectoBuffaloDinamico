@@ -55,7 +55,7 @@ function validarORedireccionar(string $url){
 
 function protegeRuta(){
 
-    if (!isset($_SESSION["login"])) {
+    if ($_SESSION["rol"] != 1) {
         header("Location: /");
     }
 }
