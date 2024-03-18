@@ -71,11 +71,16 @@ $rol = $_SESSION["rol"] ?? "2";
                         <i class="fa-brands fa-spotify"></i>
                     </a>
                 </div>
+                <div>
+                    <?php if ($auth) : ?>
+                        <p class="usuario">Hola, <?php echo $_SESSION["nombre"]; ?></p>
+                    <?php endif; ?>
+                </div>
                 <nav class="navegacion-principal">
                     <?php if ($auth) : ?>
                         <a href="/logout"><i class="fa-solid fa-lock-open"></i></a>
-                        <?php if ($rol == 1): ?>
-                        <a href="/admin">Panel</a>
+                        <?php if ($rol == 1) : ?>
+                            <a href="/admin">Panel</a>
                         <?php endif; ?>
                     <?php else : ?>
                         <a href="/login"><i class="fa-solid fa-lock"></i></a>
@@ -86,6 +91,7 @@ $rol = $_SESSION["rol"] ?? "2";
                     <a href="/tienda">Tienda</a>
                     <a href="/contacto">Contacto</a>
                 </nav>
+
             </div>
 
         </div>

@@ -117,6 +117,16 @@ class Usuario extends ActiveRecord {
         return self::$alertas;
     }
 
+    public function validarPassword(){
+        if(!$this->password){
+            self::$alertas["error"][] = "La contraseña es obligatoria";
+        }
+        if (strlen($this->password) < 6) {
+            self::$alertas["error"][] = "La contraseña debe tener al menos 6 caracteres";
+        }
+        return self::$alertas;
+    }
+
 
     /**
      * Comprueba que el usuario no está previamente registrado a la hora de registrarse
