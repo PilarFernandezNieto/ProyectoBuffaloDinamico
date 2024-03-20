@@ -34,7 +34,8 @@ class UsuarioController {
             if (empty($alertas)) {
                 try {
                     $resultado = $usuario->guardar();
-                    if ($resultado) {
+                    
+                    if ($resultado["resultado"]) {
                         header("Location: listado?exito=true&accion=crear");
                     }
                 } catch (Exception $e) {
