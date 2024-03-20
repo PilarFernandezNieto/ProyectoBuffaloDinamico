@@ -134,13 +134,14 @@ class Usuario extends ActiveRecord {
      * @return object
      */
     public function existeUsuario() {
-        $query = "SELECT * FROM " . self::$tabla . " WHERE email='" . $this->email . "' LIMIT 1";
+        $query = "SELECT * FROM " . self::$tabla . " WHERE email='" . $this->email ."' OR dni='".$this->dni . "' LIMIT 1";
         $resultado = self::$db->query($query);
         if ($resultado->num_rows) {
             self::$alertas["error"][] = "El usuario ya está registrado";
         }
         return $resultado;
     }
+
 
     /**
      * Comprueba que el usuario existe a la hora de iniciar sesión
@@ -160,6 +161,7 @@ class Usuario extends ActiveRecord {
     public function hashPassword() {
 
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);
+       
     }
 
     public function crearToken() {
@@ -170,6 +172,7 @@ class Usuario extends ActiveRecord {
 
     public function comprobarPasswordAndVerificado($password) {
         $resultado = password_verify($password, $this->password);
+        //debuguear($resultado);
         if (!$resultado || !$this->confirmado) {
             self::$alertas["error"][] = "Contraseña incorrecta o cuenta no confirmada";
         } else {

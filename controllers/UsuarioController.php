@@ -27,6 +27,7 @@ class UsuarioController {
 
             $usuario = new Usuario($_POST["usuario"]);
             $confirmado = isset($_POST['usuario']['confirmado']) ? 1 : 0;
+            $usuario->hashPassword();
             $usuario->confirmado = $confirmado;
 
             $alertas = $usuario->validar();
@@ -62,12 +63,17 @@ class UsuarioController {
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-
-
             $args = $_POST["usuario"];
             $confirmado = isset($_POST['usuario']['confirmado']) ? 1 : 0;
+            if($args["password"] != $usuario->password){
+                $usuario->password = $args["password"];
+              
+                
+            }
             $usuario->confirmado = $confirmado;
+ 
             $usuario->sincronizar($args);
+            $usuario->hashPassword();
             $alertas = $usuario->validar();
 
             if (empty($alertas)) {
