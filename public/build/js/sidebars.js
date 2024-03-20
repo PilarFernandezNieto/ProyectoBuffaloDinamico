@@ -79,6 +79,7 @@ function eliminarParametrosUrl(){
   let urlActual = window.location.href
   var urlSinParametros = urlActual.split("?")[0];
   window.location.href = urlSinParametros;
+  window.location.reload();
 }
 
 /**
