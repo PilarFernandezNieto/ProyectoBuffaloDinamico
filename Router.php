@@ -22,7 +22,8 @@ class Router {
         // Rutas protegidas
         //  $rutas_protegidas = ["/admin", "/noticias/listado", "/noticias/crear", "/noticias/actualizar"];
 
-        $urlActual = $_SERVER["PATH_INFO"] ?? "/";
+        //$urlActual = $_SERVER["PATH_INFO"] ?? "/";
+        $urlActual = strtok($_SERVER["REQUEST_URI"], "?") ?? "/";
         $metodo = $_SERVER["REQUEST_METHOD"];
 
       

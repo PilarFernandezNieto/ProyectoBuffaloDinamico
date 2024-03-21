@@ -79,7 +79,6 @@ function eliminarParametrosUrl(){
   let urlActual = window.location.href
   var urlSinParametros = urlActual.split("?")[0];
   window.location.href = urlSinParametros;
-  window.location.reload();
 }
 
 /**
@@ -567,7 +566,7 @@ function lanzaModalDisco(){
      let discoID = $(this).closest("tr").find("td:eq(0)").text();
      $.ajax({
        type: "POST",
-       url: "http://localhost:3000/api/getTextoCompletoDisco.php?id=" + discoID,
+       url: "/api/getTextoCompletoDisco.php?id=" + discoID,
        contentType: "application/json",
        dataType: "json",
        cache: false,
@@ -585,7 +584,7 @@ function lanzaModalProducto() {
     $.ajax({
       type: "POST",
       url:
-        "http://localhost:3000/api/getTextoCompletoProducto.php?id=" + productoID,
+        "/api/getTextoCompletoProducto.php?id=" + productoID,
       contentType: "application/json",
       dataType: "json",
       cache: false,
@@ -601,7 +600,7 @@ function lanzaModalMusico() {
     $.ajax({
       type: "POST",
       url:
-        "http://localhost:3000/api/getTextoCompletoMusico.php?id=" + musicoID,
+        "/api/getTextoCompletoMusico.php?id=" + musicoID,
       contentType: "application/json",
       dataType: "json",
       cache: false,
@@ -618,7 +617,7 @@ function lanzaModalContenido() {
     $.ajax({
       type: "POST",
       url:
-        "http://localhost:3000/api/getTextoCompletoContenido.php?id=" + musicoID,
+        "/api/getTextoCompletoContenido.php?id=" + musicoID,
       contentType: "application/json",
       dataType: "json",
       cache: false,

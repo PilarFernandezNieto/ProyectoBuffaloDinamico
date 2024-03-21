@@ -71,3 +71,10 @@ exports.default = parallel(
   versionWebp,
   watchArchivos
 );
+exports.build = parallel(
+  css,
+  javascript,
+  imagenes,
+  versionWebp
+);
+
