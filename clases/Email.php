@@ -45,7 +45,7 @@ class Email {
 
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->nombre . "</strong>. Has creado tu cuenta. Sólo debes confirmarla presionando el enlace</p>";
-        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'
+        $contenido .= "<p>Presiona aquí: <a href='".$_ENV["APP_URL"]."/confirmar-cuenta?token=" . $this->token . "'
         >Confirmar cuenta</a
         > </p>";
         $contenido .= "<p>Si no has solicitado esta cuenta puedes ignorar el mensaje</p>";
