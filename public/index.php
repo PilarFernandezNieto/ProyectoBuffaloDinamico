@@ -17,9 +17,26 @@ use Controllers\LoginController;
 
 $router = new Router();
 
-$router->get("/admin",[AdminController::class, "index"]);
-$router->get("/login",[AdminController::class, "login"]);
-$router->post("/login",[AdminController::class, "login"]);
+$router->get("/adminpanel",[AdminController::class, "index"]);
+
+/** LOGIN Y AUTENTICACION **/
+$router->get("/admin", [LoginController::class, "login"]);
+$router->post("/admin", [LoginController::class, "login"]);
+$router->get("/logout", [LoginController::class, "logout"]);
+
+/** RECUPERAR PASSWORD */
+$router->get("/olvide", [LoginController::class, "olvide"]);
+$router->post("/olvide", [LoginController::class, "olvide"]);
+$router->get("/recuperar", [LoginController::class, "recuperar"]);
+$router->post("/recuperar", [LoginController::class, "recuperar"]);
+
+/** CREAR CUENTA */
+$router->get("/registrar", [LoginController::class, "registrar"]);
+$router->post("/registrar", [LoginController::class, "registrar"]);
+
+$router->get("/confirmar-cuenta", [LoginController::class, "confirmar"]);
+$router->get("/mensaje", [LoginController::class, "mensaje"]);
+
 
 /** NOTICIAS **/
 $router->get("/noticias/listado", [NoticiaController::class, "listado"]);
@@ -86,23 +103,7 @@ $router->get("/contacto", [PaginasController::class, "contacto"]);
 $router->post("/contacto", [PaginasController::class, "contacto"]);
 $router->get("/contenido", [PaginasController::class, "contenido"]);
 
-/** LOGIN Y AUTENTICACION **/
-$router->get("/login", [LoginController::class, "login"]);
-$router->post("/login", [LoginController::class, "login"]);
-$router->get("/logout", [LoginController::class, "logout"]);
 
-/** RECUPERAR PASSWORD */
-$router->get("/olvide", [LoginController::class, "olvide"]);
-$router->post("/olvide", [LoginController::class, "olvide"]);
-$router->get("/recuperar", [LoginController::class, "recuperar"]);
-$router->post("/recuperar", [LoginController::class, "recuperar"]);
-
-/** CREAR CUENTA */
-$router->get("/registrar", [LoginController::class, "registrar"]);
-$router->post("/registrar", [LoginController::class, "registrar"]);
-
-$router->get("/confirmar-cuenta", [LoginController::class, "confirmar"]);
-$router->get("/mensaje", [LoginController::class, "mensaje"]);
 
 
 

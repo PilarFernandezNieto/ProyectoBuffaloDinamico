@@ -77,14 +77,14 @@ $rol = $_SESSION["rol"] ?? "2";
                     <?php endif; ?>
                 </div>
                 <nav class="navegacion-principal">
-                    <?php if ($auth) : ?>
-                        <a href="/logout"><i class="fa-solid fa-lock-open"></i></a>
-                        <?php if ($rol == 1) : ?>
-                            <a href="/admin">Panel</a>
-                        <?php endif; ?>
-                    <?php else : ?>
-                        <a href="/login"><i class="fa-solid fa-lock"></i></a>
+                <?php if ($auth) : ?>
+                    <a href="/logout"><i class="fa-solid fa-lock-open"></i></a>
+                    <?php if ($rol == 1) : ?>
+                        <a href="/adminpanel">Panel</a>
                     <?php endif; ?>
+                    <?php else : ?>
+                        <a href="/admin"><i class="fa-solid fa-lock"></i></a>
+                 <?php endif; ?>
 
                     <a href="/historia">Historia</a>
                     <a href="/discografia">Discografía</a>

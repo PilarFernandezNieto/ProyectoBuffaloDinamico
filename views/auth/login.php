@@ -2,7 +2,7 @@
     <h1>Inicia sesión</h1>
 
 
-    <form action="/login" class="formulario ancho-login" method="POST">
+    <form action="/admin" class="formulario ancho-login" method="POST">
         <h3><i class="fa-solid fa-arrow-right-to-bracket me-3"></i>Introduce tus datos</h3>
         <?php
         include_once __DIR__ . "/../templates/alertas.php";

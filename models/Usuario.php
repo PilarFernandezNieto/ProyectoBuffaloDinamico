@@ -191,7 +191,7 @@ class Usuario extends ActiveRecord {
 
         if ($this->idrol === "1") {
             $_SESSION["rol"] = $this->idrol;
-            header("Location: /admin");
+            header("Location: /adminpanel");
         } else {
             header("Location: /");
         }
