@@ -29,7 +29,7 @@ $auth = $_SESSION["login"] ?? false;
 </head>
 
 <body class="app sidebar-mini">
-    <header class="app-header"><a class="app-header__logo" href="/">The Electric Buffalo</a>
+    <header class="app-header"><a class="app-header__logo" href="/index">The Electric Buffalo</a>
         <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
 
         <ul class="app-nav">

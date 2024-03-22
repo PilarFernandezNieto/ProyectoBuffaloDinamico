@@ -91,7 +91,7 @@ $router->post("/musicos/actualizar", [MusicoController::class, "actualizar"]);
 $router->post("/musicos/eliminar", [MusicoController::class, "eliminar"]);
 
 /** ZONA PÚBLICA */
-$router->get("/", [PaginasController::class, "index"]);
+$router->get("/index", [PaginasController::class, "index"]);
 $router->get("/historia", [PaginasController::class, "historia"]);
 $router->get("/noticias", [PaginasController::class, "noticias"]);
 $router->get("/noticia", [PaginasController::class, "noticia"]);
