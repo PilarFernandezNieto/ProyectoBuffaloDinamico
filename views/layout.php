@@ -82,6 +82,7 @@ $rol = $_SESSION["rol"] ?? "2";
                     <?php if ($rol == 1) : ?>
                         <a href="/adminpanel">Panel</a>
                     <?php endif; ?>
+                    // TODO eliminar la opción de loguearse a través de enlace
                     <?php else : ?>
                         <a href="/admin"><i class="fa-solid fa-lock"></i></a>
                  <?php endif; ?>

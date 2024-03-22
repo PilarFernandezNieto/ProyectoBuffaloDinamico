@@ -21,6 +21,7 @@
 
 
     </form>
+    //TODO eliminar las acciones de registro y de recuperación
     <div class="mb-3 acciones-login">
         <p>¿Aún no tienes una cuenta? <a href="/registrar">Regístrate aquí</a></p>
         <p>¿Olvidaste tu contraseña? <a href="/olvide">Recuperar</a></p>
