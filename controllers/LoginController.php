@@ -49,6 +49,7 @@ class LoginController {
                 $usuario = Usuario::where("email", $auth->email);
                 if ($usuario && $usuario->confirmado === "1") {
                     $usuario->crearToken();
+             
                     $usuario->guardar();
                     $email = new Email($usuario->email, $usuario->nombre . " " . $usuario->apellidos, $usuario->token);
                     $email->enviarInstrucciones();
@@ -91,7 +92,7 @@ class LoginController {
 
                 $resultado = $usuario->guardar();
                 if($resultado){
-                    header("Location: /login");
+                    header("Location: /admin");
                 }
             }
         }
@@ -174,7 +175,7 @@ class LoginController {
     public static function logout() {
         session_start();
         $_SESSION = [];
-        header("Location: /");
+        header("Location: /index");
     }
 
     public static function mensaje(Router $router) {

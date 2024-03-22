@@ -40,7 +40,7 @@
         <!-- 
         <input type="hidden" name="usuario[fecha_creacion]" value="<?php echo s($usuario->fecha_creacion); ?>"> -->
         <div class="mb-3">
-            <input type="submit" class="boton-fireBrick-block w-100" value="Inicia sesión"></input>
+            <input type="submit" class="boton-fireBrick-block w-100" value="Regístrate"></input>
         </div>
 
 

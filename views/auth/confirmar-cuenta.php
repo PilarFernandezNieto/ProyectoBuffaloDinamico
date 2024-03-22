@@ -3,7 +3,7 @@
 
     <?php include_once __DIR__ . "/../templates/alertas.php"; ?>
     <div class="mb-3">
-        <a href="/login" class="boton-fireBrick fs-1">Inicia sesión</a>
+        <a href="/admin" class="boton-fireBrick fs-1">Inicia sesión</a>
     </div>
 
 </main>

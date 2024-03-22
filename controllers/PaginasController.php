@@ -94,15 +94,16 @@ class PaginasController {
 
 
             try {
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->isSMTP();
 
-                $mail->Host = "smtp.ionos.es";
+
+                $mail->Host = $_ENV["EMAIL_HOST"];
                 $mail->SMTPAuth = true;
-                $mail->Username = "info@theelectricbuffalo.com";
-                $mail->Password = "QDj7yNir8?UmUQ+";
+                $mail->Username = $_ENV["EMAIL_USER"];
+                $mail->Password = $_ENV["EMAIL_PASS"];
                 $mail->SMTPSecure = "tls";
-                $mail->Port = 587;
+                $mail->Port = $_ENV["EMAIL_PORT"];
 
                 $mail->SMTPOptions = array(
                     'ssl' => array(
@@ -124,6 +125,7 @@ class PaginasController {
                 $mail->Body = $contenido;
                 $mail->AltBody = "Esto es texto alternativo sin HTML";
                 $mail->send();
+                header("Location: /mensaje");
             } catch (Exception $e) {
                 echo "Error al enviar el correo: {$mail->ErrorInfo} <br>";
             }
@@ -135,4 +137,12 @@ class PaginasController {
 
         ]);
      }
+
+    public static function mensaje(Router $router) {
+        $mensaje = "Mensaje enviado";
+        $title = "Mensaje";
+        $router->render("layout", "templates/mensaje", [
+            "mensaje" => $mensaje
+        ]);
+    }
 }

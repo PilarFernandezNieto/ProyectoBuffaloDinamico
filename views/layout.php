@@ -56,7 +56,7 @@ $rol = $_SESSION["rol"] ?? "2";
     <!-- HEADER -->
     <header class="header">
         <div class="contenedor contenido-header">
-            <a href="/index"><img src="/build/img/logoBuf.png" alt="Logo Bufalo" class="img-fluid"></a>
+            <a href="/"><img src="/build/img/logoBuf.png" alt="Logo Bufalo" class="img-fluid"></a>
             <p class="menu-mobile"><i class="fa-solid fa-bars"></i></p>
             <div class="header-derecha">
                 <div class="redes-sociales">
