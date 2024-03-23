@@ -94,16 +94,16 @@ class PaginasController {
 
 
             try {
-                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->isSMTP();
 
 
-                $mail->Host = $_ENV["EMAIL_HOST"];
+                $mail->Host = "imap.ionos.es";
                 $mail->SMTPAuth = true;
                 $mail->Username = $_ENV["EMAIL_USER"];
                 $mail->Password = $_ENV["EMAIL_PASS"];
                 $mail->SMTPSecure = "tls";
-                $mail->Port = $_ENV["EMAIL_PORT"];
+                $mail->Port = 993;
 
                 $mail->SMTPOptions = array(
                     'ssl' => array(
@@ -115,7 +115,7 @@ class PaginasController {
 
 
 
-                $mail->setFrom("info@theelectricbuffalo.com", $remite);
+                $mail->setFrom("info@theelectricbuffalo.com", $email);
                 $mail->addAddress("info@theelectricbuffalo.com", "The Electric Buffalo");
                 $mail->Subject = "Tienes un nuevo mensaje";
                 $mail->isHTML(true);
