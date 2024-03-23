@@ -98,12 +98,12 @@ class PaginasController {
                 $mail->isSMTP();
 
 
-                $mail->Host = "imap.ionos.es";
+                $mail->Host = "smtp.ionos.es";
                 $mail->SMTPAuth = true;
                 $mail->Username = $_ENV["EMAIL_USER"];
                 $mail->Password = $_ENV["EMAIL_PASS"];
-                $mail->SMTPSecure = "tls";
-                $mail->Port = 993;
+                $mail->SMTPSecure = "TLS";
+                $mail->Port = 587;
 
                 $mail->SMTPOptions = array(
                     'ssl' => array(
@@ -117,6 +117,7 @@ class PaginasController {
 
                 $mail->setFrom("info@theelectricbuffalo.com", $email);
                 $mail->addAddress("info@theelectricbuffalo.com", "The Electric Buffalo");
+                $mail->addReplyTo($email,$remite);
                 $mail->Subject = "Tienes un nuevo mensaje";
                 $mail->isHTML(true);
                 $mail->CharSet = "UTF-8";
@@ -125,6 +126,7 @@ class PaginasController {
                 $mail->Body = $contenido;
                 $mail->AltBody = "Esto es texto alternativo sin HTML";
                 $mail->send();
+                //TODO añadir mensajes generalizados con GET
                 header("Location: /mensaje");
             } catch (Exception $e) {
                 echo "Error al enviar el correo: {$mail->ErrorInfo} <br>";
