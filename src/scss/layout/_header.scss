@@ -7,23 +7,31 @@
     display: flex;
   }
   a img {
-    width: 100%;
+    width: 75%;
+    margin: 0 auto;
     margin-bottom: 3rem;
-    @include tablet {
-      width: 75%;
+    max-width: none;
+
+    @include ipad {
+      width: 100%;
+      margin: 0;
     }
-    @include desktopXL {
-      width: 50%;
+    @include desktopXL{
+      width: 70%;
+      margin: 0;
     }
   }
   .contenido-header {
     padding: 2rem;
     max-width: none;
+
+
     @include tablet {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+
   }
 }
 // .no-webp .imagen-header {

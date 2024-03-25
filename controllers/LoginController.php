@@ -51,7 +51,7 @@ class LoginController {
                     $usuario->crearToken();
              
                     $usuario->guardar();
-                    $email = new Email($usuario->email, $usuario->nombre . " " . $usuario->apellidos, $usuario->token);
+                    $email = new Email([$usuario->email, $usuario->nombre . " " . $usuario->apellidos, $usuario->token]);
                     $email->enviarInstrucciones();
 
                     Usuario::setAlertas("exito", "Revisa tu email");
@@ -130,13 +130,13 @@ class LoginController {
                 } else {
                     $usuario->hashPassword();
                     $usuario->crearToken();
-                    $email = new Email($usuario->email, $usuario->nombre . " " . $usuario->apellidos, $usuario->token);
+                    $email = new Email([$usuario->email, $usuario->nombre . " " . $usuario->apellidos, $usuario->token]);
 
                     $email->enviarConfirmacion();
 
                     $resultado = $usuario->guardar();
                     if ($resultado) {
-                        header("Location: /mensaje");
+                        header("Location: /mensaje?mensaje=Hemos enviado instrucciones a tu email para confirmar tu cuenta");
                     }
                 }
             }
@@ -175,14 +175,8 @@ class LoginController {
     public static function logout() {
         session_start();
         $_SESSION = [];
-        header("Location: /index");
+        header("Location: /");
     }
 
-    public static function mensaje(Router $router) {
-        $mensaje = "Hemos enviado instrucciones a tu email para confirmar tu cuenta";
-        $title = "Mensaje";
-        $router->render("layout", "templates/mensaje", [
-            "mensaje" => $mensaje
-        ]);
-    }
+
 }

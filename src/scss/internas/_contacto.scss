@@ -1,6 +1,9 @@
 .contenedor-formulario {
-  width: 50%;
+  width: 90%;
   margin: 5rem auto;
+    @include desktop{
+    width: 50%;
+  }
   a {
     font-weight: 600;
     color: $negro;
@@ -22,7 +25,8 @@
   }
 
   input:not([type="submit"], input[type="checkbox"]),
-  textarea, select {
+  textarea,
+  select {
     padding: 1rem;
     border-radius: 3.75px;
     border: 1px solid gainsboro;
@@ -35,7 +39,20 @@
   .campo {
     margin-top: 1rem;
   }
-
 }
+.privacidad {
+  margin-top: 1rem;
+  display: flex;
 
-
+  input[type="checkbox"] {
+    width: 1.5rem;
+    margin-right: 2rem;
+    accent-color: firebrick;
+  }
+  label {
+    font-size: 1.5rem;
+    @include tablet {
+      font-size: 2rem;
+    }
+  }
+}

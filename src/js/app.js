@@ -9,8 +9,36 @@ function iniciarApp() {
   //crearGaleria();
  // scrollNav();
  menuResponsive();
+ checkPoliticaPrivacidad();
+ iniciarTooltip();
 
 }
+function checkPoliticaPrivacidad(){
+  $(".btnEnviar").prop("disabled", true);
+
+  if ($(".btnEnviar").prop("disabled")) {
+    console.log("No Check");
+    $(".btnEnviar").attr("data-bs-placement", "left");
+    $(".btnEnviar").attr("data-bs-toggle", "tooltip");
+    $(".btnEnviar").attr("data-bs-html", "true");
+    $(".btnEnviar").attr(
+      "title",
+      "<span class='fs-4'>Debe aceptar la política de privacidad</span>"
+    );
+  } 
+    $("#privacidad").on("change", checkAccepted);
+}
+  
+
+
+  function checkAccepted(event) {
+    console.log(this.checked);
+
+    var isNotChecked = !this.checked;
+     $(".btnEnviar").prop("disabled", isNotChecked);
+         console.log("Check");
+         $("btnEnviar").removeAttr("data-bs-toggle");
+  }
 function menuResponsive(){
   const menuMobile = document.querySelector(".menu-mobile");
   menuMobile.addEventListener("click", mostrarNavegacion);
@@ -69,4 +97,14 @@ function mostrarImagen(id) {
   const body = document.querySelector("body");
   body.appendChild(overlay);
   body.classList.add("fijar-body");
+}
+
+
+function iniciarTooltip(){
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
 }

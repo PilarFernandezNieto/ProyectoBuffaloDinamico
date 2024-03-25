@@ -23,10 +23,7 @@
             </div>
         </div>
 
-        <div class="campo">
-            <label for="direccion">Dirección</label>
-            <input type="text" id="direccion" name="contacto[direccion]" placeholder="Dirección" />
-        </div>
+
         <div class="row campo">
             <div class="col-12 col-md-6">
                 <label for="localidad">Localidad</label>
@@ -42,11 +39,11 @@
             <label for="mensaje">Deja tu mensaje</label>
             <textarea name="contacto[mensaje]" id="mensaje" rows="3"></textarea>
         </div>
-        <!-- <div class="row campo">
-                <input type="checkbox" class="col-2" value="Politica_privacidad" id="privacidad">
-                <label for="privacidad" class="col-10">Acepta los términos y condiciones</label>
-            </div> -->
-        <input type="submit" value="Enviar" class="boton-fireBrick">
+        <div class="privacidad">
+            <input type="checkbox" class="col-2" value="Politica_privacidad" id="privacidad">
+            <label for="privacidad" class="col-10">Acepta los términos y condiciones</label>
+        </div>
+        <input type="submit" value="Enviar" class="boton-fireBrick btnEnviar">
 
     </form>
 

@@ -35,7 +35,10 @@ $router->get("/registrar", [LoginController::class, "registrar"]);
 $router->post("/registrar", [LoginController::class, "registrar"]);
 
 $router->get("/confirmar-cuenta", [LoginController::class, "confirmar"]);
-$router->get("/mensaje", [LoginController::class, "mensaje"]);
+
+
+/**MENSAJES  **/
+$router->get("/mensaje", [PaginasController::class, "mensaje"]);
 
 
 /** NOTICIAS **/
