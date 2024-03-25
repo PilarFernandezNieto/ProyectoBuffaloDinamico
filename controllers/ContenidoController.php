@@ -10,7 +10,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 class ContenidoController{
     public static function listado(Router $router) {
         protegeRuta();
-        $contenidos = Contenido::findAll("fecha_creacion");
+        $contenidos = Contenido::findAll("id");
+     
 
         $router->render("layoutAdmin", "contenidos/listado", [
             "contenidos" => $contenidos
@@ -22,6 +23,7 @@ class ContenidoController{
         $alertas = Contenido::getAlertas();
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $contenido = new Contenido($_POST["contenido"]);
+         
 
             $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
@@ -63,10 +65,15 @@ class ContenidoController{
         $alertas = Contenido::getAlertas();
 
         $contenido = Contenido::findById($id);
+       
+      
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
+           
             $args = $_POST["contenido"];
+            $portada = isset($_POST['contenido']['portada']) ? 1 : 0;
+         
+            $contenido->portada = $portada;
             $contenido->sincronizar($args);
             $alertas = $contenido->validar();
 

@@ -451,11 +451,12 @@ function listadoContenidos() {
   $("#listado_contenidos").DataTable({
     responsive: true,
     columnDefs: [
-      { width: "5%", targets: [0, 5] },
-      { width: "15%", targets: [1,2] },
-      { width: "40%", targets: [3] },
+      { width: "5%", targets: [0, 1] },
+      { width: "10%", targets: 2 },
+      { width: "15%", targets: [3] },
+      { width: "40%", targets: [4] },
       {
-        targets: 3,
+        targets: 4,
         render: function (data, type, row, meta) {
           if (type === "display") {
             return data.length > 50 ? data.substr(0, 150) + "..." : data;
@@ -465,7 +466,7 @@ function listadoContenidos() {
         },
       },
 
-      { className: "text-center", targets: [0, 3, 4] },
+      { className: "text-center", targets: [0, 1, 3, 4] },
     ],
     language: {
       decimal: "",

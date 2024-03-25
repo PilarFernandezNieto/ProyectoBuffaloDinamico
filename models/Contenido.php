@@ -5,7 +5,7 @@ namespace Model;
 class Contenido extends ActiveRecord{
     protected static $tabla = "contenidos";
     protected static $columnasDB = [
-        "id","titulo", "imagen", "texto", "fecha_creacion"
+        "id","titulo", "imagen", "texto", "fecha_creacion", "portada"
     ];
 
     public $id;
@@ -13,6 +13,7 @@ class Contenido extends ActiveRecord{
     public $imagen;
     public $texto;
     public $fecha_creacion;
+    public $portada;
 
     public function __construct($args=[]){
         $this->id = $args["id"] ?? null;
@@ -20,6 +21,7 @@ class Contenido extends ActiveRecord{
         $this->imagen = $args["imagen"] ?? "";
         $this->texto = $args["texto"] ?? "";
         $this->fecha_creacion = date("Y-m-d");
+        $this->portada = $args["portada"] ?? 1;
     }
 
     public function validar(){

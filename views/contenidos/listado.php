@@ -15,6 +15,7 @@
                         <thead>
                             <tr>
                                 <th>#ID</th>
+                                <th>Port</th>
                                 <th>Título</th>
                                 <th>Imagen</th>
                                 <th>Texto</th>
@@ -26,6 +27,13 @@
                             <?php foreach ($contenidos as $contenido) : ?>
                                 <tr>
                                     <td><?php echo $contenido->id; ?></td>
+                                    <td>
+                                        <?php if($contenido->portada == 1) { ?>
+                                            <i class="fa-regular fa-square-check fs-1"></i>
+                                        <?php } else { ?>
+                                            <i class="fa-regular fa-square fs-1"></i>
+                                        <?php } ?>
+                                    </td>
                                     <td><?php echo $contenido->titulo; ?></td>
                                     <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $contenido->imagen; ?>" style="width: 100px" alt="">
                                     </td>
