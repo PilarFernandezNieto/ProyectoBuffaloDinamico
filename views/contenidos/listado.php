@@ -35,7 +35,7 @@
                                         <?php } ?>
                                     </td>
                                     <td><?php echo $contenido->titulo; ?></td>
-                                    <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $contenido->imagen; ?>" style="width: 100px" alt="">
+                                    <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $contenido->imagen; ?>" style="width: 100px" alt="Contenido_<?php echo $contenido->id; ?>">
                                     </td>
                                     <td class="texto-recortado-contenido"><?php echo $contenido->texto; ?></td>
                                     <td><?php echo fechas($contenido->fecha_creacion); ?></td>
