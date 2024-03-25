@@ -5,6 +5,7 @@ namespace Controllers;
 use MVC\Router;
 use Model\Noticia;
 use Model\Producto;
+use Model\Contenido;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -12,13 +13,16 @@ use PHPMailer\PHPMailer\Exception;
 class PaginasController {
     public static function index(Router $router) {
         $noticias = Noticia::findAll("id DESC", 3);
+        $contenido = Contenido::where("portada", 1);
         $title = "Inicio";
         $router->render("layout", "paginas/index", [
             "noticias" => $noticias,
+            "contenido" => $contenido,
             "title" => $title
 
         ]);
     }
+
     public static function historia(Router $router) {
         $title = "Historia";
         $router->render("layout", "paginas/historia", [
@@ -117,7 +121,7 @@ class PaginasController {
 
                 $mail->setFrom("info@theelectricbuffalo.com", $email);
                 $mail->addAddress("info@theelectricbuffalo.com", "The Electric Buffalo");
-                $mail->addReplyTo($email,$remite);
+                $mail->addReplyTo($email, $remite);
                 $mail->Subject = "Tienes un nuevo mensaje";
                 $mail->isHTML(true);
                 $mail->CharSet = "UTF-8";
@@ -138,7 +142,7 @@ class PaginasController {
             "title" => $title
 
         ]);
-     }
+    }
 
     public static function mensaje(Router $router) {
         $mensaje = "Mensaje enviado";

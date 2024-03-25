@@ -15,6 +15,7 @@
                         <thead>
                             <tr>
                                 <th>#ID</th>
+                                <th>Título</th>
                                 <th>Imagen</th>
                                 <th>Texto</th>
                                 <th>Creada</th>
@@ -25,6 +26,7 @@
                             <?php foreach ($contenidos as $contenido) : ?>
                                 <tr>
                                     <td><?php echo $contenido->id; ?></td>
+                                    <td><?php echo $contenido->titulo; ?></td>
                                     <td class="d-flex justify-content-center"><img src="/imagenes/<?php echo $contenido->imagen; ?>" style="width: 100px" alt="">
                                     </td>
                                     <td class="texto-recortado-contenido"><?php echo $contenido->texto; ?></td>

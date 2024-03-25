@@ -7,6 +7,10 @@
     <?php endif; ?>
 </div>
 <div class="mb-3">
+    <label for="titulo">Título</label>
+    <input type="text" id="titulo" name="contenido[titulo]" value="<?php limpiarHTML($contenido->titulo); ?>">
+</div>
+<div class="mb-3">
     <label class="form-label" for="texto">Texto</label>
     <textarea id="texto" name="contenido[texto]"><?php echo limpiarHTML($contenido->texto); ?></textarea>
 </div>

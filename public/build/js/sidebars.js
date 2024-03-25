@@ -451,11 +451,11 @@ function listadoContenidos() {
   $("#listado_contenidos").DataTable({
     responsive: true,
     columnDefs: [
-      { width: "5%", targets: [0, 3, 4] },
-      { width: "15%", targets: 1 },
-      { width: "40%", targets: [2] },
+      { width: "5%", targets: [0, 5] },
+      { width: "15%", targets: [1,2] },
+      { width: "40%", targets: [3] },
       {
-        targets: 2,
+        targets: 3,
         render: function (data, type, row, meta) {
           if (type === "display") {
             return data.length > 50 ? data.substr(0, 150) + "..." : data;
