@@ -5,8 +5,8 @@
         <div class="contenido-noticias">
             <h2><?php echo $noticia->intro; ?></h2>
             <p class="fecha"><?php echo fechas($noticia->fecha); ?></p>
-            <p class=texto><?php echo limpiarHTML($noticia->texto); ?>
-            </p>
+            <div class=texto><?php echo limpiarHTML($noticia->texto); ?>
+            </div>
         </div>
         <div class="ms-3 mb-3">
             <a href="/" class="boton-fireBrick">Volver</a>

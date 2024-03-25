@@ -77,15 +77,15 @@ $rol = $_SESSION["rol"] ?? "2";
                     <?php endif; ?>
                 </div>
                 <nav class="navegacion-principal">
-                <?php if ($auth) : ?>
-                    <a href="/logout"><i class="fa-solid fa-lock-open"></i></a>
-                    <?php if ($rol == 1) : ?>
-                        <a href="/adminpanel">Panel</a>
-                    <?php endif; ?>
-                     <!-- TODO eliminar la opción de loguearse a través de enlace -->
+                    <?php if ($auth) : ?>
+                        <a href="/logout"><i class="fa-solid fa-lock-open"></i></a>
+                        <?php if ($rol == 1) : ?>
+                            <a href="/adminpanel">Panel</a>
+                        <?php endif; ?>
+                        <!-- TODO eliminar la opción de loguearse a través de enlace -->
                     <?php else : ?>
                         <a href="/admin"><i class="fa-solid fa-lock"></i></a>
-                 <?php endif; ?>
+                    <?php endif; ?>
 
                     <a href="/historia">Historia</a>
                     <a href="/discografia">Discografía</a>
@@ -109,6 +109,7 @@ $rol = $_SESSION["rol"] ?? "2";
             <a href="/historia">Historia</a>
             <a href="/discografia">Discografía</a>
             <a href="/tienda">Tienda</a>
+            <a href="/contacto">Contacto</a>
         </nav>
         <section class="datos-footer">
             <div class="redes-sociales">

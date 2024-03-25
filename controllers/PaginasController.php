@@ -11,7 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 
 class PaginasController {
     public static function index(Router $router) {
-        $noticias = Noticia::findAll("fecha DESC", 3);
+        $noticias = Noticia::findAll("id DESC", 3);
         $title = "Inicio";
         $router->render("layout", "paginas/index", [
             "noticias" => $noticias,
@@ -27,7 +27,7 @@ class PaginasController {
         ]);
     }
     public static function noticias(Router $router) {
-        $noticias = Noticia::findAll("fecha_creacion DESC");
+        $noticias = Noticia::findAll("id DESC");
         $title = "Noticias";
         $router->render("layout", "paginas/noticias", [
             "noticias" => $noticias,

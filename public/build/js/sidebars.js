@@ -231,7 +231,7 @@ function listadoCategorias() {
 function listadoNoticias(){
   $("#listado_noticias").DataTable({
     responsive: true,
-    order: [[5, "desc"]],
+    order: [[0, "desc"]],
     columnDefs: [
       { width: "5%", targets: 0 },
       { width: "22%", targets: [1, 2] },

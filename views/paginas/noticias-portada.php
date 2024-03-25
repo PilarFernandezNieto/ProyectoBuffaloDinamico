@@ -7,7 +7,7 @@
                 <h3><?php echo $noticia->titulo; ?></h3>
                 <div class="texto-noticia">
                     <h4><?php echo $noticia->intro; ?></h4>
-                    <p class="texto"><?php echo truncate($noticia->texto, 150); ?></p>
+                    <div class="texto"><?php echo truncate($noticia->texto, 125); ?></div>
                     <p class="fecha alinear-derecha"><?php echo fechas($noticia->fecha); ?></p>
                 </div>
             </div>
