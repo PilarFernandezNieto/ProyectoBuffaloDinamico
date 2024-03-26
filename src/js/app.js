@@ -1,45 +1,31 @@
 $(document).ready(function () {
   iniciarApp();
-  
 });
 
-
 function iniciarApp() {
-  //navegacionFija();
-  //crearGaleria();
+ //navegacionFija();
+ //crearGaleria();
  // scrollNav();
  menuResponsive();
  checkPoliticaPrivacidad();
- iniciarTooltip();
+
+
 
 }
-function checkPoliticaPrivacidad(){
+function checkPoliticaPrivacidad() {
   $(".btnEnviar").prop("disabled", true);
 
-  if ($(".btnEnviar").prop("disabled")) {
-    console.log("No Check");
-    $(".btnEnviar").attr("data-bs-placement", "left");
-    $(".btnEnviar").attr("data-bs-toggle", "tooltip");
-    $(".btnEnviar").attr("data-bs-html", "true");
-    $(".btnEnviar").attr(
-      "title",
-      "<span class='fs-4'>Debe aceptar la política de privacidad</span>"
-    );
-  } 
-    $("#privacidad").on("change", checkAccepted);
+  $("#privacidad").on("change", function(event){
+      console.log(this.checked);
+
+      var isNotChecked = !this.checked;
+      $(".btnEnviar").prop("disabled", isNotChecked);
+      console.log("Check");
+      $("btnEnviar").removeAttr("data-bs-toggle");
+  });
 }
-  
 
-
-  function checkAccepted(event) {
-    console.log(this.checked);
-
-    var isNotChecked = !this.checked;
-     $(".btnEnviar").prop("disabled", isNotChecked);
-         console.log("Check");
-         $("btnEnviar").removeAttr("data-bs-toggle");
-  }
-function menuResponsive(){
+function menuResponsive() {
   const menuMobile = document.querySelector(".menu-mobile");
   menuMobile.addEventListener("click", mostrarNavegacion);
 }
@@ -47,9 +33,6 @@ function mostrarNavegacion() {
   const navegacion = document.querySelector(".navegacion-principal");
   navegacion.classList.toggle("mostrar");
 }
-
-
-
 
 function crearGaleria() {
   const galeria = document.querySelector(".galeria-imagenes");
@@ -100,11 +83,3 @@ function mostrarImagen(id) {
 }
 
 
-function iniciarTooltip(){
-  var tooltipTriggerList = [].slice.call(
-    document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  );
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
-  });
-}
