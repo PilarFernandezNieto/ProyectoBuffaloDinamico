@@ -37,9 +37,7 @@
                                     <td><?php echo $disco->anio_edicion; ?></td>
                                     <td><?php echo $disco->formato; ?></td>
                                     <td><?php echo $disco->sello; ?></td>
-                                    <td class="texto-recortado"><?php echo $disco->informacion; ?>
-
-                                    </td>
+                                    <td class="texto-recortado"><?php echo $disco->informacion; ?></td>
                                     <td>
                                         <div class="acciones">
                                             <a href="/productos/actualizar?id=<?php echo $disco->id; ?>" class="boton-verde"><i class="fa-regular fa-pen-to-square"></i></a>
