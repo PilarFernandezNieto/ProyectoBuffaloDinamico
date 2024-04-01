@@ -14,10 +14,14 @@ class LoginController {
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $auth = new Usuario($_POST);
+           
             $alertas = $auth->validaLogin();
 
             if (empty($alertas)) {
                 $usuario = Usuario::where("email", $auth->email);
+               
+             
+
                 if ($usuario) {
 
                     if ($usuario->comprobarPasswordAndVerificado($auth->password)) {
@@ -51,7 +55,7 @@ class LoginController {
                     $usuario->crearToken();
              
                     $usuario->guardar();
-                    $email = new Email([$usuario->email, $usuario->nombre . " " . $usuario->apellidos, $usuario->token]);
+                    $email = new Email($usuario->nombre, $usuario->apellidos, $usuario->email, $usuario->token);
                     $email->enviarInstrucciones();
 
                     Usuario::setAlertas("exito", "Revisa tu email");
@@ -117,10 +121,12 @@ class LoginController {
         $alertas = [];
         $title = "Página de registro";
         $usuario = new Usuario;
+      
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $usuario->sincronizar($_POST["usuario"]);
             $alertas = $usuario->validarNuevaCuenta();
+         
 
             if (empty($alertas)) {
                 $resultado = $usuario->existeUsuario();
@@ -130,8 +136,10 @@ class LoginController {
                 } else {
                     $usuario->hashPassword();
                     $usuario->crearToken();
-                    $email = new Email([$usuario->email, $usuario->nombre . " " . $usuario->apellidos, $usuario->token]);
+                    $email = new Email($usuario->nombre, $usuario->apellidos, $usuario->email, $usuario->token);
+                   
 
+                  
                     $email->enviarConfirmacion();
 
                     $resultado = $usuario->guardar();

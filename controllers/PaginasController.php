@@ -87,67 +87,23 @@ class PaginasController {
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-            $contacto = $_POST["contacto"];
-            $email = new Email($contacto);
-            //debuguear($email);
-            $email->formularioContactoWeb();
+            $nombre = s($_POST["nombre"]);
+            $apellidos = s($_POST["apellidos"]);
+            $emailUser = s($_POST["email"]);
+            $telefono = s($_POST["telefono"]);
+            $localidad = s($_POST["localidad"]);
+            $provincia = s($_POST["provincia"]);
+            $mensaje = strip_tags($_POST["mensaje"]);
 
+           
+        
+            $email = new Email($nombre, $apellidos, $emailUser, $telefono, $localidad, $provincia, $mensaje);
+          
+        
+            
+            //$email->formularioContactoWeb();
 
-            // $mail = new PHPMailer(true);
-            // $remite = $contacto["nombre"] . " " . $contacto["apellidos"];
-            // $email = $contacto["email"];
-            // $telefono = $contacto["telefono"];
-            // $localidad = $contacto["localidad"];
-            // $provincia = $contacto["provincia"];
-            // $mensaje = $contacto["mensaje"];
-
-
-            // try {
-            //     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-            //     $mail->isSMTP();
-
-
-            //     $mail->Host = "smtp.ionos.es";
-            //     $mail->SMTPAuth = true;
-            //     $mail->Username = $_ENV["EMAIL_USER"];
-            //     $mail->Password = $_ENV["EMAIL_PASS"];
-            //     $mail->SMTPSecure = "TLS";
-            //     $mail->Port = 587;
-            //     $mail->SMTPOptions = array(
-            //         'ssl' => array(
-            //             'verify_peer' => false,
-            //             'verify_peer_name' => false,
-            //             'allow_self_signed' => true
-            //         )
-            //     );
-
-            //     $mail->setFrom("info@theelectricbuffalo.com", $email);
-            //     $mail->addAddress("info@theelectricbuffalo.com", "The Electric Buffalo");
-            //     $mail->addReplyTo($email, $remite);
-            //     $mail->Subject = "Tienes un nuevo mensaje desde la Web";
-            //     $mail->isHTML(true);
-            //     $mail->CharSet = "UTF-8";
-            //     $contenido = "<html>";
-            //     $contenido .= "<p>Contacto: ". $remite ."</p>";
-            //     $contenido .= "<p>Desde " . $localidad . ", " .$provincia . "</p>";
-            //     $contenido .= "<p>Teléfono contacto: ". $telefono ."</p>";
-            //     $contenido .= "<p>" . $mensaje . "</p>";
-            //     $contenido .= "</html>";
-                
-
-            //     $mail->Body = $contenido;
-            //     $mail->AltBody = "Esto es texto alternativo sin HTML";
-
-            //     if($mail->send()){
-                 
-            //         header("Location: /mensaje?msj=Mensaje enviado con éxito");
-            //     } else {
-            //         header("Location: /");
-            //     }
-               
-            // } catch (Exception $e) {
-            //     echo "Error al enviar el correo: {$mail->ErrorInfo} <br>";
-            // }
+            
         }
         $router->render("layout", "paginas/contacto", [
             "title" => $title

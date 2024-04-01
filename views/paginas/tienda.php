@@ -11,7 +11,7 @@
                         <p class="formato"><?php echo $disco->formato; ?></p>
                         <p class="precio"><?php echo $disco->precio; ?>€</p>
                     </div>
-                    <a href="" class="boton-fireBrick-block disabled">Disponible</a>
+                    <a href="" class="boton-fireBrick-block disabled"><?php echo ($disco->stock==0)? "Agotado" : "Disponible"; ?></a>
 
                 </div>
             </div>
@@ -25,6 +25,7 @@
     <div class="contenido-central">
         <h3>Nuestra tienda está en construcción</h3>
         <p>Si te interesa alguno de nuestros productos o quieres ponerte en contacto con nosotros, escríbenos</p>
+        <p>El envío de productos podría generar gastos de envío</p>
         <a href="mailto:info@theelectricbuffalo.com " class="boton-fireBrick">info@theelectricbuffalo.com</a>
     </div>
 
@@ -40,11 +41,11 @@
                 <div class="datos-producto">
                     <h3><?php echo $camiseta->nombre; ?></h3>
                     <div class="detalle-producto">
-                        <p>Tallas disponbiles</p>
+                        <p>Tallas disponibles</p>
                         <p>Color: <span><?php echo $camiseta->color; ?></span></p>
                     </div>
                     <div class="row">
-                        <p class="col"><span><?php echo $camiseta->precio; ?> (+gastos de envío)</span></p>
+                        <p class="col"><span><?php echo $camiseta->precio; ?></span></p>
 
                     </div>
                     <a href="" class="boton-fireBrick-block disabled">Disponible</a>

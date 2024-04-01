@@ -10,6 +10,7 @@ use MVC\Router;
 class UsuarioController {
 
     public static function listado(Router $router) {
+        //protegeRuta();
         $usuarios = Usuario::findAll();
 
         $router->render("layoutAdmin", "usuarios/listado", [
@@ -18,13 +19,11 @@ class UsuarioController {
     }
 
     public static function crear(Router $router) {
-        protegeRuta();
+        //protegeRuta();
         $usuario = new Usuario();
         $roles = Rol::findAll();
         $alertas = Usuario::getAlertas();
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            // debuguear($_POST);
-
             $usuario = new Usuario($_POST["usuario"]);
             $confirmado = isset($_POST['usuario']['confirmado']) ? 1 : 0;
             $usuario->hashPassword();
@@ -53,7 +52,7 @@ class UsuarioController {
         ]);
     }
     public static function actualizar(Router $router) {
-        protegeRuta();
+        //protegeRuta();
 
         $id = validarORedireccionar("/admin");
         $usuario = Usuario::findById($id);

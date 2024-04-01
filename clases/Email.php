@@ -15,15 +15,15 @@ class Email {
     public $mensaje;
     public $token;
 
-    public function __construct($args=[]){
-        $this->nombre = $args["nombre"];
-        $this->apellidos = $args["apellidos"];
-        $this->email = $args["email"];
-        $this->telefono = $args["telefono"];
-        $this->localidad = $args["localidad"] ?? "";
-        $this->provincia = $args["provincia"] ?? "";
-        $this->mensaje = $args["mensaje"] ?? "";
-        $this->token = $args["token"] ?? "";
+    public function __construct($nombre, $apellidos, $email, $telefono, $localidad = "", $provincia = "", $mensaje = "", $token = "" ){
+        $this->nombre = $nombre;
+        $this->apellidos = $apellidos;
+        $this->email = $email;
+        $this->telefono = $telefono;
+        $this->localidad = $localidad;
+        $this->provincia =$provincia;
+        $this->mensaje = $mensaje;
+        $this->token = $token;
 
     }
 
@@ -33,20 +33,13 @@ class Email {
         $mail = new PHPMailer();
         $mail->isSMTP();
 
-        $mail->Host = "sandbox.smtp.mailtrap.io";
+        $mail->Host = $_ENV["EMAIL_HOST"];
         $mail->SMTPAuth = true;
-        $mail->Username = "6e95664bc84cd5";
-        $mail->Password = "1afea68a03c439";
+        $mail->Username = $_ENV["EMAIL_USER"];
+        $mail->Password = $_ENV["EMAIL_PASS"];
         $mail->SMTPSecure = "tls";
-        $mail->Port = 587;
+        $mail->Port = $_ENV["EMAIL_PORT"];
 
-        $mail->SMTPOptions = array(
-            'ssl' => array(
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-                'allow_self_signed' => true
-            )
-        );
 
         $mail->setFrom("info@theelectribuffalo.com");
         $mail->addAddress("info@theeelectricbuffalo.com", "The Electric Buffalo");
@@ -72,20 +65,12 @@ class Email {
         $mail = new PHPMailer();
         $mail->isSMTP();
 
-        $mail->Host = "sandbox.smtp.mailtrap.io";
+        $mail->Host = $_ENV["EMAIL_HOST"];
         $mail->SMTPAuth = true;
-        $mail->Username = "6e95664bc84cd5";
-        $mail->Password = "1afea68a03c439";
+        $mail->Username = $_ENV["EMAIL_USER"];
+        $mail->Password = $_ENV["EMAIL_PASS"];
         $mail->SMTPSecure = "tls";
-        $mail->Port = 587;
-
-        $mail->SMTPOptions = array(
-            'ssl' => array(
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-                'allow_self_signed' => true
-            )
-        );
+        $mail->Port = $_ENV["EMAIL_PORT"];
 
         $mail->setFrom("info@theelectribuffalo.com");
         $mail->addAddress("info@theeelectricbuffalo.com", "The Electric Buffalo");
@@ -102,7 +87,7 @@ class Email {
         $contenido .= "</html>";
 
         $mail->Body = $contenido;
-
+    
         $mail->send();
     }
 
@@ -110,17 +95,14 @@ class Email {
         $mail = new PHPMailer(true);
 
         try {
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
             $mail->isSMTP();
-
 
             $mail->Host = $_ENV["EMAIL_HOST"];
             $mail->SMTPAuth = true;
             $mail->Username = $_ENV["EMAIL_USER"];
             $mail->Password = $_ENV["EMAIL_PASS"];
             $mail->SMTPSecure = "TLS";
-            $mail->Port = $_ENV["EMAIL_PORT"];
-
+            
             $mail->SMTPOptions = array(
                 'ssl' => array(
                     'verify_peer' => false,
@@ -135,16 +117,16 @@ class Email {
             $mail->Subject = "Tienes un nuevo mensaje desde la Web";
             $mail->isHTML(true);
             $mail->CharSet = "UTF-8";
-            $contenido = "<html>";
+            $contenido = "<html><body>";
             $contenido .= "<p>Contacto: " . $this->nombre . " " . $this->apellidos . "</p>";
             $contenido .= "<p>Desde " . $this->localidad . ", " . $this->provincia . "</p>";
             $contenido .= "<p>Teléfono contacto: " . $this->telefono . "</p>";
             $contenido .= "<p>" . $this->mensaje . "</p>";
-            $contenido .= "</html>";
+            $contenido .= "</body></html>";
 
 
             $mail->Body = $contenido;
-            $mail->AltBody = "Esto es texto alternativo sin HTML";
+            $mail->AltBody = $contenido;
 
             if ($mail->send()) {
 

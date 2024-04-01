@@ -172,7 +172,7 @@ class Usuario extends ActiveRecord {
 
     public function comprobarPasswordAndVerificado($password) {
         $resultado = password_verify($password, $this->password);
-        //debuguear($resultado);
+   
         if (!$resultado || !$this->confirmado) {
             self::$alertas["error"][] = "Contraseña incorrecta o cuenta no confirmada";
         } else {
@@ -185,7 +185,7 @@ class Usuario extends ActiveRecord {
             session_start();
         }
         $_SESSION["id"] = $this->id;
-        $_SESSION["nombre"] = $this->nombre . " " . $this->apellidos;
+        $_SESSION["nombre"] = $this->nombre;
         $_SESSION["email"] = $this->email;
         $_SESSION["login"] = true;
 
