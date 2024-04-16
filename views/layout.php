@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 }
 $auth = $_SESSION["login"] ?? false;
 $rol = $_SESSION["rol"] ?? "2";
-debuguear($_SESSION,false)
+
 ?>
 
 <!DOCTYPE html>

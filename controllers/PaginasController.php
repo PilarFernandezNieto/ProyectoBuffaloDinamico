@@ -104,7 +104,7 @@ class PaginasController {
         
             $email = new Email($nombre, $apellidos, $emailUser, $telefono, $localidad, $provincia, $mensaje);
 
-            debuguear($email);
+
           
          
             
