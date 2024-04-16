@@ -93,6 +93,7 @@ class Email {
 
     public function formularioContactoWeb(){
         $mail = new PHPMailer(true);
+        $mail->SMTPDebug  = 2;
 
         try {
             $mail->isSMTP();

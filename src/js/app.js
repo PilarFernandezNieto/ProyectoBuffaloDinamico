@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 function iniciarApp() {
   menuResponsive();
-  checkPoliticaPrivacidad();
+  //checkPoliticaPrivacidad();
 }
 function checkPoliticaPrivacidad() {
 

@@ -181,7 +181,11 @@ class LoginController {
 
 
     public static function logout() {
+       if( !isset($_SESSION)) {
         session_start();
+       }
+   
+
         $_SESSION = [];
         header("Location: /");
     }

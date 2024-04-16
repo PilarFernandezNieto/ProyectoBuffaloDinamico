@@ -13,6 +13,11 @@ use PHPMailer\PHPMailer\Exception;
 
 class PaginasController {
     public static function index(Router $router) {
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        
         $noticias = Noticia::findAll("id DESC", 3);
         $contenido = Contenido::where("portada", 1);
         $title = "Inicio";
@@ -98,10 +103,12 @@ class PaginasController {
            
         
             $email = new Email($nombre, $apellidos, $emailUser, $telefono, $localidad, $provincia, $mensaje);
+
+            debuguear($email);
           
-        
+         
             
-            //$email->formularioContactoWeb();
+            $email->formularioContactoWeb();
 
             
         }
@@ -113,6 +120,7 @@ class PaginasController {
 
     public static function mensaje(Router $router) {
         $mensaje = strip_tags($_GET["msj"]);
+     
       
 
         $title = "Mensaje";

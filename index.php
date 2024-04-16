@@ -1,4 +1,3 @@
-<?php if(!isset($_SESSION)){session_start(); } ?>
 <main class="app-content contenedor seccion admin">
   <div class="app-title">
     <div>

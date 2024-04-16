@@ -1,7 +1,9 @@
-<IfModule mod_rewrite.c>
-DirectoryIndex index.php
 RewriteEngine On
-RewriteCond %{REQUEST_URI} !/public
-RewriteRule ^(.*)$ public/index.php [L]
-</IfModule>
+RewriteBase /
+
+# Redirigir todas las solicitudes que no corresponden a un archivo o directorio existente a tu controlador frontal (index.php en este caso)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+
 

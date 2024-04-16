@@ -2,7 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-$auth = $_SESSION["login"] ?? false;
+//$auth = $_SESSION["login"] ?? false;
 ?>
 <!DOCTYPE html>
 
@@ -52,7 +52,7 @@ $auth = $_SESSION["login"] ?? false;
     <aside class="app-sidebar">
 
         <ul class="app-menu">
-            <li><a class="app-menu__item" href="/admin"><i class="app-menu__icon bi bi-speedometer"></i><span class="app-menu__label">Administrador</span></a></li>
+            <li><a class="app-menu__item" href="/adminpanel"><i class="app-menu__icon bi bi-speedometer"></i><span class="app-menu__label">Administrador</span></a></li>
             <!-- NOTICIAS -->
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-newspaper"></i><span class="app-menu__label">Noticias</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
                 <ul class="treeview-menu">

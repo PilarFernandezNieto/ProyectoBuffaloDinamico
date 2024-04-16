@@ -1,3 +1,10 @@
+<?php 
+if(!isset($_SESSION)){
+    session_start();
+}
+
+?>
+
 <section class="imagen-header">
     <div class="overlay-header"></div>
     <div class="contenedor contenido-imagen">

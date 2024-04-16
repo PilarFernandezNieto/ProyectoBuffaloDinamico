@@ -32,9 +32,9 @@
         <article class="logos-redes contenedor">
             <a href="https://www.youtube.com/@theelectricbuffalo666" target="_blank">
                 <picture>
-                    <source srcset="/build/img/youtuberecorte.webp" type="image/webp" />
-                    <source srcset="/build/img/youtuberecorte.png" type="image/png" />
-                    <img loading="lazy" width="200" height="300" src="/build/img/youtuberecorte.png" alt="logo-youtube" class="youtube" />
+                    <source srcset="./build/img/youtuberecorte.webp" type="image/webp" />
+                    <source srcset="./build/img/youtuberecorte.png" type="image/png" />
+                    <img loading="lazy" width="200" height="300" src="./build/img/youtuberecorte.png" alt="logo-youtube" class="youtube" />
                 </picture>
             </a>
             <a href="https://www.instagram.com/theelectricbuffalo/" target="_blank">
