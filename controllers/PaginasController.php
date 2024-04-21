@@ -7,9 +7,6 @@ use Model\Noticia;
 use Model\Producto;
 use Model\Contenido;
 use Clases\Email;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 class PaginasController {
     public static function index(Router $router) {
