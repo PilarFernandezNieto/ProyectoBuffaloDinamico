@@ -189,8 +189,11 @@ class Usuario extends ActiveRecord {
         $_SESSION["email"] = $this->email;
         $_SESSION["login"] = true;
 
+       
+
         if ($this->idrol === "1") {
             $_SESSION["rol"] = $this->idrol;
+      
             header("Location: /adminpanel");
         } else {
             header("Location: /");

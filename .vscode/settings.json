@@ -5,7 +5,7 @@
     "intelephense.diagnostics.undefinedMethods": false,
     "php.problems.exclude": {
         "/": [
-            416, 418
+            416, 418, 407
         ],
         "vendor/": true,
     },

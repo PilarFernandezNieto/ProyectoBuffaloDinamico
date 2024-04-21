@@ -1,5 +1,6 @@
 <?php 
 namespace Clases;
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -14,8 +15,9 @@ class Email {
     public $provincia;
     public $mensaje;
     public $token;
+    public $alertas = [];
 
-    public function __construct($nombre, $apellidos, $email, $telefono, $localidad = "", $provincia = "", $mensaje = "", $token = "" ){
+    public function __construct($nombre = "", $apellidos = "", $email = "", $telefono = "", $localidad = "", $provincia = "", $mensaje = "", $token = "" ){
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
         $this->email = $email;
@@ -25,6 +27,28 @@ class Email {
         $this->mensaje = $mensaje;
         $this->token = $token;
 
+
+    }
+
+    public function getAlertas(){
+        return $this->alertas;
+    }
+
+
+    public function validar(){
+        if(!$this->nombre){
+           $this->alertas["error"][] = "Debes introducir un nombre";
+        }
+        if (!$this->email) {
+            $this->alertas["error"][] = "Debes introducir un email de contacto";
+        }
+        if (!$this->localidad) {
+            $this->alertas["error"][] = "Queremos saber desde donde nos escribes";
+        }
+        if (!$this->mensaje) {
+            $this->alertas["error"][] = "Hace falta un mensaje";
+        }
+        return $this->alertas;
     }
 
     public function enviarConfirmacion() {
@@ -92,8 +116,8 @@ class Email {
     }
 
     public function formularioContactoWeb(){
-        $mail = new PHPMailer(true);
-        $mail->SMTPDebug  = 2;
+        $mail = new PHPMailer();
+        //$mail->SMTPDebug  = 2;
 
         try {
             $mail->isSMTP();

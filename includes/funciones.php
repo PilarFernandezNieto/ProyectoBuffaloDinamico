@@ -18,7 +18,10 @@ function debuguear($array = [], bool $salir = true) {
 }
 
 function estaAutenticado() {
-    session_start();
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
     if (!$_SESSION["login"]) {
         header("Location: /");
     }
@@ -54,10 +57,15 @@ function validarORedireccionar(string $url){
 }
 
 function protegeRuta(){
-    
    if(!isset($_SESSION)){
-    header("Location: /");
+    session_start();
    }
+  
+
+    if ($_SESSION["rol"] !== "1") {
+        echo "Hola";
+        header("Location: /");
+    }
 
 
 }

@@ -5,6 +5,8 @@ if (!isset($_SESSION)) {
 $auth = $_SESSION["login"] ?? false;
 $rol = $_SESSION["rol"] ?? "2";
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +39,10 @@ $rol = $_SESSION["rol"] ?? "2";
 
     <script src="https://kit.fontawesome.com/91eae316a2.js" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/e79408189430261e22a99565d6b38640.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?render=CLAVE_PUBLICA'>
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfRlMApAAAAAOvr6FYJDgDVneigTHx9RSILppeL"></script>
+
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QB6GV2DF3D"></script>
@@ -79,12 +85,11 @@ $rol = $_SESSION["rol"] ?? "2";
                 <nav class="navegacion-principal">
                     <?php if ($auth) : ?>
                         <a href="/logout"><i class="fa-solid fa-lock-open"></i></a>
-                        <?php if ($rol == 1) : ?>
+                        <?php if ($rol == "1") : ?>
                             <a href="/adminpanel">Panel</a>
                         <?php endif; ?>
                         <!-- TODO eliminar la opción de loguearse a través de enlace -->
-                    <?php else : ?>
-                        <a href="/admin"><i class="fa-solid fa-lock"></i></a>
+
                     <?php endif; ?>
 
                     <a href="/historia">Historia</a>
@@ -133,12 +138,18 @@ $rol = $_SESSION["rol"] ?? "2";
 
     </footer>
     <!-- FIN FOOTER -->
+    <script>
+        function onSubmit(token) {
+            document.getElementById("formulario-contacto").submit();
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
     <script src="/build/js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./build/js/bundle.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 
 </body>
 

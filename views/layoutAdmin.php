@@ -1,8 +1,11 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
-//$auth = $_SESSION["login"] ?? false;
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    $auth = $_SESSION["login"] ?? false;
+    $rol = $_SESSION["rol"] ?? "2";
+
+ 
 ?>
 <!DOCTYPE html>
 

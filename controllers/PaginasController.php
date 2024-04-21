@@ -17,6 +17,7 @@ class PaginasController {
         if (!isset($_SESSION)) {
             session_start();
         }
+  
         
         $noticias = Noticia::findAll("id DESC", 3);
         $contenido = Contenido::where("portada", 1);
@@ -89,6 +90,10 @@ class PaginasController {
     }
     public static function contacto(Router $router) {
         $title = "Contacto";
+        $email = new Email();
+        $alertas = $email->getAlertas();
+
+     
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -104,16 +109,21 @@ class PaginasController {
         
             $email = new Email($nombre, $apellidos, $emailUser, $telefono, $localidad, $provincia, $mensaje);
 
-
-          
-         
+            $alertas = $email->validar();
             
-            $email->formularioContactoWeb();
+            if(empty($alertas)){
 
-            
+               $email->formularioContactoWeb();
+            }
+      
+
         }
+
+     
         $router->render("layout", "paginas/contacto", [
-            "title" => $title
+            "title" => $title,
+            "alertas" => $alertas,
+            "email" => $email
 
         ]);
     }
