@@ -9,7 +9,7 @@
                 <source srcset="/build/img/risas_baja.jpg" type="image/jpeg">
                 <img loading="lazy" src="/build/img/risas_baja.jpg" alt="risas_baja" ttle="Bufalos Inicio">
             </picture>
-            <span class="caption text-end">Foto de Manfred</span>
+          
         </div>
         <div class="texto-historia caja2 mt-3">
             <p><b>The Electric Buffalo</b> (Oviedo) surge, como idea, en un garito de costumbres rockeras allá por el año 2006, en
@@ -62,7 +62,7 @@
                 <source srcset="/build/img/_IGP1987.jpg" type="image/jpeg">
                 <img loading="lazy" src="/build/img/_IGP1987.jpg" alt="trio_joven" title="Trío joven">
             </picture>
-            <span class="caption text-end">Foto de Manfred</span>
+
         </div>
     </div>
     <div class="contenido-historia seccion rejilla2 ">
@@ -97,7 +97,6 @@
                     <source srcset="/build/img/wilonI.jpg" type="image/jpeg">
                     <img loading="lazy" src="/build/img/wilonI.jpg" alt="wilonI" title="Wilón deCalle">
                 </picture>
-                <span class="caption text-end">Foto de Manfred</span>
             </div>
 
         </div>
