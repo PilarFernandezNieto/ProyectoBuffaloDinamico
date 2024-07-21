@@ -3,7 +3,7 @@
         session_start();
     }
     $auth = $_SESSION["login"] ?? false;
-    $rol = $_SESSION["rol"] ?? "2";
+    $rol = $_SESSION["admin"] ?? "0";
 
  
 ?>

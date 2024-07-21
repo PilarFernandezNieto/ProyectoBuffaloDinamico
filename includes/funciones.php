@@ -62,8 +62,7 @@ function protegeRuta(){
    }
   
 
-    if ($_SESSION["rol"] !== "1") {
-        echo "Hola";
+    if ($_SESSION["admin"] != "1") {
         header("Location: /");
     }
 

@@ -17,7 +17,7 @@ class Usuario extends ActiveRecord {
         "token",
         "confirmado",
         "fecha_creacion",
-        "idrol"
+        "admin"
     ];
 
     public $id;
@@ -29,7 +29,7 @@ class Usuario extends ActiveRecord {
     public $password;
     public $token;
     public $confirmado;
-    public $idrol;
+    public $admin;
     public $fecha_creacion;
 
     public function __construct($args = []) {
@@ -42,7 +42,7 @@ class Usuario extends ActiveRecord {
         $this->password = $args["password"] ?? "";
         $this->token = $args["token"] ?? "";
         $this->confirmado = $args["confirmado"] ?? "0";
-        $this->idrol = $args["idrol"] ?? 2;
+        $this->admin = $args["admin"] ?? 2;
         $this->fecha_creacion = date("Y/m/d");
     }
 
