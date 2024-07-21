@@ -73,7 +73,7 @@ $rol = $_SESSION["rol"] ?? "2";
                     <a href="https://www.instagram.com/theelectricbuffalo/" class="insta" target="_blank">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <a href="https://www.youtube.com/@theelectricbuffalo666" target="_blank">
+                    <a href="https://open.spotify.com/intl-es/artist/4ciUFLaycqUBlM162ifmSH?si=eugYIzlWQnqkxGXJMXzYcw" target="_blank">
                         <i class="fa-brands fa-spotify"></i>
                     </a>
                 </div>
