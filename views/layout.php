@@ -3,7 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 $auth = $_SESSION["login"] ?? false;
-$rol = $_SESSION["rol"] ?? "2";
+$admin = $_SESSION["admin"] ?? "0";
 
 
 
@@ -76,6 +76,10 @@ $rol = $_SESSION["rol"] ?? "2";
                     <a href="https://open.spotify.com/intl-es/artist/4ciUFLaycqUBlM162ifmSH?si=eugYIzlWQnqkxGXJMXzYcw" target="_blank">
                         <i class="fa-brands fa-spotify"></i>
                     </a>
+                    <a href="https://theelectricbuffalo.bandcamp.com/" target="_blank">
+                        <i class="fa-brands fa-bandcamp"></i>
+                    </a>
+
                 </div>
                 <div>
                     <?php if ($auth) : ?>
@@ -85,7 +89,7 @@ $rol = $_SESSION["rol"] ?? "2";
                 <nav class="navegacion-principal">
                     <?php if ($auth) : ?>
                         <a href="/logout"><i class="fa-solid fa-lock-open"></i></a>
-                        <?php if ($rol == "1") : ?>
+                        <?php if ($admin == "1") : ?>
                             <a href="/adminpanel">Panel</a>
                         <?php endif; ?>
                         <!-- TODO eliminar la opción de loguearse a través de enlace -->
@@ -127,6 +131,9 @@ $rol = $_SESSION["rol"] ?? "2";
                 <a href="https://open.spotify.com/intl-es/artist/4ciUFLaycqUBlM162ifmSH?si=eugYIzlWQnqkxGXJMXzYcw" target="_blank">
                     <i class="fa-brands fa-spotify"></i>
                 </a>
+                <a href="https://theelectricbuffalo.bandcamp.com/" target="_blank">
+                        <i class="fa-brands fa-bandcamp"></i>
+                    </a>
             </div>
             <div class="contacto ">
                 <a href="mailto:theelectricbuffalo.com" target="_black">info@theelectricbuffalo.com</a>

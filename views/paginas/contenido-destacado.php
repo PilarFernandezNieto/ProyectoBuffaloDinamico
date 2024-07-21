@@ -51,6 +51,13 @@
                     <img loading="lazy" width="200" height="300" src="/build/img/spotifty.png" alt="logo-spotify" class="spotify" />
                 </picture>
             </a>
+            <a href="https://theelectricbuffalo.bandcamp.com/" target="_blank">
+                <picture>
+                    <source srcset="/build/img/bandcamp-button-circle-aqua-64.webp" type="image/webp" />
+                    <source srcset="/build/img/bandcamp-button-circle-aqua-64.png" type="image/png" />
+                    <img loading="lazy" width="200" height="300" src="/build/img/bandcamp-button-circle-aqua-64.png" alt="logo-bandcamp" class="bandcamp" />
+                </picture>
+            </a>
 
         </article>
     </div>
